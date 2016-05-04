@@ -1,3 +1,5 @@
+package fr.iutvalence.info.dut.m2107;
+
 /**
  * Permet de modifier les réglages de différents type et de ce déconnecter
  */

@@ -1,3 +1,5 @@
+package fr.iutvalence.info.dut.m2107;
+
 /**
  * Classe principale permettant de lancer ses entrainement ou d'en créer
  */
@@ -10,7 +12,7 @@ public class Entrainement {
 	/**
 	 * Nom de l'entrainement
 	 */
-	private string libelleEntrainement;
+	private String libelleEntrainement;
 
 	/**
 	 * Nombre de séance dans l'entrainement

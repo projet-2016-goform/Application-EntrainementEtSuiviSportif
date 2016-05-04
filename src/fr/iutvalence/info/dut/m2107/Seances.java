@@ -1,3 +1,4 @@
+package fr.iutvalence.info.dut.m2107;
 import java.util.*;
 
 /**
@@ -9,14 +10,14 @@ public class Seances {
 	/**
 	 * Date de réalisation de la séance
 	 */
-	private date date;
+	private Date date;
 
 	public int getNbExercice() {
 		// TODO - implement Seances.getNbExercice
 		throw new UnsupportedOperationException();
 	}
 
-	public date getDate() {
+	public Date getDate() {
 		return this.date;
 	}
 

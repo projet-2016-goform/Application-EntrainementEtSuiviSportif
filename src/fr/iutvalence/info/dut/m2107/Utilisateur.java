@@ -1,3 +1,5 @@
+package fr.iutvalence.info.dut.m2107;
+
 /**
  * Statut d'une personne ayant un imc et plusieurs droits relatif aux entrainement
  */
@@ -32,7 +34,7 @@ public class Utilisateur extends Personne implements Profil {
 	 * @param mail
 	 * @param mdp
 	 */
-	public void connexion(string mail, string mdp) {
+	public void connexion(String mail, String mdp) {
 		// TODO - implement Utilisateur.connexion
 		throw new UnsupportedOperationException();
 	}

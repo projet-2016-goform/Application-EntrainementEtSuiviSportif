@@ -1,5 +1,5 @@
+package fr.iutvalence.info.dut.m2107;
 import java.util.*;
-
 /**
  * Exercice réalisé durant une séance
  */
@@ -9,13 +9,13 @@ public class Exercices {
 	/**
 	 * Nom de l'entrainement
 	 */
-	private string libelle;
+	private String libelle;
 	/**
 	 * Nombre de répétition de cet entrainement
 	 */
 	private int quantite;
 
-	public string getLibelle() {
+	public String getLibelle() {
 		return this.libelle;
 	}
 

@@ -1,3 +1,5 @@
+package fr.iutvalence.info.dut.m2107;
+
 /**
  * Il s'agit d'une personne sans droits
  */

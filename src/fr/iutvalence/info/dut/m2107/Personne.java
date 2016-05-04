@@ -1,42 +1,44 @@
+package fr.iutvalence.info.dut.m2107;
+import java.util.*;
 /**
- * Représentation d'un personne
+ * Représentation d'une personne
  */
 public class Personne implements GoForm {
 
 	/**
 	 * Prénom de la personne
 	 */
-	private string prenom;
+	private String prenom;
 	/**
 	 * Nom de la personne
 	 */
-	private string nom;
+	private String nom;
 	/**
 	 * Mail de la personne
 	 */
-	private string mail;
+	private String mail;
 	/**
 	 * Mot de passe de la personne
 	 */
-	private string mdp;
+	private String mdp;
 	/**
 	 * Age de la personne
 	 */
 	private int age;
 
-	public string getPrenom() {
+	public String getPrenom() {
 		return this.prenom;
 	}
 
-	public string getNom() {
+	public String getNom() {
 		return this.nom;
 	}
 
-	public string getMail() {
+	public String getMail() {
 		return this.mail;
 	}
 
-	public string getMdp() {
+	public String getMdp() {
 		return this.mdp;
 	}
 
