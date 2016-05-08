@@ -4,7 +4,7 @@ package fr.iutvalence.info.dut.m2107;
  */
 public interface GoForm {
 
-	void calculIMC();
+	double calculIMC();
 
 	Utilisateur enregistre();
 

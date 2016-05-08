@@ -5,6 +5,12 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class Utilisateur extends Personne implements Profil {
 
+	public Utilisateur(String prenom, String nom, String mail, String mdp, int age, int taille, int poids) {
+		super(prenom, nom, mail, mdp, age, taille, poids);
+		this.id = 0;
+		//TODO Add this.imc
+	}
+
 	/**
 	 * Identifiant permettant de différencier les utilisateurs
 	 */
@@ -12,12 +18,12 @@ public class Utilisateur extends Personne implements Profil {
 	/**
 	 * Imc de chaque utilisateur
 	 */
-	private int imc;
+	private double imc;
 
 	/**
 	 * Récupere l'imc de l'utilisateur
 	 */
-	public int getImc() {
+	public double getImc() {
 		return this.imc;
 	}
 
