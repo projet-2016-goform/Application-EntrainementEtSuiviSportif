@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.1.9" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="true" nesting-relationships="true" router="FAN">  
+<class-diagram version="1.1.6" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="true" nesting-relationships="true">  
   <class id="1" language="java" name="fr.iutvalence.info.dut.m2107.Anonyme" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Anonyme.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="493" y="485"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="298" y="467"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="2" language="java" name="fr.iutvalence.info.dut.m2107.Suivi" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Suivi.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="130" x="238" y="61"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="227" y="122"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
@@ -22,17 +22,17 @@
   <class id="3" language="java" name="fr.iutvalence.info.dut.m2107.Seances" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Seances.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="171" width="139" x="302" y="766"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="4" language="java" name="fr.iutvalence.info.dut.m2107.Utilisateur" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Utilisateur.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="795" y="662"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="806" y="572"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
@@ -40,62 +40,62 @@
   <class id="5" language="java" name="fr.iutvalence.info.dut.m2107.Exercices" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Exercices.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="189" width="144" x="265" y="537"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="6" language="java" name="fr.iutvalence.info.dut.m2107.Admin" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Admin.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="158" x="234" y="380"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="267" y="326"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="7" language="java" name="fr.iutvalence.info.dut.m2107.Personne" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Personne.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="279" width="129" x="582" y="61"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="630" y="212"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <class id="8" language="java" name="fr.iutvalence.info.dut.m2107.Entrainement" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Entrainement.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="663" y="978"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="774" y="847"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <interface id="9" language="java" name="fr.iutvalence.info.dut.m2107.Profil" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Profil.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1063" y="656"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="1028" y="467"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </interface>  
   <enumeration id="10" language="java" name="fr.iutvalence.info.dut.m2107.Sexe" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Sexe.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="477" y="118"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="379" y="83"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </enumeration>  
   <enumeration id="11" language="java" name="fr.iutvalence.info.dut.m2107.TypeReglage" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/TypeReglage.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="117" width="131" x="751" y="61"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="845" y="111"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
@@ -103,17 +103,17 @@
   <class id="12" language="java" name="fr.iutvalence.info.dut.m2107.Reglages" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/Reglages.java" binary="false" corner="BOTTOM_RIGHT">    
     <position height="117" width="129" x="922" y="61"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
   <interface id="13" language="java" name="fr.iutvalence.info.dut.m2107.GoForm" project="GoForm" 
     file="/GoForm/src/fr/iutvalence/info/dut/m2107/GoForm.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="659" y="486"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-      sort-features="false" accessors="true" visibility="true">      
+    <position height="-1" width="-1" x="586" y="532"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" accessors="true" 
+      visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
@@ -130,45 +130,45 @@
     <end type="SOURCE" refId="7"/>    
     <end type="TARGET" refId="13"/>  
   </realization>  
-  <dependency id="17">    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="8"/>  
-  </dependency>  
-  <generalization id="18">    
-    <end type="SOURCE" refId="1"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <generalization id="19">    
-    <bendpoint x="772" y="405"/>    
-    <end type="SOURCE" refId="4"/>    
-    <end type="TARGET" refId="7"/>  
-  </generalization>  
-  <association id="20">    
+  <association id="17">    
     <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="21" name="collectionExercices"/>      
-      <multiplicity id="22" minimum="0" maximum="2147483647"/>    
+      <attribute id="18" name="collectionExercices"/>      
+      <multiplicity id="19" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <association id="23">    
+  <dependency id="20">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </dependency>  
+  <generalization id="21">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="22">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="24" name="collectionSeances"/>      
-      <multiplicity id="25" minimum="0" maximum="2147483647"/>    
+      <attribute id="23" name="collectionSeances"/>      
+      <multiplicity id="24" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="8" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <realization id="26">    
+  <realization id="25">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="13"/>  
   </realization>  
-  <realization id="27">    
+  <realization id="26">    
     <end type="SOURCE" refId="4"/>    
     <end type="TARGET" refId="9"/>  
   </realization>  
+  <generalization id="27">    
+    <bendpoint x="772" y="405"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="true" signature="true" 
-    sort-features="false" accessors="true" visibility="true">    
+    accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
     <operations public="true" package="true" protected="true" private="true" static="true"/>  
   </classifier-display>  

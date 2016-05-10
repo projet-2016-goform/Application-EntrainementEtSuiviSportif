@@ -13,6 +13,13 @@ public class Entrainement {
 	 * Nom de l'entrainement
 	 */
 	private String libelleEntrainement;
+	
+	public Entrainement (boolean typeEntrainement0, String libelleEntrainement0)
+	{
+		this.typeEntrainement=typeEntrainement0;
+		this.libelleEntrainement=libelleEntrainement0;
+	}
+	
 
 	/**
 	 * Nombre de séance dans l'entrainement

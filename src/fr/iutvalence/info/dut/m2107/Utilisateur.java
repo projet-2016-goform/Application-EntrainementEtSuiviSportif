@@ -31,6 +31,7 @@ public class Utilisateur extends Personne implements Profil {
 	 * Permet de créer un entrainement
 	 */
 	public void creationEntrainement() {
+		
 		// TODO - implement Utilisateur.creationEntrainement
 		throw new UnsupportedOperationException();
 	}

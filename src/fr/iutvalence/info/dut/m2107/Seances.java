@@ -6,11 +6,13 @@ import java.util.*;
  */
 public class Seances {
 
+	
 	Collection<Entrainement> collectionSeances;
 	/**
 	 * Date de réalisation de la séance
 	 */
 	private Date date;
+	
 
 	public int getNbExercice() {
 		// TODO - implement Seances.getNbExercice

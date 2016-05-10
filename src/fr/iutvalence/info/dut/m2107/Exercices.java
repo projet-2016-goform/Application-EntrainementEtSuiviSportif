@@ -14,6 +14,12 @@ public class Exercices {
 	 * Nombre de répétition de cet entrainement
 	 */
 	private int quantite;
+	
+	public Exercices(String libelle0, int quantite0)
+	{
+		this.libelle=libelle0;
+		this.quantite=quantite0;
+	}
 
 	public String getLibelle() {
 		return this.libelle;

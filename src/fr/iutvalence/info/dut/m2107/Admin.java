@@ -5,6 +5,13 @@ package fr.iutvalence.info.dut.m2107;
  */
 public class Admin extends Personne {
 
+	public Admin(String prenom, String nom, String mail, String mdp, int age,
+			int taille, int poids) 
+	{
+		super(prenom, nom, mail, mdp, age, taille, poids);
+		// TODO Auto-generated constructor stub
+	}
+
 	/**
 	 * Permet de créer un entrainement proposé dans une catégorie precise de l'utilisateur.
 	 */
