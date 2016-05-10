@@ -20,10 +20,9 @@ public static void main(String[] args) {
     /*Création de l'onglet*/
     JPanel pannel = new JPanel();
     
-    
     /*Création du button quitter*/
-    JButton b =new JButton("Quitter");
-    
+    public static WindowCloseButton close = new WindowCloseButton("Close");
+        
     /*Position des onglets dans la fenêtre*/
     JTabbedPane onglets = new JTabbedPane(SwingConstants.TOP);
     
@@ -65,9 +64,7 @@ public static void main(String[] args) {
     f.getContentPane().add(pannel);
     f.setVisible(true); 
     
-    b.setVisible(true);
-    pannel.add(b);
-    //f.dispose();
+    
     
    
 
