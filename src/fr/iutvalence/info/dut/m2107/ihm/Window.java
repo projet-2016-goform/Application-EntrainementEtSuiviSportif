@@ -21,7 +21,7 @@ public static void main(String[] args) {
     JPanel pannel = new JPanel();
     
     /*Création du button quitter*/
-    public static WindowCloseButton close = new WindowCloseButton("Close");
+ //   public static WindowCloseButton close = new WindowCloseButton("Close");
         
     /*Position des onglets dans la fenêtre*/
     JTabbedPane onglets = new JTabbedPane(SwingConstants.TOP);

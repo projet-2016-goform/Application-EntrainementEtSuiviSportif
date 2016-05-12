@@ -38,6 +38,9 @@ public class Anonyme extends Personne implements GoForm {
 		System.out.println("Entrez votre poids :");
 		int poids = sc.nextInt();
 		
+		System.out.println("Type d'entrainement souhaité ? :");
+		//TypeEntrainement entrainement = sc.nextLine();
+		
 		Personne personne = new Personne(prenom, nom, mail, password, age, taille, poids);
 		
 		return personne;

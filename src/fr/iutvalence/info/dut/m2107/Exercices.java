@@ -15,10 +15,10 @@ public class Exercices {
 	 */
 	private int quantite;
 	
-	public Exercices(String libelle0, int quantite0)
+	public Exercices(String libelle, int quantite)
 	{
-		this.libelle=libelle0;
-		this.quantite=quantite0;
+		this.libelle=libelle;
+		this.quantite=quantite;
 	}
 
 	public String getLibelle() {

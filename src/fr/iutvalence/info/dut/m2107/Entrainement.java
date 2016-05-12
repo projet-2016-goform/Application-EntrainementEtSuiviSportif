@@ -1,26 +1,58 @@
 package fr.iutvalence.info.dut.m2107;
 
+import java.awt.List;
+import java.text.DateFormat;
+import java.util.*;
+
 /**
- * Classe principale permettant de lancer ses entrainement ou d'en créer
+ * Classe permettant de lancer ses entrainement ou d'en créer
  */
 public class Entrainement {
 
 	/**
 	 * Type d'entrainement (force, endurance, etc.)
 	 */
-	private boolean typeEntrainement;
+	private TypeEntrainement type;
 	/**
 	 * Nom de l'entrainement
 	 */
-	private String libelleEntrainement;
+	private String libelle;
+	/**
+	 * Date de l'entrainement
+	 */
+	private Date date;
+	private ArrayList<Seances> seances;
 	
-	public Entrainement (boolean typeEntrainement0, String libelleEntrainement0)
+	public ArrayList<Seances> createSeances()
 	{
-		this.typeEntrainement=typeEntrainement0;
-		this.libelleEntrainement=libelleEntrainement0;
+		final ArrayList<Seances> seances = new ArrayList<>();
+		seances.add(new Seances(null));
+		return seances;
 	}
 	
-
+	/**
+	 * Création d'un entrainement
+	 * @param type
+	 * @param libelle
+	 * @param date
+	 * @param seances
+	 */
+	public Entrainement (TypeEntrainement type, String libelle, Date date, ArrayList<Seances> seances)
+	{
+		this.type = type;
+		this.libelle = libelle;
+		this.date = date;
+		this.seances = seances;
+	}
+	
+	/**
+	 * Obtenir la date de la séance
+	 * @return date
+	 */
+	public Date getDate() {
+		return this.date;
+	}
+	
 	/**
 	 * Nombre de séance dans l'entrainement
 	 */
