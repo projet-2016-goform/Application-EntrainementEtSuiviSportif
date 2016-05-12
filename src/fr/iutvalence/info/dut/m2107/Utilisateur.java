@@ -66,5 +66,25 @@ public class Utilisateur extends Personne implements Profil {
 		// TODO - implement Utilisateur.abandonnerEntrainement
 		throw new UnsupportedOperationException();
 	}
-
+	@Override
+	public String toString() {
+		return "Votre profil : "
+				+ 
+				System.getProperty("line.separator")+
+				"ID :" + id+
+				System.getProperty("line.separator")+
+				"IMC :" + getImc()+
+				System.getProperty("line.separator")+
+				"Prenom :" + getPrenom()+
+				System.getProperty("line.separator")+
+				"Nom :" + getNom()+
+				System.getProperty("line.separator")+
+				"Mail :" + getMail()+
+				System.getProperty("line.separator")+
+				"AGE :" + getAge()+
+				System.getProperty("line.separator")+
+				"Taille :" + getTaille()+
+				System.getProperty("line.separator")+
+				"Poids :" + getPoids();
+	}
 }

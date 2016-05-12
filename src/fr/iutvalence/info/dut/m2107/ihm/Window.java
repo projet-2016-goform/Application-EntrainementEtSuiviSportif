@@ -1,6 +1,9 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 import java.awt.*;
+
 import javax.swing.*;
+
+import fr.iutvalence.info.dut.m2107.Utilisateur;
 /**
  * Création de la fenêtre et des onglets à afficher.
  * 
@@ -12,7 +15,8 @@ public class Window extends WindowCloseButton{
 
   
 public static void main(String[] args) {
-	
+	Utilisateur affiche = new Utilisateur("prenom", "nom", "mail@gmail.com", "mdp", 24, 254, 56);
+	System.out.println(affiche.toString());
     /*Création de la fenêtre*/
     JFrame f = new JFrame("GoForm");
     f.setSize(500, 700);
