@@ -1,6 +1,5 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 import java.awt.*;
-
 import javax.swing.*;
 /**
  * Création de la fenêtre et des onglets à afficher.
@@ -8,7 +7,8 @@ import javax.swing.*;
  * @author HASSAINE ABDERRAHMANE
  *@version 1.0
  */
-public class Window {
+@SuppressWarnings("serial")
+public class Window extends WindowCloseButton{
 
   
 public static void main(String[] args) {
@@ -18,10 +18,10 @@ public static void main(String[] args) {
     f.setSize(500, 700);
     
     /*Création de l'onglet*/
-    JPanel pannel = new JPanel();
+    JPanel pannel = new JPanel();											
     
     /*Création du button quitter*/
- //   public static WindowCloseButton close = new WindowCloseButton("Close");
+    JButton quitter = new JButton("Quitter");
         
     /*Position des onglets dans la fenêtre*/
     JTabbedPane onglets = new JTabbedPane(SwingConstants.TOP);
@@ -57,12 +57,20 @@ public static void main(String[] args) {
     onglet5.add(titreOnglet5);
     onglets.addTab("Régages", onglet5);
     
-    /*Paramètre d'affichage*/
+    /*Paramètres d'affichage*/
     
     onglets.setVisible(true);
     pannel.add(onglets);
     f.getContentPane().add(pannel);
     f.setVisible(true); 
+    
+    quitter.setVisible(true);
+    pannel.add(quitter);
+    
+    
+    
+    
+    //System.exit(0);
     
     
     
