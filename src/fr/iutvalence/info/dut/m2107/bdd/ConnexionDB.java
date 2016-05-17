@@ -11,14 +11,23 @@ public class ConnexionDB {
 	
 	
 	
-	public static void main(String[] args) throws ClassNotFoundException, SQLException{
+	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 		
-		Class.forName("com.mysql.jdbc.Driver");
-		System.out.println("Driver ok");
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+		} catch (ClassNotFoundException e) {
+			System.out.println("driver ok");
+			e.printStackTrace();
+		}
 		
-		Connection con = DriverManager.getConnection("jdbc:mysql://localhost/goform","GOFORM","goform");
+		try {
+			Connection con = DriverManager.getConnection("jdbc:mysql://gigondas/hassaina","hassaina","hassaina");
+		} catch (SQLException e) {
+			System.out.println("conncter a la bdd");
+			e.printStackTrace();
+		}
 		System.out.println("Connexion établie");
 		
 		
