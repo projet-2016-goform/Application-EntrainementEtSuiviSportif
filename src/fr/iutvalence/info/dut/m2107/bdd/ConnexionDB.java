@@ -22,7 +22,7 @@ public class ConnexionDB {
 	Connection connection = null;
 
 	try {
-		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/goform","root", "");
+		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/goform","GOFORM", "goform");
 
 	} catch (SQLException e) {
 		System.out.println("Connexion échouée, vérifiez le lien");
