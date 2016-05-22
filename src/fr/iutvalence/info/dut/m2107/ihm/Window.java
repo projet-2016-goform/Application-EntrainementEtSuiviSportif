@@ -16,7 +16,7 @@ import fr.iutvalence.info.dut.m2107.Utilisateur;
  *@version 1.0
  */
 
-public class Window implements ActionListener{
+public class Window extends JFrame implements ActionListener{
 
   
 
@@ -68,7 +68,7 @@ public static void main(String[] args) {
     onglets.addTab("Réglages", onglet5);
     
     /*Paramètres d'affichage*/
-    
+    f.setDefaultCloseOperation(Window.EXIT_ON_CLOSE);
     onglets.setVisible(true);
     pannel.add(onglets);
     f.getContentPane().add(pannel);
