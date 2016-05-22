@@ -1,5 +1,9 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -11,11 +15,16 @@ import javax.swing.UIManager;
 import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
+/**
+ * Création de la fenêtre principale pour accèder à l'application.
+ * 
+ * @author HASSAINE ABDERRAHMANE
+ *@version 1.0
+ */
 
 
-//VS4E -- DO NOT REMOVE THIS LINE!
-public class IHMConnexionUser extends JFrame {
-
+public class IHMConnexionUser extends JFrame implements ActionListener {
+	Font f;
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
 	private JFormattedTextField jFormattedTextField0;
@@ -24,6 +33,7 @@ public class IHMConnexionUser extends JFrame {
 	private JPasswordField jPasswordField0;
 	private JButton jButton1;
 	private JLabel jLabel2;
+	private JButton jButton2;
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
 	public IHMConnexionUser() {
 		initComponents();
@@ -37,14 +47,26 @@ public class IHMConnexionUser extends JFrame {
 		add(getJPasswordField0(), new Constraints(new Leading(35, 220, 12, 12), new Leading(193, 12, 12)));
 		add(getJButton0(), new Constraints(new Leading(161, 12, 12), new Leading(253, 10, 10)));
 		add(getJButton1(), new Constraints(new Leading(35, 12, 12), new Leading(253, 12, 12)));
-		add(getJLabel2(), new Constraints(new Leading(68, 140, 10, 10), new Leading(19, 50, 10, 10)));
-		setSize(292, 342);
+		add(getJLabel2(), new Constraints(new Leading(35, 220, 12, 12), new Leading(19, 50, 10, 10)));
+		add(getJButton2(), new Constraints(new Leading(213, 10, 10), new Leading(319, 10, 10)));
+		setSize(290, 350);
+	}
+
+	private JButton getJButton2() {
+		if (jButton2 == null) {
+			jButton2 = new JButton();
+			jButton2.setText("Quitter");
+		}
+		return jButton2;		
 	}
 
 	private JLabel getJLabel2() {
 		if (jLabel2 == null) {
 			jLabel2 = new JLabel();
 			jLabel2.setText("Bienvenue sur GoForm");
+			f = new Font("Calibri", Font.BOLD, 20);
+			jLabel2.setFont(f);
+			jLabel2.setHorizontalAlignment(jLabel2.CENTER); 
 		}
 		return jLabel2;
 	}
@@ -129,6 +151,12 @@ public class IHMConnexionUser extends JFrame {
 				frame.setVisible(true);
 			}
 		});
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent arg0) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

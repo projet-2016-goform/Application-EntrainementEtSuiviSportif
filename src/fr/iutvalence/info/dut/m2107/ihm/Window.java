@@ -1,7 +1,8 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
 import java.awt.*;
-import java.awt.event.MouseListener;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
@@ -14,14 +15,14 @@ import fr.iutvalence.info.dut.m2107.Utilisateur;
  * @author HASSAINE ABDERRAHMANE
  *@version 1.0
  */
-@SuppressWarnings("serial")
-public class Window extends WindowCloseButton{
+
+public class Window implements ActionListener{
 
   
 
 public static void main(String[] args) {
-	Utilisateur affiche = new Utilisateur("prenom", "nom", "mail@gmail.com", "mdp", 24, 254, 56);
-	System.out.println(affiche.toString());
+//	Utilisateur affiche = new Utilisateur("prenom", "nom", "mail@gmail.com", "mdp", 24, 254, 56);
+//	System.out.println(affiche.toString());
     /*Création de la fenêtre*/
     JFrame f = new JFrame("GoForm");
     f.setSize(500, 700);
@@ -44,7 +45,7 @@ public static void main(String[] args) {
     
     /*Création de l'onglet 2 dans la fenêtre*/
     JPanel onglet2 = new JPanel();
-    JLabel titreOnglet2 = new JLabel("Résumé de vos informatiions");
+    JLabel titreOnglet2 = new JLabel("Résumé de vos informations");
     onglet2.add(titreOnglet2);
     onglets.addTab("Profil", onglet2);
 
@@ -52,7 +53,7 @@ public static void main(String[] args) {
     JPanel onglet3 = new JPanel();
     JLabel titreOnglet3 = new JLabel("Vos séances");
     onglet3.add(titreOnglet3);
-    onglets.addTab("Entrainement", onglet3);
+    onglets.addTab("Entraînement", onglet3);
 
     /*Création de l'onglet 4 dans la fenêtre*/
     JPanel onglet4 = new JPanel();
@@ -64,7 +65,7 @@ public static void main(String[] args) {
     JPanel onglet5 = new JPanel();
     JLabel titreOnglet5 = new JLabel("Modifiez les paramètres");
     onglet5.add(titreOnglet5);
-    onglets.addTab("Régages", onglet5);
+    onglets.addTab("Réglages", onglet5);
     
     /*Paramètres d'affichage*/
     
@@ -74,14 +75,18 @@ public static void main(String[] args) {
     f.setVisible(true); 
     quitter.setVisible(true);
     pannel.add(quitter);
+    quitter.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			System.exit(0);
+		}
+	});
     
-//    boutton quitter
-    
-    
-    
-    
-    
-   
+    	
+    }
 
-  }
+@Override
+public void actionPerformed(ActionEvent e) {
+	// TODO Auto-generated method stub
+	
+}
 }

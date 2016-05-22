@@ -13,9 +13,11 @@ public class IHMGoform {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-				
-		Window win = new Window();
-		win.setVisible(true);
+		IHMConnexionUser cnxUser = new IHMConnexionUser();
+		cnxUser.setVisible(true);
+		
+//		Window win = new Window();
+//		win.setVisible(true);
 
 	}
 
