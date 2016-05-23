@@ -3,18 +3,22 @@ import java.util.Scanner;
 /**
  * Il s'agit d'une personne sans droits
  */
-public class Anonyme extends Personne implements GoForm {
+public abstract class Anonyme implements GoForm {
 
-	public Anonyme(String prenom, String nom, String mail, String mdp, int age, int taille, int poids) {
-		super(prenom, nom, mail, mdp, age, taille, poids);
-		// TODO Auto-generated constructor stub
+	/**
+	 * Permet de se connecter en respectant les paramètres fixés
+	 * @param mail
+	 * @param mdp
+	 */
+	public void connexion(String mail, String mdp) {
+		// TODO - implement Utilisateur.connexion
+		throw new UnsupportedOperationException();
 	}
-
 	/**
 	 * Permet de s'insrire après avoir renseigné tous les attributs de la super classe personne
 	 * @return 
 	 */
-	public Personne Inscritpion() {
+	public Utilisateur Inscritpion() {
 		Scanner sc = new Scanner(System.in);
 		
 		System.out.println("Entrez un mail :");
@@ -25,6 +29,9 @@ public class Anonyme extends Personne implements GoForm {
 		
 		System.out.println("Entrez votre prénom :");
 		String prenom = sc.nextLine();
+		
+		System.out.println("Entrez votre sexe :");
+		//Sexe sexe = sc.nextLine();
 		
 		System.out.println("Entrez votre age :");
 		int age = sc.nextInt();
@@ -41,9 +48,9 @@ public class Anonyme extends Personne implements GoForm {
 		System.out.println("Type d'entrainement souhaité ? :");
 		//TypeEntrainement entrainement = sc.nextLine();
 		
-		Personne personne = new Personne(prenom, nom, mail, password, age, taille, poids);
+		//Utilisateur personne = new Utilisateur(prenom, nom,sexe, mail, password, age, taille, poids);
 		
-		return personne;
+		return null;
 	}
 
 }
