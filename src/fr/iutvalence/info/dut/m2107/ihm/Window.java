@@ -23,6 +23,7 @@ public class Window extends JFrame implements ActionListener{
 public static void main(String[] args) {
 //	Utilisateur affiche = new Utilisateur("prenom", "nom", "mail@gmail.com", "mdp", 24, 254, 56);
 //	System.out.println(affiche.toString());
+	
     /*Création de la fenêtre*/
     JFrame f = new JFrame("GoForm");
     f.setSize(500, 700);

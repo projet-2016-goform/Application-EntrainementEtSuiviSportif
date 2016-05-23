@@ -19,7 +19,7 @@ import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 
-//VS4E -- DO NOT REMOVE THIS LINE!
+
 public class IHMInscriptionUser extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
@@ -31,17 +31,17 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 	private JSlider jSlider0;
 	private JLabel jLabel3;
 	private JSlider jSlider1;
-	private JLabel jLabel4;
+	private JLabel jage;
 	private JSlider jSlider2;
-	private JButton jButton0;
-	private JButton jButton1;
+	private JButton bannuler;
+	private JButton bsuivant;
 	private JScrollPane jScrollPane0;
-	private JLabel jLabel5;
-	private JLabel jLabel6;
-	private JProgressBar jProgressBar0;
+	private JLabel jImc;
+	private JLabel jIndiceImc;
+	private JProgressBar jProgressBarImc;
 	private JLabel jLabel7;
 	private JScrollPane jScrollPane1;
-	private JLabel jLabel8;
+	private JLabel jintro;
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
 	
 	public IHMInscriptionUser() {
@@ -69,7 +69,7 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 		add(getJLabel0(), new Constraints(new Leading(49, 12, 12), new Leading(114, 12, 12)));
 		add(getJLabel8(), new Constraints(new Leading(49, 414, 12, 12), new Leading(35, 63, 10, 10)));
 		setSize(500, 700);
-		jButton0.addActionListener(new ActionListener() {
+		bannuler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
 			}
@@ -82,53 +82,55 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 		
 	}
 	private JLabel getJLabel8() {
-		if (jLabel8 == null) {
-			jLabel8 = new JLabel();
-			jLabel8.setText("<html>Veuillez renseigner les champs suivant afin de vous inscrire aux différents programmes d'entraînements :</html>");
+		if (jintro == null) {
+			jintro = new JLabel();
+			jintro.setText("<html>Veuillez renseigner les champs suivant afin de vous inscrire aux différents programmes d'entraînements :</html>");
 		}
-		return jLabel8;
+		return jintro;
 	}
 
 	private JProgressBar getJProgressBar0() {
-		if (jProgressBar0 == null) {
-			jProgressBar0 = new JProgressBar();
-			jProgressBar0.setString("0 %");
+		if (jProgressBarImc == null) {
+			jProgressBarImc = new JProgressBar();
+			jProgressBarImc.setString("0 %");
+			
 		}
-		return jProgressBar0;
+		return jProgressBarImc;
+		
 	}
 
 	private JLabel getJLabel6() {
-		if (jLabel6 == null) {
-			jLabel6 = new JLabel();
-			jLabel6.setText("IMC* : Indice de masse corporelle.");
+		if (jIndiceImc == null) {
+			jIndiceImc = new JLabel();
+			jIndiceImc.setText("IMC* : Indice de masse corporelle.");
 		}
-		return jLabel6;
+		return jIndiceImc;
 	}
 
 	private JLabel getJLabel5() {
-		if (jLabel5 == null) {
-			jLabel5 = new JLabel();
-			jLabel5.setText("Votre IMC* est de :");
+		if (jImc == null) {
+			jImc = new JLabel();
+			jImc.setText("Votre IMC* est de :");
 		}
-		return jLabel5;
+		return jImc;
 	}
 
 	
 
 	private JButton getJButton1() {
-		if (jButton1 == null) {
-			jButton1 = new JButton();
-			jButton1.setText("Suivant");
+		if (bsuivant == null) {
+			bsuivant = new JButton();
+			bsuivant.setText("Suivant");
 		}
-		return jButton1;
+		return bsuivant;
 	}
 
 	private JButton getJButton0() {
-		if (jButton0 == null) {
-			jButton0 = new JButton();
-			jButton0.setText("Annuler");
+		if (bannuler == null) {
+			bannuler = new JButton();
+			bannuler.setText("Annuler");
 		}
-		return jButton0;
+		return bannuler;
 		
 	}
 	
@@ -141,16 +143,23 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 	}
 
 	private JLabel getJLabel4() {
-		if (jLabel4 == null) {
-			jLabel4 = new JLabel();
-			jLabel4.setText("Votre âge :");
+		if (jage == null) {
+			jage = new JLabel();
+			jage.setText("Votre âge :");
 		}
-		return jLabel4;
+		return jage;
 	}
+	
+
 
 	private JSlider getJSlider1() {
 		if (jSlider1 == null) {
 			jSlider1 = new JSlider();
+			jSlider1.setMaximum(200);
+			jSlider1.setMinimum(0);
+			jSlider1.setValue(0);
+			jSlider1.setMinorTickSpacing(1);
+			jSlider1.setMajorTickSpacing(1);
 		}
 		return jSlider1;
 	}

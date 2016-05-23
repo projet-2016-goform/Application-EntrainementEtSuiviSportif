@@ -27,11 +27,11 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	Font f;
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
-	private JFormattedTextField jFormattedTextField0;
+	private JFormattedTextField jFormattedTextFieldMail;
 	private JButton jButton0;
-	private JLabel jLabel1;
+	private JLabel jMdp;
 	private JPasswordField jPasswordField0;
-	private JButton jButton1;
+	private JButton bInscription;
 	private JLabel jLabel2;
 	private JButton jButton2;
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
@@ -50,6 +50,11 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		add(getJLabel2(), new Constraints(new Leading(35, 220, 12, 12), new Leading(19, 50, 10, 10)));
 		add(getJButton2(), new Constraints(new Leading(213, 10, 10), new Leading(319, 10, 10)));
 		setSize(290, 350);
+		jButton2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
 	}
 
 	private JButton getJButton2() {
@@ -72,11 +77,11 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	}
 
 	private JButton getJButton1() {
-		if (jButton1 == null) {
-			jButton1 = new JButton();
-			jButton1.setText("Inscription");
+		if (bInscription == null) {
+			bInscription = new JButton();
+			bInscription.setText("Inscription");
 		}
-		return jButton1;
+		return bInscription;
 	}
 
 	private JPasswordField getJPasswordField0() {
@@ -89,11 +94,11 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	}
 
 	private JLabel getJLabel1() {
-		if (jLabel1 == null) {
-			jLabel1 = new JLabel();
-			jLabel1.setText("Mot de passe :");
+		if (jMdp == null) {
+			jMdp = new JLabel();
+			jMdp.setText("Mot de passe :");
 		}
-		return jLabel1;
+		return jMdp;
 	}
 
 	private JButton getJButton0() {
@@ -105,11 +110,11 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	}
 
 	private JFormattedTextField getJFormattedTextField0() {
-		if (jFormattedTextField0 == null) {
-			jFormattedTextField0 = new JFormattedTextField();
-			jFormattedTextField0.setText("exemple@exemple.com");
+		if (jFormattedTextFieldMail == null) {
+			jFormattedTextFieldMail = new JFormattedTextField();
+			jFormattedTextFieldMail.setText("exemple@exemple.com");
 		}
-		return jFormattedTextField0;
+		return jFormattedTextFieldMail;
 	}
 
 	private JLabel getJLabel0() {

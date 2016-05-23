@@ -13,7 +13,7 @@ import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 
-//VS4E -- DO NOT REMOVE THIS LINE!
+
 public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 
 	private static final long serialVersionUID = 1L;
