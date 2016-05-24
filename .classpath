@@ -14,6 +14,6 @@
 	<classpathentry kind="lib" path="G:/git/fr.iutvalence.info.dut.m2107/lib/org.dyno.visual.swing.types_0.9.12.I20090527-2200.jar"/>
 	<classpathentry kind="lib" path="G:/git/fr.iutvalence.info.dut.m2107/lib/org.dyno.visual.swing.widgets_0.9.12.I20090527-2200.jar"/>
 	<classpathentry kind="lib" path="G:/git/fr.iutvalence.info.dut.m2107/lib/org.dyno.visual.swing_0.9.12.I20090527-2200.jar"/>
-	<classpathentry kind="lib" path="G:/git/fr.iutvalence.info.dut.m2107/lib/mysql-connector-java-5.0.8/mysql-connector-java-5.0.8-bin.jar"/>
+	<classpathentry kind="lib" path="G:/git/fr.iutvalence.info.dut.m2107/lib/postgresql-9.3-1103.jdbc3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

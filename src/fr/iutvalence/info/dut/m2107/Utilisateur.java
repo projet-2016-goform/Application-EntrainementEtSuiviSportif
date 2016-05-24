@@ -108,15 +108,10 @@ public class Utilisateur implements Profil {
 		throw new UnsupportedOperationException();
 	}
 
-	
 
-	public void modifier(Entrainement entrainement) {
-		// TODO - implement Utilisateur.modifier
-		throw new UnsupportedOperationException();
-	}
 
 	/**
-	 * Après chaque entrainement, l'utilisateut peu le valider afin qu'on lui en propose un autre
+	 * Après chaque entrainement, l'utilisateut peut le valider afin qu'on lui en propose un autre
 	 */
 	public Entrainement validationEntrainement() {
 		// TODO - implement Utilisateur.validationEntrainement

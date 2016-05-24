@@ -62,7 +62,7 @@ public class Entrainement {
 	}
 
 	/**
-	 * Création de l'entrainement
+	 * Création de l'entrainement // DONE
 	 */
 	public void creationEntrainement() {
 		// TODO - implement Entrainement.creationEntrainement
@@ -70,7 +70,7 @@ public class Entrainement {
 	}
 
 	/**
-	 * Méthode supprimant l'entrainement
+	 * Méthode supprimant l'entrainement // DONE
 	 */
 	public void supprimer() {
 		// TODO - implement Entrainement.supprimer

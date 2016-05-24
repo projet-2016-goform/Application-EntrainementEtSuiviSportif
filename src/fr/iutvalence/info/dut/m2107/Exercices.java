@@ -30,12 +30,12 @@ public class Exercices {
 	}
 
 	public void creationExercices() {
-		// TODO - implement Exercices.creationExercices
+		// TODO - implement Exercices.creationExercices // DONE
 		throw new UnsupportedOperationException();
 	}
 
 	public void supprimer() {
-		// TODO - implement Exercices.supprimer
+		// TODO - implement Exercices.supprimer // DONE
 		throw new UnsupportedOperationException();
 	}
 

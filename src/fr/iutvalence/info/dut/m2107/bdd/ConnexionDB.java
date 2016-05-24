@@ -11,7 +11,7 @@ public class ConnexionDB {
 	System.out.println("-------- Test de la connexion à MySQL------------");
 
 	try {
-		Class.forName("com.mysql.jdbc.Driver");
+		Class.forName("org.postgresql.Driver");
 	} catch (ClassNotFoundException e) {
 		System.out.println("où se trouve le driver?");
 		e.printStackTrace();
@@ -22,7 +22,11 @@ public class ConnexionDB {
 	Connection connection = null;
 
 	try {
-		connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/goform","GOFORM", "goform");
+		connection = DriverManager.getConnection("jdbc:postgresql://gigondas:5432/battonh", "battonh",
+				"battonh");
+
+
+
 
 	} catch (SQLException e) {
 		System.out.println("Connexion échouée, vérifiez le lien");

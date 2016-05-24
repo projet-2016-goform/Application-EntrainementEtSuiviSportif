@@ -1,12 +1,12 @@
 package fr.iutvalence.info.dut.m2107;
 
 /**
- * Permet de modifier les réglages de différents type et de ce déconnecter
+ * Permet de modifier les réglages de différents type et de se déconnecter
  */
 public class Reglages {
 
 	/**
-	 * Changer les informations d'un réglages entré en paramètre
+	 * Changer les informations d'un réglage entré en paramètre
 	 * @param TypeReglage
 	 */
 	public void Modifier(int TypeReglage) {
