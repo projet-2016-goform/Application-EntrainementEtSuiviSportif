@@ -52,7 +52,8 @@ public void estInscription()
 	 */
 	assertEquals(Inscription.estUneInscription("moi@couc45ou.com","Aze","Aze",15,"Att0", 300,15),false);
 	assertEquals(Inscription.estUneInscription("moi@couc45ou.com","Aze","Aze",15,"Att0", 0,15),false);
-	assertEquals(Inscription.estUneInscription("moi@couc45ou.com","Aze","Aze",15,"Att0",-1,15),false);/**
+	assertEquals(Inscription.estUneInscription("moi@couc45ou.com","Aze","Aze",15,"Att0",-1,15),false);
+	/**
 	 * Spetième test  test sur le poids qui doit être strictement supérieur a 0 et non négatif
 	 */
 	assertEquals(Inscription.estUneInscription("moi@couc45ou.com","Aze","Aze",15,"Att0", 20,0),false);

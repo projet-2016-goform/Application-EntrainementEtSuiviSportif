@@ -16,6 +16,19 @@ public class Connexion {
 		this.mail = mail;
 		this.mdp = mdp;
 	}
+	
+	
+	public String getMail() {
+		return mail;
+	}
+	
+
+
+	public String getMdp() {
+		return mdp;
+	}
+
+
 
 	@Override
 	public String toString() {

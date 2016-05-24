@@ -29,10 +29,10 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 	private JLabel jLabel1;
 	private JLabel jLabel2;
 	private JSlider jSlider0;
-	private JLabel jLabel3;
+	private JLabel jTaille;
 	private JSlider jSlider1;
 	private JLabel jage;
-	private JSlider jSlider2;
+	JSlider jSlider2 = new JSlider(JSlider.HORIZONTAL,0,100,90);
 	private JButton bannuler;
 	private JButton bsuivant;
 	private JScrollPane jScrollPane0;
@@ -106,13 +106,16 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 		}
 		return jIndiceImc;
 	}
-
+	
 	private JLabel getJLabel5() {
 		if (jImc == null) {
 			jImc = new JLabel();
 			jImc.setText("Votre IMC* est de :");
+			
 		}
 		return jImc;
+		
+		
 	}
 
 	
@@ -122,6 +125,7 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 			bsuivant = new JButton();
 			bsuivant.setText("Suivant");
 		}
+		
 		return bsuivant;
 	}
 
@@ -155,21 +159,18 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 	private JSlider getJSlider1() {
 		if (jSlider1 == null) {
 			jSlider1 = new JSlider();
-			jSlider1.setMaximum(200);
-			jSlider1.setMinimum(0);
 			jSlider1.setValue(0);
-			jSlider1.setMinorTickSpacing(1);
-			jSlider1.setMajorTickSpacing(1);
+			
 		}
 		return jSlider1;
 	}
 
 	private JLabel getJLabel3() {
-		if (jLabel3 == null) {
-			jLabel3 = new JLabel();
-			jLabel3.setText("Votre taille :");
+		if (jTaille == null) {
+			jTaille = new JLabel();
+			jTaille.setText("Votre taille :");
 		}
-		return jLabel3;
+		return jTaille;
 	}
 
 	private JSlider getJSlider0() {

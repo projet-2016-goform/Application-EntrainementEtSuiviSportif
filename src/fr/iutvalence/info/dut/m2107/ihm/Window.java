@@ -6,6 +6,8 @@ import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
+import org.dyno.visual.swing.editors.actions.AddEventAction;
+
 import java.util.*;
 
 import fr.iutvalence.info.dut.m2107.Utilisateur;
@@ -17,12 +19,16 @@ import fr.iutvalence.info.dut.m2107.Utilisateur;
  */
 
 public class Window extends JFrame implements ActionListener{
+	
+
+    	
+    
 
   
 
-public static void main(String[] args) {
+public static void main() {
 //	Utilisateur affiche = new Utilisateur("prenom", "nom", "mail@gmail.com", "mdp", 24, 254, 56);
-//	System.out.println(affiche.toString());
+//	System.out.println(affiche.toString());	
 	
     /*Création de la fenêtre*/
     JFrame f = new JFrame("GoForm");
@@ -52,8 +58,8 @@ public static void main(String[] args) {
 
     /*Création de l'onglet 3 dans la fenêtre*/
     JPanel onglet3 = new JPanel();
-    JLabel titreOnglet3 = new JLabel("Vos séances");
-    onglet3.add(titreOnglet3);
+//    JLabel titreOnglet3 = new JLabel("Vos séances\n");
+//    onglet3.add(titreOnglet3);
     onglets.addTab("Entraînement", onglet3);
 
     /*Création de l'onglet 4 dans la fenêtre*/
@@ -68,14 +74,53 @@ public static void main(String[] args) {
     onglet5.add(titreOnglet5);
     onglets.addTab("Réglages", onglet5);
     
+       
+    
+    JList sceanceGoform = new JList();
+	
+	DefaultListModel listeGoform = new DefaultListModel();
+	listeGoform.addElement("<html><h1>scéance1</h1><html>");
+	listeGoform.addElement("<html><h1>scéance1</h1><html>");
+	listeGoform.addElement("<html><h1>scéance1</h1><html>");
+	listeGoform.addElement("<html><h1>scéance1</h1><html>");
+	listeGoform.addElement("<html><h1>scéance1</h1><html>");
+	sceanceGoform.setModel(listeGoform);
+
+	
+	JList sceanceUser = new JList();
+		
+	DefaultListModel listeUser = new DefaultListModel();
+	listeUser.addElement("<html><h1>scéance1</h1><html>");
+	listeUser.addElement("<html><h1>scéance1</h1><html>");
+	listeUser.addElement("<html><h1>scéance1</h1><html>");
+	listeUser.addElement("<html><h1>scéance1</h1><html>");
+	listeUser.addElement("<html><h1>scéance1</h1><html>");
+	sceanceUser.setModel(listeUser);	
+	
+	
+	
+	
+    
     /*Paramètres d'affichage*/
+	onglet3.add(sceanceGoform);
+	onglet3.add(sceanceUser);
+	
     f.setDefaultCloseOperation(Window.EXIT_ON_CLOSE);
     onglets.setVisible(true);
     pannel.add(onglets);
     f.getContentPane().add(pannel);
-    f.setVisible(true); 
     quitter.setVisible(true);
     pannel.add(quitter);
+    
+    onglet3.add(sceanceGoform);
+    onglet3.add(new JScrollPane(sceanceGoform));
+    
+    onglet3.add(sceanceUser);
+    onglet3.add(new JScrollPane(sceanceUser));
+    
+    f.setVisible(true); 
+    
+    
     quitter.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			System.exit(0);
@@ -85,9 +130,14 @@ public static void main(String[] args) {
     	
     }
 
+
+
+
+
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
 	
 }
+
 }

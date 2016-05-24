@@ -15,6 +15,9 @@ import javax.swing.UIManager;
 import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
+
+import java.sql.CallableStatement;
+import java.sql.*;
 /**
  * Création de la fenêtre principale pour accèder à l'application.
  * 
@@ -28,12 +31,12 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
 	private JFormattedTextField jFormattedTextFieldMail;
-	private JButton jButton0;
+	private JButton bConnexion;
 	private JLabel jMdp;
 	private JPasswordField jPasswordField0;
 	private JButton bInscription;
 	private JLabel jLabel2;
-	private JButton jButton2;
+	private JButton bQuitter;
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
 	public IHMConnexionUser() {
 		initComponents();
@@ -50,19 +53,26 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		add(getJLabel2(), new Constraints(new Leading(35, 220, 12, 12), new Leading(19, 50, 10, 10)));
 		add(getJButton2(), new Constraints(new Leading(213, 10, 10), new Leading(319, 10, 10)));
 		setSize(290, 350);
-		jButton2.addActionListener(new ActionListener() {
+		bQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				dispose();
+			}
+		});
+		
+		bConnexion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Window.main();
 			}
 		});
 	}
+	
 
 	private JButton getJButton2() {
-		if (jButton2 == null) {
-			jButton2 = new JButton();
-			jButton2.setText("Quitter");
+		if (bQuitter == null) {
+			bQuitter = new JButton();
+			bQuitter.setText("Quitter");
 		}
-		return jButton2;		
+		return bQuitter;		
 	}
 
 	private JLabel getJLabel2() {
@@ -102,11 +112,11 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	}
 
 	private JButton getJButton0() {
-		if (jButton0 == null) {
-			jButton0 = new JButton();
-			jButton0.setText("Connexion");
+		if (bConnexion == null) {
+			bConnexion = new JButton();
+			bConnexion.setText("Connexion");
 		}
-		return jButton0;
+		return bConnexion;
 	}
 
 	private JFormattedTextField getJFormattedTextField0() {
@@ -143,7 +153,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	 * It is not expected to be managed by the designer.
 	 * You can modify it as you like.
 	 */
-	public static void main(String[] args) {
+	public static void main(String[] args ) {
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {

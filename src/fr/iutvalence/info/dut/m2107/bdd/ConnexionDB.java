@@ -1,43 +1,65 @@
+//Classe d'accès à une base PostgreSQL
 package fr.iutvalence.info.dut.m2107.bdd;
-
-import java.sql.DriverManager;
-import java.sql.Connection;
-import java.sql.SQLException;
+import java.io.*;
+import java.sql.*;
 
 public class ConnexionDB {
+ 
+ private static final String xPilote = "org.postgresql.Driver";
+ private static final String xURL = "jdbc:postgresql://gigondas:5432/battonh";
+ private static final String xUser = "battonh";
+ private static final String xPassword = "battonh";
 
-  public static void main(String[] argv) {
+ private static Connection con = null;
 
-	System.out.println("-------- Test de la connexion à MySQL------------");
+ public ConnexionDB() { 
+   try {
+	System.out.println("Connexion à la base...");
+	Class.forName(xPilote);
+	System.out.println("\tPilote chargé.");
+   } catch (Exception e) {
+	System.err.println("Impossible de charger le pilote " + xPilote);
+	e.printStackTrace();
+   }
 
-	try {
-		Class.forName("org.postgresql.Driver");
-	} catch (ClassNotFoundException e) {
-		System.out.println("où se trouve le driver?");
-		e.printStackTrace();
-		return;
-	}
+   try {
+     con = DriverManager.getConnection(xURL, xUser, xPassword);
+	System.out.println("\tConnexion établie.");
+   } catch (SQLException e) {
+	    System.out.println("SQLException: " + e.getMessage());
+	    System.out.println("SQLState:     " + e.getSQLState());
+	    System.out.println("VendorError:  " + e.getErrorCode());
+	    e.printStackTrace();
+   } catch (Exception e) { // Attrape-tout
+	e.printStackTrace();
+	System.exit(1);
+   }
+ }
 
-	System.out.println("Driver bien enregistré");
-	Connection connection = null;
+ public static void main(String[] args)
+ {
+	    ConnexionDB maBD = new ConnexionDB();
 
-	try {
-		connection = DriverManager.getConnection("jdbc:postgresql://gigondas:5432/battonh", "battonh",
-				"battonh");
+	    System.out.println("Liste des personnes : ");
+	    try {
+           Statement stmt = con.createStatement();
+           ResultSet rs = stmt.executeQuery("select mail,mdp from Utilisateur where;");
+	      ResultSetMetaData md = rs.getMetaData();
 
-
-
-
-	} catch (SQLException e) {
-		System.out.println("Connexion échouée, vérifiez le lien");
-		e.printStackTrace();
-		return;
-	}
-
-	if (connection != null) {
-		System.out.println("L'accès à la base de données est ouvert");
-	} else {
-		System.out.println("Impossible d'établir la connexion à la base de données !");
-	}
-  }
+	      System.out.println("------- Où sont les accents ? -------");
+	      for (int i = 1; i <= md.getColumnCount(); i++)
+		 	System.out.println(md.getColumnLabel(i));
+	      System.out.println("------- côté -------");
+	      while (rs.next())
+	      {
+	    	  	return;	      }
+	      rs.close();
+	      stmt.close();
+	      con.close();
+         } catch (SQLException e) {
+	      e.printStackTrace();
+	      System.exit(1);
+         }
+ }
 }
+
