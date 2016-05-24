@@ -3,17 +3,8 @@ import java.util.Scanner;
 /**
  * Il s'agit d'une personne sans droits
  */
-public abstract class Anonyme {
+public abstract class Inscription {
 
-	/**
-	 * Permet de se connecter en respectant les paramètres fixés
-	 * @param mail
-	 * @param mdp
-	 */
-	public void connexion(String mail, String mdp) {
-		// TODO - implement Utilisateur.connexion
-		throw new UnsupportedOperationException();
-	}
 	/**
 	 * Permet de s'insrire après avoir renseigné tous les attributs de la super classe personne
 	 * @return 
