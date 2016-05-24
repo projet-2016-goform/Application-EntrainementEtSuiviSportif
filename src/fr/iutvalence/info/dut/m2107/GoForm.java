@@ -5,13 +5,16 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.Calendar;
+import java.util.LinkedList;
+import java.util.List;
 
 class GoForm {
+
+
    public static void main (String[] args)
    {
 	   String chaine = "";
-	   String fichier ="conseils";
-		
+	   String fichier ="conseils";	
 		try{
 			InputStream ips = new FileInputStream(fichier); 
 			InputStreamReader ipsr = new InputStreamReader(ips);
@@ -31,6 +34,13 @@ class GoForm {
 		
 		Calendar calendar = Calendar.getInstance();
 		Suivi suiviListe = new Suivi(calendar.getTime(), calendar.getTime());
-		}
+		
+		Seance seance = new SeanceTest();
+		System.out.println("Exercices réalisés : " + seance.getNbExercice());
+		seance.getLibelleExercice();
+		
+
+		
+   }
    
 }

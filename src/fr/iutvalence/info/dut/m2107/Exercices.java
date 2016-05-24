@@ -5,7 +5,7 @@ import java.util.*;
  */
 public class Exercices {
 
-	Collection<Seances> collectionExercices;
+	Collection<Seance> collectionExercices;
 	/**
 	 * Nom de l'entrainement
 	 */
@@ -38,5 +38,12 @@ public class Exercices {
 		// TODO - implement Exercices.supprimer
 		throw new UnsupportedOperationException();
 	}
+
+	@Override
+	public String toString() {
+		return "Exercices [libelle=" + libelle + ", quantite=" + quantite + "]";
+	}
+	
+
 
 }

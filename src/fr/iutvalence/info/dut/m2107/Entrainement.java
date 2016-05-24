@@ -21,12 +21,12 @@ public class Entrainement {
 	 * Date de l'entrainement
 	 */
 	private Date date;
-	private ArrayList<Seances> seances;
+	private ArrayList<Seance> seances;
 	
-	public ArrayList<Seances> createSeances()
+	public ArrayList<Seance> createSeances()
 	{
-		final ArrayList<Seances> seances = new ArrayList<>();
-		seances.add(new Seances(null));
+		final ArrayList<Seance> seances = new ArrayList<>();
+		//seances.add(new Seance(null));
 		return seances;
 	}
 	
@@ -37,7 +37,7 @@ public class Entrainement {
 	 * @param date
 	 * @param seances
 	 */
-	public Entrainement (TypeEntrainement type, String libelle, Date date, ArrayList<Seances> seances)
+	public Entrainement (TypeEntrainement type, String libelle, Date date, ArrayList<Seance> seances)
 	{
 		this.type = type;
 		this.libelle = libelle;

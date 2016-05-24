@@ -12,7 +12,7 @@ public class Suivi {
 	private int height;
 	
 	private Suivi[][] suivis;
-	private Seances seance;
+	private Seance seance = new SeanceTest();
 			
 
 	public Suivi(Date date) {
@@ -21,7 +21,7 @@ public class Suivi {
 	}
 
 	public Suivi(Date date, Date dateFin) {
-		System.out.println("------ Suivis du jours ------");
+		System.out.println("------ Suivis du jour ------");
 		//Affichage d'un tableau (eventuellement d'un graphique) des exercices faits sur un intervalle donné
 		width = this.seance.getNbExercice();
 		height = NB_EXERCICES_MAX;
@@ -40,6 +40,12 @@ public class Suivi {
 		
 		
 		
+	}
+	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return super.toString();
 	}
 
 }
