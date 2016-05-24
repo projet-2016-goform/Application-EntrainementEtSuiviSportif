@@ -15,5 +15,6 @@
 	<classpathentry kind="lib" path="G:/git/fr.iutvalence.info.dut.m2107/lib/org.dyno.visual.swing.widgets_0.9.12.I20090527-2200.jar"/>
 	<classpathentry kind="lib" path="G:/git/fr.iutvalence.info.dut.m2107/lib/org.dyno.visual.swing_0.9.12.I20090527-2200.jar"/>
 	<classpathentry kind="lib" path="G:/git/fr.iutvalence.info.dut.m2107/lib/postgresql-9.3-1103.jdbc3.jar"/>
+	<classpathentry kind="lib" path="C:/eclipse/plugins/org.junit_4.11.0.v201303080030/junit.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
