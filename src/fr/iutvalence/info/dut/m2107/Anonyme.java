@@ -3,7 +3,7 @@ import java.util.Scanner;
 /**
  * Il s'agit d'une personne sans droits
  */
-public abstract class Anonyme implements GoForm {
+public abstract class Anonyme {
 
 	/**
 	 * Permet de se connecter en respectant les paramètres fixés

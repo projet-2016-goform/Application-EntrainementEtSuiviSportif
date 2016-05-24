@@ -14,11 +14,14 @@ public class Suivi {
 	private Suivi[][] suivis;
 	private Seances seance;
 			
-	public void Suivi(Date date) {
+
+	public Suivi(Date date) {
 		// Affichage de la liste des exercice fait dans la journée
+		System.out.println(date);
 	}
 
-	public void Suivi(Date dateDebut, Date dateFin) {
+	public Suivi(Date date, Date dateFin) {
+		System.out.println("------ Suivis du jours ------");
 		//Affichage d'un tableau (eventuellement d'un graphique) des exercices faits sur un intervalle donné
 		width = this.seance.getNbExercice();
 		height = NB_EXERCICES_MAX;
