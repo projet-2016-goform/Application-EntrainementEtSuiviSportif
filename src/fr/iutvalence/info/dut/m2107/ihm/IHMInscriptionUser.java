@@ -1,16 +1,20 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
-import javax.swing.JSlider;
+import javax.swing.JTextField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -28,11 +32,11 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 	private JLabel jLabel0;
 	private JLabel jLabel1;
 	private JLabel jLabel2;
-	private JSlider jSlider0;
+	private JTextField JTextPoids;
 	private JLabel jTaille;
-	private JSlider jSlider1;
+	private JTextField JTextTaille;
 	private JLabel jage;
-	JSlider jSlider2 = new JSlider(JSlider.HORIZONTAL,0,100,90);
+	private JTextField JTextAge;
 	private JButton bannuler;
 	private JButton bsuivant;
 	private JScrollPane jScrollPane0;
@@ -42,6 +46,7 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 	private JLabel jLabel7;
 	private JScrollPane jScrollPane1;
 	private JLabel jintro;
+	private ImageIcon img = new ImageIcon("img/icon.png");
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
 	
 	public IHMInscriptionUser() {
@@ -49,7 +54,9 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 	}
 
 	private void initComponents() {
-		
+		setLayout(new BorderLayout());
+		setContentPane(new JLabel(new ImageIcon("img/bg_inscription.jpg")));
+		setIconImage(img.getImage());
 		setTitle("GoForm");
 		setLayout(new GroupLayout());
 		add(getJTextField0(), new Constraints(new Leading(113, 10, 10), new Leading(40, -8, 10, 10)));
@@ -61,9 +68,9 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 		add(getJLabel4(), new Constraints(new Leading(49, 12, 12), new Leading(308, 12, 12)));
 		add(getJLabel5(), new Constraints(new Leading(49, 12, 12), new Leading(370, 12, 12)));
 		add(getJLabel6(), new Constraints(new Leading(49, 12, 12), new Leading(466, 10, 10)));
-		add(getJSlider0(), new Constraints(new Leading(49, 414, 12, 12), new Leading(212, 12, 12)));
-		add(getJSlider1(), new Constraints(new Leading(49, 414, 12, 12), new Leading(274, 12, 12)));
-		add(getJSlider2(), new Constraints(new Leading(49, 414, 12, 12), new Leading(336, 12, 12)));
+		add(getJTextPoids(), new Constraints(new Leading(49, 414, 12, 12), new Leading(212, 12, 12)));
+		add(getJTextTaille(), new Constraints(new Leading(49, 414, 12, 12), new Leading(274, 12, 12)));
+		add(getJTextAge(), new Constraints(new Leading(49, 414, 12, 12), new Leading(336, 12, 12)));
 		add(getJProgressBar0(), new Constraints(new Leading(49, 414, 12, 12), new Leading(404, 17, 12, 12)));
 		add(getJLabel1(), new Constraints(new Leading(49, 12, 12), new Leading(35, 10, 10)));
 		add(getJLabel0(), new Constraints(new Leading(49, 12, 12), new Leading(114, 12, 12)));
@@ -85,6 +92,8 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 		if (jintro == null) {
 			jintro = new JLabel();
 			jintro.setText("<html>Veuillez renseigner les champs suivant afin de vous inscrire aux différents programmes d'entraînements :</html>");
+			jintro.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jintro.setForeground(Color.WHITE);
 		}
 		return jintro;
 	}
@@ -139,11 +148,11 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 	}
 	
 
-	private JSlider getJSlider2() {
-		if (jSlider2 == null) {
-			jSlider2 = new JSlider();
+	private JTextField getJTextAge() {
+		if (JTextAge == null) {
+			JTextAge = new JTextField();
 		}
-		return jSlider2;
+		return JTextAge;
 	}
 
 	private JLabel getJLabel4() {
@@ -156,13 +165,11 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 	
 
 
-	private JSlider getJSlider1() {
-		if (jSlider1 == null) {
-			jSlider1 = new JSlider();
-			jSlider1.setValue(0);
-			
+	private JTextField getJTextTaille() {
+		if (JTextTaille == null) {
+			JTextTaille = new JTextField();
 		}
-		return jSlider1;
+		return JTextTaille;
 	}
 
 	private JLabel getJLabel3() {
@@ -173,11 +180,11 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 		return jTaille;
 	}
 
-	private JSlider getJSlider0() {
-		if (jSlider0 == null) {
-			jSlider0 = new JSlider();
+	private JTextField getJTextPoids() {
+		if (JTextPoids == null) {
+			JTextPoids = new JTextField();
 		}
-		return jSlider0;
+		return JTextPoids;
 	}
 
 	private JLabel getJLabel2() {

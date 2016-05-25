@@ -1,9 +1,18 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.FlowLayout;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
@@ -16,7 +25,6 @@ import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 
-import java.sql.CallableStatement;
 import java.sql.*;
 /**
  * Création de la fenêtre principale pour accèder à l'application.
@@ -38,11 +46,15 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	private JLabel jLabel2;
 	private JButton bQuitter;
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
+	private ImageIcon img = new ImageIcon("img/icon.png");
 	public IHMConnexionUser() {
 		initComponents();
 	}
 
 	private void initComponents() {
+		setLayout(new BorderLayout());
+		setContentPane(new JLabel(new ImageIcon("img/bg_connexion.jpg")));
+		setIconImage(img.getImage());
 		setLayout(new GroupLayout());
 		add(getJLabel0(), new Constraints(new Leading(35, 10, 10), new Leading(91, 10, 10)));
 		add(getJFormattedTextField0(), new Constraints(new Leading(35, 220, 10, 10), new Leading(119, 12, 12)));
@@ -53,6 +65,8 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		add(getJLabel2(), new Constraints(new Leading(35, 220, 12, 12), new Leading(19, 50, 10, 10)));
 		add(getJButton2(), new Constraints(new Leading(213, 10, 10), new Leading(319, 10, 10)));
 		setSize(290, 350);
+		
+				
 		bQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -65,8 +79,6 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 			}
 		});
 	}
-	
-
 	private JButton getJButton2() {
 		if (bQuitter == null) {
 			bQuitter = new JButton();
@@ -78,7 +90,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	private JLabel getJLabel2() {
 		if (jLabel2 == null) {
 			jLabel2 = new JLabel();
-			jLabel2.setText("Bienvenue sur GoForm");
+			jLabel2.setText(" ");
 			f = new Font("Calibri", Font.BOLD, 20);
 			jLabel2.setFont(f);
 			jLabel2.setHorizontalAlignment(jLabel2.CENTER); 
@@ -107,6 +119,8 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		if (jMdp == null) {
 			jMdp = new JLabel();
 			jMdp.setText("Mot de passe :");
+			jMdp.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jMdp.setForeground(Color.WHITE);
 		}
 		return jMdp;
 	}
@@ -131,6 +145,8 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		if (jLabel0 == null) {
 			jLabel0 = new JLabel();
 			jLabel0.setText("Adresse mail :");
+			jLabel0.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jLabel0.setForeground(Color.WHITE);
 		}
 		return jLabel0;
 	}
@@ -146,6 +162,9 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 					+ " on this platform:" + e.getMessage());
 		}
 	}
+	
+	
+	
 
 	/**
 	 * Main entry of the class.
@@ -154,6 +173,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	 * You can modify it as you like.
 	 */
 	public static void main(String[] args ) {
+		
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
@@ -164,6 +184,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
+				frame.setResizable(false);
 			}
 		});
 	}

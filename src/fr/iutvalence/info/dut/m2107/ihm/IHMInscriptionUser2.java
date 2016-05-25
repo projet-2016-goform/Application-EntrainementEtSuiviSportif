@@ -1,7 +1,11 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.*;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -29,12 +33,18 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 	private JButton jButton1;
 	private JButton jButton0;
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
+	private ImageIcon img = new ImageIcon("img/icon.png");
+	Color red = Color.decode("#c86560");
+	
 	public IHMInscriptionUser2() {
 		initComponents();
 		
 	}
 
 	private void initComponents() {
+		setLayout(new BorderLayout());
+		setContentPane(new JLabel(new ImageIcon("img/bg_inscription2.jpg")));
+		setIconImage(img.getImage());
 		setTitle("GoForm");
 		setLayout(new GroupLayout());
 		add(getJRadioButton0(), new Constraints(new Leading(63, 10, 10), new Leading(112, 10, 10)));
@@ -86,19 +96,23 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 	}
 
 	private JRadioButton getJRadioButton5() {
+		
 		if (jRadioButton5 == null) {
 			jRadioButton5 = new JRadioButton();
 			jRadioButton5.setSelected(true);
 			jRadioButton5.setText("Explosivité");
+			jRadioButton5.setBackground(red);
 		}
 		return jRadioButton5;
 	}
-
+	
 	private JRadioButton getJRadioButton4() {
+		
 		if (jRadioButton4 == null) {
 			jRadioButton4 = new JRadioButton();
 			jRadioButton4.setSelected(true);
 			jRadioButton4.setText("Endurence");
+			jRadioButton4.setBackground(red);
 		}
 		return jRadioButton4;
 	}
@@ -108,6 +122,7 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 			jRadioButton3 = new JRadioButton();
 			jRadioButton3.setSelected(true);
 			jRadioButton3.setText("Fitnesse");
+			jRadioButton3.setBackground(red);
 		}
 		return jRadioButton3;
 	}
@@ -116,6 +131,8 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 		if (jLabel1 == null) {
 			jLabel1 = new JLabel();
 			jLabel1.setText("Quelle entraînement souhaitez vous suivre ?");
+			jLabel1.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jLabel1.setForeground(Color.WHITE);
 		}
 		return jLabel1;
 	}
@@ -125,6 +142,7 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 			jRadioButton2 = new JRadioButton();
 			jRadioButton2.setSelected(true);
 			jRadioButton2.setText("Une fois par mois");
+			jRadioButton2.setBackground(red);
 		}
 		return jRadioButton2;
 	}
@@ -134,6 +152,7 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 			jRadioButton1 = new JRadioButton();
 			jRadioButton1.setSelected(true);
 			jRadioButton1.setText("Une fois par semaine");
+			jRadioButton1.setBackground(red);
 		}
 		return jRadioButton1;
 	}
@@ -143,6 +162,7 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 			jRadioButton0 = new JRadioButton();
 			jRadioButton0.setSelected(true);
 			jRadioButton0.setText("Plusieurs fois par semaine");
+			jRadioButton0.setBackground(red);
 		}
 		return jRadioButton0;
 	}
@@ -151,6 +171,8 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 		if (jLabel0 == null) {
 			jLabel0 = new JLabel();
 			jLabel0.setText("A quelle fréquence pratiquez vous une activité sportive :");
+			jLabel0.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jLabel0.setForeground(Color.WHITE);
 		}
 		return jLabel0;
 	}
@@ -184,6 +206,7 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
+				frame.setResizable(false);
 			}
 		});
 	}
