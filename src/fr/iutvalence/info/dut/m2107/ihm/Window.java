@@ -8,8 +8,11 @@ import javax.swing.*;
 
 import org.dyno.visual.swing.editors.actions.AddEventAction;
 
+import java.sql.*;
 import java.util.*;
 
+import fr.iutvalence.info.dut.m2107.Seance;
+import fr.iutvalence.info.dut.m2107.SeanceTest;
 import fr.iutvalence.info.dut.m2107.Utilisateur;
 /**
  * Création de la fenêtre et des onglets à afficher.
@@ -26,13 +29,13 @@ public class Window extends JFrame implements ActionListener{
 
   
 
-public static void main() {
+public static void main() throws ClassNotFoundException {
 //	Utilisateur affiche = new Utilisateur("prenom", "nom", "mail@gmail.com", "mdp", 24, 254, 56);
 //	System.out.println(affiche.toString());	
 	Color red = Color.decode("#c86560");
 	Color blue = Color.decode("#38424c");
 	Color grey = Color.decode("#c8ddf2");
-	ImageIcon img = new ImageIcon("C:\\Users\\Maxiime\\git\\fr.iutvalence.info.dut.m2107\\src\\fr\\iutvalence\\info\\dut\\m2107\\ihm\\icon.png");
+	ImageIcon img = new ImageIcon("img/icon.png");
 	
     /*Création de la fenêtre*/
     JFrame f = new JFrame("GoForm");
@@ -76,14 +79,45 @@ public static void main() {
 
     /*Création de l'onglet 4 dans la fenêtre*/
     JPanel onglet4 = new JPanel();
-    JLabel titreOnglet4 = new JLabel("Vos Statistiques");
+   
+    JLabel titreOnglet4 = new JLabel("<html><h3>Suivi du jour : </h3><br></html>");
     onglet4.add(titreOnglet4);
+    
+
+    try {
+      Connection connexion = DriverManager.getConnection("jdbc:postgresql://gigondas:5432/battonh", "battonh", "battonh");
+      Statement instruction = connexion.createStatement();
+        
+      ResultSet résultat = instruction.executeQuery("SELECT * FROM suivi");
+
+      while (résultat.next()){
+    	  JLabel libelle = new JLabel();
+    	  JLabel nombre = new JLabel();
+    	    
+          String v2 = résultat.getString("libelle_exercice");
+          libelle.setText(v2);
+          String v3 = résultat.getString("nb_exercice");
+          nombre.setText(v3);
+
+          onglet4.add(libelle);
+          onglet4.add(nombre);
+
+
+          }
+    }
+    catch (SQLException ex) 
+    { 
+    	System.err.println("Erreur Localisation BD");
+    }    
+  
+    
+    
     onglets.addTab("Suivi", onglet4);
     onglet4.setBackground(red);
 
     /*Création de l'onglet 5 dans la fenêtre*/
+    JLabel titreOnglet5 = new JLabel("Modifier les réglages");
     JPanel onglet5 = new JPanel();
-    JLabel titreOnglet5 = new JLabel("Modifiez les paramètres");
     onglet5.add(titreOnglet5);
     onglets.addTab("Réglages", onglet5);
     onglet5.setBackground(red);
