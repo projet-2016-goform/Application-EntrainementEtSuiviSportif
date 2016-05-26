@@ -38,28 +38,6 @@ public class ConnexionDB {
 
  public static void main(String[] args)
  {
-	    ConnexionDB maBD = new ConnexionDB();
-
-	    System.out.println("Liste des personnes : ");
-	    try {
-           Statement stmt = con.createStatement();
-           ResultSet rs = stmt.executeQuery("select mail,mdp from Utilisateur where;");
-	      ResultSetMetaData md = rs.getMetaData();
-
-	      System.out.println("------- Où sont les accents ? -------");
-	      for (int i = 1; i <= md.getColumnCount(); i++)
-		 	System.out.println(md.getColumnLabel(i));
-	      System.out.println("------- côté -------");
-	      while (rs.next())
-	      {
-	    	  	return;	      }
-	      rs.close();
-	      stmt.close();
-	      con.close();
-         } catch (SQLException e) {
-	      e.printStackTrace();
-	      System.exit(1);
-         }
+	   
  }
 }
-

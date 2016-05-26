@@ -14,7 +14,7 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFormattedTextField;
+import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPasswordField;
@@ -38,7 +38,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	Font f;
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
-	private JFormattedTextField jFormattedTextFieldMail;
+	private JTextField jTextFieldMail;
 	private JButton bConnexion;
 	private JLabel jMdp;
 	private JPasswordField jPasswordField0;
@@ -57,7 +57,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		setIconImage(img.getImage());
 		setLayout(new GroupLayout());
 		add(getJLabel0(), new Constraints(new Leading(35, 10, 10), new Leading(91, 10, 10)));
-		add(getJFormattedTextField0(), new Constraints(new Leading(35, 220, 10, 10), new Leading(119, 12, 12)));
+		add(getJTextField0(), new Constraints(new Leading(35, 220, 10, 10), new Leading(119, 12, 12)));
 		add(getJLabel1(), new Constraints(new Leading(35, 12, 12), new Leading(165, 10, 10)));
 		add(getJPasswordField0(), new Constraints(new Leading(35, 220, 12, 12), new Leading(193, 12, 12)));
 		add(getJButton0(), new Constraints(new Leading(161, 12, 12), new Leading(253, 10, 10)));
@@ -66,7 +66,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		add(getJButton2(), new Constraints(new Leading(213, 10, 10), new Leading(319, 10, 10)));
 		setSize(290, 350);
 		
-				
+		 
 		bQuitter.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -75,7 +75,23 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		
 		bConnexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				Window.main();
+				Connection cnx;
+				try {
+					cnx = DriverManager.getConnection("jdbc:postgresql://gigondas:5432/battonh","battonh","battonh");
+					Statement instructioncnx = cnx.createStatement();
+					ResultSet resultatcnx = instructioncnx.executeQuery("Select * FROM Utilisateur");
+					
+					while(resultatcnx.next())
+					{
+						
+					}
+				} 
+				catch (SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
 			}
 		});
 	}
@@ -133,12 +149,12 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		return bConnexion;
 	}
 
-	private JFormattedTextField getJFormattedTextField0() {
-		if (jFormattedTextFieldMail == null) {
-			jFormattedTextFieldMail = new JFormattedTextField();
-			jFormattedTextFieldMail.setText("exemple@exemple.com");
+	private JTextField getJTextField0() {
+		if (jTextFieldMail == null) {
+			jTextFieldMail = new JTextField();
+			jTextFieldMail.setText("exemple@exemple.com");
 		}
-		return jFormattedTextFieldMail;
+		return jTextFieldMail;
 	}
 
 	private JLabel getJLabel0() {
