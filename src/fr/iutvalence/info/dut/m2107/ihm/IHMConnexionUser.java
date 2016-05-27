@@ -2,16 +2,10 @@ package fr.iutvalence.info.dut.m2107.ihm;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
-import java.awt.FlowLayout;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
-import java.io.IOException;
 
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -77,14 +71,11 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 			public void actionPerformed(ActionEvent e) {
 				Connection cnx;
 				try {
-					cnx = DriverManager.getConnection("jdbc:postgresql://gigondas:5432/battonh","battonh","battonh");
+					System.out.println("test");
+					cnx = DriverManager.getConnection("jdbc:postgresql://gigondas:5432/ambrym","ambrym","ambrym");
 					Statement instructioncnx = cnx.createStatement();
-					ResultSet resultatcnx = instructioncnx.executeQuery("Select * FROM Utilisateur");
-					
-					while(resultatcnx.next())
-					{
-						
-					}
+					ResultSet resultatcnx = instructioncnx.executeQuery("Select * FROM chambre");	
+											
 				} 
 				catch (SQLException e1) {
 					// TODO Auto-generated catch block

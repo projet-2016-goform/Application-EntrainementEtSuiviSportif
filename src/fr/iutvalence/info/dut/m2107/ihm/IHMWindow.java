@@ -1,7 +1,18 @@
 package fr.iutvalence.info.dut.m2107.ihm;
+import java.awt.Color;
+import java.awt.Font;
+import java.beans.Statement;
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+
 import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -15,6 +26,7 @@ import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 import org.dyno.visual.swing.layouts.Trailing;
 
+import java.sql.*;
 
 public class IHMWindow extends JFrame {
 
@@ -35,6 +47,8 @@ public class IHMWindow extends JFrame {
 	private JScrollPane jScrollPane1;
 	private JButton bQuitter;
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
+	Color red = Color.decode("#c86650");
+	
 	public IHMWindow() {
 		initComponents();
 	}
@@ -90,7 +104,7 @@ public class IHMWindow extends JFrame {
 	}
 
 	private JList getJList0() {
-		if (jList0 == null) {
+		
 			jList0 = new JList();
 			DefaultListModel listModel = new DefaultListModel();
 			listModel.addElement("Séance1");
@@ -100,16 +114,16 @@ public class IHMWindow extends JFrame {
 			listModel.addElement("Séance4");
 			listModel.addElement("Séance de lolololololollo");
 			jList0.setModel(listModel);
-		}
+		
 		return jList0;
 	}
 
 	private JTabbedPane getJTabbSeance() {
-		if (jTabbSeance == null) {
+		
 			jTabbSeance = new JTabbedPane();
 			jTabbSeance.addTab("Seances crées par GoForm", getJSeanceGoform());
 			jTabbSeance.addTab("Seances crées par les utilisateurs", getJSeanceUser());
-		}
+		
 		return jTabbSeance;
 	}
 
@@ -124,16 +138,16 @@ public class IHMWindow extends JFrame {
 	}
 
 	private JPanel getJSeanceGoform() {
-		if (jSeanceGoform == null) {
+		
 			jSeanceGoform = new JPanel();
 			jSeanceGoform.setLayout(new GroupLayout());
 			jSeanceGoform.add(getJScrollPane0(), new Constraints(new Leading(32, 111, 10, 10), new Leading(32, 82, 10, 10)));
-		}
+		
 		return jSeanceGoform;
 	}
 
 	private JTabbedPane getjTabbOnglets() {
-		if (jTabbOnglets == null) {
+		
 			jTabbOnglets = new JTabbedPane();
 			jTabbOnglets.addTab("Accueil", getjAccueil());
 			jTabbOnglets.addTab("Profil", getjProfil());
@@ -141,60 +155,100 @@ public class IHMWindow extends JFrame {
 			jTabbOnglets.addTab("Suivi", getjSuivi());
 			jTabbOnglets.addTab("Réglages", getjReglages());
 			jTabbOnglets.addTab("A propos", getjApropos());
-		}
+		
 		return jTabbOnglets;
 	}
+	
+
 
 	private JPanel getjAccueil() {
-		if (jAccueil == null) {
-			jAccueil = new JPanel();
-			jAccueil.setLayout(new GroupLayout());
-			jAccueil.add(getbQuitter(), new Constraints(new Leading(412, 10, 10), new Trailing(12, 12, 12)));
-		}
-		return jAccueil;
-	}
+		
+		jAccueil = new JPanel();
+		jAccueil.getLayout();
+		jAccueil.setBackground(red);
+
+		 String fichier ="conseils";	
+				try{
+					InputStream ips = new FileInputStream(fichier); 
+					InputStreamReader ipsr = new InputStreamReader(ips);
+					BufferedReader reader = new BufferedReader(ipsr);
+					String ligne;
+					
+					while ((ligne = reader.readLine())!=null){
+						JLabel intituléNom = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><u>Suivi du jour</u> : <br>"+ligne+"</p></html>");
+
+						jAccueil.add(intituléNom);
+					}
+					
+					reader.close(); 
+				}		
+				catch (Exception e){
+					System.out.println(e.toString());
+				}
+		    
+		jAccueil.add(getbQuitter(), new Constraints(new Leading(412, 10, 10), new Trailing(12, 12, 12)));
+	
+	return jAccueil;
+}
+
 
 	private JPanel getjReglages() {
-		if (jReglages == null) {
+		
 			jReglages = new JPanel();
 			jReglages.setLayout(new GroupLayout());
 			
-		}
+		
 		return jReglages;
 	}
 
 	private JPanel getjSuivi() {
-		if (jSuivi == null) {
+		
 			jSuivi = new JPanel();
-			jSuivi.setLayout(new GroupLayout());
+			jSuivi.getLayout();
 			
-		}
+			Connection connexion;
+			try {
+				
+				connexion = DriverManager.getConnection("jdbc:postgresql://gigondas:5432/ambrym","ambrym","ambrym");
+				java.sql.Statement instruction = connexion.createStatement();
+				ResultSet resultatcnx = instruction.executeQuery("Select * FROM medecin");	
+				System.out.println("test");
+		      	while (resultatcnx.next()) {
+		        		JLabel id = new JLabel("<html><ul><li>"+resultatcnx.getString("n_med")+"</li>"+resultatcnx.getString("identite_med")+"<li></li></ul></html>");
+
+						jSuivi.add(id);
+		        		
+		      	}
+		    	}
+		    	catch (SQLException ex) { System.err.println("Erreur Localisation BD");}   
+
+		
 		return jSuivi;
 	}
 	
 	private JPanel getjEntrainement() {
-		if (jEntrainement == null) {
+		
 			jEntrainement = new JPanel();
 			jEntrainement.setLayout(new GroupLayout());
 			jEntrainement.add(getJTabbSeance(), new Constraints(new Leading(0, 500, 12, 12), new Leading(0, 655, 12, 12)));
-		}
+		
 		return jEntrainement;
 	}
 
 	private JPanel getjProfil() {
-		if (jProfil == null) {
+		
 			jProfil = new JPanel();
 			jProfil.setLayout(new GroupLayout());
 			
-		}
+		
 		return jProfil;
 	}
 	
 	private JPanel getjApropos() {
-		if (jApropos == null) {
+		
 			jApropos = new JPanel();
 			jApropos.setLayout(new GroupLayout());
-		}
+		
 		return jApropos;
 	}
 
