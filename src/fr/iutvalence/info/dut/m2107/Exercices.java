@@ -44,6 +44,19 @@ public class Exercices {
 		return "Exercices [libelle=" + libelle + ", quantite=" + quantite + "]";
 	}
 	
+	private static final String TYPE_NAME_EXERCICE = "^[a-zA-Z0-9]+";
+	
+	/**
+	 *Création d'une méthode booleen pour le test d'un exercice true si les conditions sont ok. 
+	 * @param libelle
+	 * @param quantite
+	 * @return
+	 */
+	public static boolean estUnExercice(String libelle, int quantite){
+		if(libelle.matches(TYPE_NAME_EXERCICE)&& quantite > 0)
+			return true ;
+		else return false;
+	}
 
 
 }

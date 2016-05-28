@@ -12,7 +12,7 @@ public testInscription(String name)
 public void estInscription()
 {
 	/**
-	 * Premier test si le mail est ok ou non.
+	 * Premier test sur le mail pour test le pattern
 	 */
 	assertEquals(Inscription.estUneInscription("moi@couc45ou","Aze","Aze",15,"Att0", 20,15),false);
 	assertEquals(Inscription.estUneInscription("moi@couc45ou.","Aze","Aze",15,"Att0", 20,15),false);
@@ -63,7 +63,7 @@ public void estInscription()
 	
 	
 	/**
-	 * Test du tout qui fonctionne
+	 * Test d'une inscription correct 
 	 */
 	
 	assertEquals(Inscription.estUneInscription("moi@couc45ou.com","Aze","Aze",15,"Att0", 20,15),true);

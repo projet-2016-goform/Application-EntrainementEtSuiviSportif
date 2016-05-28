@@ -50,7 +50,18 @@ public class Inscription {
 	//Mot de passe comprend une majusculte en début puis n'importe quel caractère de type [a-z 0-9]
 	private static final String MOT_DE_PASSE ="^[A-Z][A-Za-z0-9]+";
 
-			
+		
+	/**
+	 * Création d'une méthode booleen pour le test d'une Inscription true si les conditions sont ok
+	 * @param mail le mail
+	 * @param name le nom
+	 * @param prenom le prenom
+	 * @param age l'age
+	 * @param MDP le mot de passe 
+	 * @param taille la taille 
+	 * @param poids le poids 
+	 * @return
+	 */
 	public static boolean estUneInscription(String mail, String name, String prenom, int age, String MDP, int taille, int poids) {
 		if (mail.matches(EMAIL_PATTERN) && name.matches(TYPE_NAME)&& prenom.matches(TYPE_NAME)&& age > 0 && MDP.matches(MOT_DE_PASSE)
 				&& (taille > 0 && taille < 300) && poids > 0 )
