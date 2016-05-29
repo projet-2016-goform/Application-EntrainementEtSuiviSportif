@@ -1,5 +1,6 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import fr.iutvalence.info.dut.m2107.ihm.IHMInscriptionUser2;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -323,14 +324,14 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				IHMInscriptionUser1 frame = new IHMInscriptionUser1();
-				frame.setDefaultCloseOperation(IHMInscriptionUser1.EXIT_ON_CLOSE);
-				frame.setTitle("IHMInscriptionUser2");
-				frame.getContentPane().setPreferredSize(frame.getSize());
-				frame.pack();
-				frame.setLocationRelativeTo(null);
-				frame.setVisible(true);
-				frame.setResizable(false);
+				IHMInscriptionUser1 finsc1 = new IHMInscriptionUser1();
+				finsc1.setDefaultCloseOperation(IHMInscriptionUser1.EXIT_ON_CLOSE);
+				finsc1.setTitle("IHMInscriptionUser2");
+				finsc1.getContentPane().setPreferredSize(finsc1.getSize());
+				finsc1.pack();
+				finsc1.setLocationRelativeTo(null);
+				finsc1.setVisible(true);
+				finsc1.setResizable(false);
 			}
 		});
 	}

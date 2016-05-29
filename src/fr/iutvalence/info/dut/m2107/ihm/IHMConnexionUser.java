@@ -1,4 +1,6 @@
 package fr.iutvalence.info.dut.m2107.ihm;
+import fr.iutvalence.info.dut.m2107.ihm.IHMInscriptionUser1;
+import fr.iutvalence.info.dut.m2107.ihm.IHMWindow;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -207,14 +209,14 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				IHMConnexionUser frame = new IHMConnexionUser();
-				frame.setDefaultCloseOperation(IHMConnexionUser.EXIT_ON_CLOSE);
-				frame.setTitle("GoForm");
-				frame.getContentPane().setPreferredSize(frame.getSize());
-				frame.pack();
-				frame.setLocationRelativeTo(null);
-				frame.setVisible(true);
-				frame.setResizable(false);
+				IHMConnexionUser fcnx = new IHMConnexionUser();
+				fcnx.setDefaultCloseOperation(IHMConnexionUser.EXIT_ON_CLOSE);
+				fcnx.setTitle("GoForm");
+				fcnx.getContentPane().setPreferredSize(fcnx.getSize());
+				fcnx.pack();
+				fcnx.setLocationRelativeTo(null);
+				fcnx.setVisible(true);
+				fcnx.setResizable(false);
 			}
 		});
 	}

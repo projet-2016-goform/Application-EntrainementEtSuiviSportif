@@ -275,13 +275,13 @@ public class IHMWindow extends JFrame {
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
-				IHMWindow frame = new IHMWindow();
-				frame.setDefaultCloseOperation(IHMWindow.EXIT_ON_CLOSE);
-				frame.setTitle("IHMWindow");
-				frame.getContentPane().setPreferredSize(frame.getSize());
-				frame.pack();
-				frame.setLocationRelativeTo(null);
-				frame.setVisible(true);
+				IHMWindow fwindow = new IHMWindow();
+				fwindow.setDefaultCloseOperation(IHMWindow.EXIT_ON_CLOSE);
+				fwindow.setTitle("IHMWindow");
+				fwindow.getContentPane().setPreferredSize(fwindow.getSize());
+				fwindow.pack();
+				fwindow.setLocationRelativeTo(null);
+				fwindow.setVisible(true);
 				
 			}
 		});

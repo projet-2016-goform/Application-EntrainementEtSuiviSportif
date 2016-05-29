@@ -1,5 +1,8 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import fr.iutvalence.info.dut.m2107.ihm.IHMConnexionUser;
+import fr.iutvalence.info.dut.m2107.ihm.IHMInscriptionUser1;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
@@ -87,39 +90,40 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 		
 		bTerminer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String taille = JTextTaille.getText();
-				String poids = JTextPoids.getText();
-				try 
-				{
-				      Class.forName("com.mysql.jdbc.Driver");
-				      System.out.println("Driver O.K.");
-
-				      String url = "jdbc:mysql://localhost:3307/goform";
-				      String user = "GOFORM";
-				      String passwd = "goform";
-				      Connection connexion = DriverManager.getConnection(url, user, passwd);
-				      
-				      System.out.println("Connexion effective !");  
-				      
-				      Statement instruction = connexion.createStatement();
-				        
-				      instruction.executeUpdate("INSERT INTO  `goform`.`utilisateur` (`taille` ,`poids`)VALUES ('"+taille+"','"+poids+"');");
-				      
-				      System.out.println("Informations enregistrées: Taille"+taille+"et Poids :"+poids);
-				      
+//				String taille = JTextTaille.getText();
+//				String poids = JTextPoids.getText();
+//				try 
+//				{
+//				      Class.forName("com.mysql.jdbc.Driver");
+//				      System.out.println("Driver O.K.");
+//
+//				      String url = "jdbc:mysql://localhost:3307/goform";
+//				      String user = "GOFORM";
+//				      String passwd = "goform";
+//				      Connection connexion = DriverManager.getConnection(url, user, passwd);
+//				      
+//				      System.out.println("Connexion effective !");  
+//				      
+//				      Statement instruction = connexion.createStatement();
+//				        
+//				      instruction.executeUpdate("INSERT INTO  `goform`.`utilisateur` (`taille` ,`poids`)VALUES ('"+taille+"','"+poids+"');");
+//				      
+//				      System.out.println("Informations enregistrées: Taille"+taille+"et Poids :"+poids);
+//				      
 				      
 				      dispose();
-				      
 				      IHMConnexionUser.main(null);
 				      
 				      
-				} 
-				catch (Exception ex) 
-				{
-				      ex.printStackTrace();
-				} 
-				
-				
+				      
+				      
+//				} 
+//				catch (Exception ex) 
+//				{
+//				      ex.printStackTrace();
+//				} 
+//				
+//				
 			}
 		});
 		
@@ -297,13 +301,13 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				
-				IHMInscriptionUser2 frame = new IHMInscriptionUser2();
-				frame.setDefaultCloseOperation(IHMInscriptionUser2.EXIT_ON_CLOSE);
-				frame.setTitle("IHMIscriptionUser");
-				frame.getContentPane().setPreferredSize(frame.getSize());
-				frame.pack();
-				frame.setLocationRelativeTo(null);
-				frame.setVisible(true);
+				IHMInscriptionUser2 finsc2 = new IHMInscriptionUser2();
+				finsc2.setDefaultCloseOperation(IHMInscriptionUser2.EXIT_ON_CLOSE);
+				finsc2.setTitle("IHMIscriptionUser");
+				finsc2.getContentPane().setPreferredSize(finsc2.getSize());
+				finsc2.pack();
+				finsc2.setLocationRelativeTo(null);
+				finsc2.setVisible(true);
 			}
 		});
 		
