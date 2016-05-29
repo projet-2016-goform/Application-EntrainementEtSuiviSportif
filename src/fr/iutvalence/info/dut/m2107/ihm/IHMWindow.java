@@ -1,7 +1,6 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 import java.awt.Color;
 import java.awt.Font;
-import java.beans.Statement;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -9,7 +8,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import javax.naming.spi.DirStateFactory.Result;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -47,6 +48,7 @@ public class IHMWindow extends JFrame {
 	private JScrollPane jScrollPane1;
 	private JButton bQuitter;
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
+	private ImageIcon img = new ImageIcon("img/icon.png");
 	Color red = Color.decode("#c86650");
 	
 	public IHMWindow() {
@@ -56,6 +58,7 @@ public class IHMWindow extends JFrame {
 	private void initComponents() {
 		setLayout(new GroupLayout());
 		add(getjTabbOnglets(), new Constraints(new Bilateral(0, 0, 0), new Bilateral(0, 0, 50)));
+		setIconImage(img.getImage());
 		setSize(500, 700);
 	}
 
@@ -175,9 +178,9 @@ public class IHMWindow extends JFrame {
 					String ligne;
 					
 					while ((ligne = reader.readLine())!=null){
-						JLabel intituléNom = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><u>Suivi du jour</u> : <br>"+ligne+"</p></html>");
+						JLabel intituleNom = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><u>Suivi du jour</u> : <br>"+ligne+"</p></html>");
 
-						jAccueil.add(intituléNom);
+						jAccueil.add(intituleNom);
 					}
 					
 					reader.close(); 
@@ -238,7 +241,48 @@ public class IHMWindow extends JFrame {
 	private JPanel getjProfil() {
 		
 			jProfil = new JPanel();
-			jProfil.setLayout(new GroupLayout());
+			jProfil.setBackground(red);
+			jProfil.getLayout();
+	        String email = IHMConnexionUser.jTextFieldMail.getText();
+			System.out.println(email);
+	        try 
+			{
+			      Class.forName("com.mysql.jdbc.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:mysql://localhost/goform";
+			      String user = "root";
+			      String passwd = "";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      System.out.println("Connexion effective !");  
+			      
+			      Statement instruction = connexion.createStatement();
+			        
+			      
+			      ResultSet resultatcnx = instruction.executeQuery("Select * FROM utilisateur WHERE mail = '"+email+"'");	
+					System.out.println("test");
+			      	while (resultatcnx.next()) {
+			        		JLabel id = new JLabel("<html>Nom :"+resultatcnx.getString("nom")+"<br>"
+			        				+ "Prénom : "+resultatcnx.getString("prenom")+"<br>"
+					        		+ "E-mail : "+resultatcnx.getString("mail")+"<br>"
+			        				+ "Age : "+resultatcnx.getString("age")+"<br>"
+			        				+ "Taille : "+resultatcnx.getString("taille")+"<br>"
+			        				+ "Poids : "+resultatcnx.getString("poids")+"<br></html>");
+
+							jProfil.add(id);
+			        		
+			      	}
+			      
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
+	        
+	        
+	        
 			
 		
 		return jProfil;

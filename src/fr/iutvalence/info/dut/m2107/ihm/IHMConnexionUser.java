@@ -4,12 +4,14 @@ import fr.iutvalence.info.dut.m2107.ihm.IHMWindow;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -34,7 +36,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	Font f;
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
-	private JTextField jTextFieldMail;
+	static JTextField jTextFieldMail;
 	private JButton bConnexion;
 	private JLabel jMdp;
 	private JPasswordField jPasswordField0;
@@ -71,33 +73,51 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		
 		bConnexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-				Connection cnx;
 					try {
-				        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/goform","GOFORM","goform");
-				        Statement stmt = con.createStatement();
-				        ResultSet rs = stmt.executeQuery("SELECT email, mdp FROM utilisateur");
+						try {
+							Class.forName("com.mysql.jdbc.Driver");
+						} catch (ClassNotFoundException e1) {
+							// TODO Auto-generated catch block
+							e1.printStackTrace();
+						}
+				        System.out.println("Driver O.K.");
+
+				        String url = "jdbc:mysql://localhost/goform";
+				        String user = "root";
+				        String passwd = "";
+				        Connection connexion = DriverManager.getConnection(url, user, passwd);
+				        Statement stmt = connexion.createStatement();
+				        ResultSet rs = stmt.executeQuery("SELECT mail, mdp FROM utilisateur");
 				        while (rs.next()) {
-				        	String ln = rs.getString("email");
+				        	String ln = rs.getString("mail");
 				        	String email = jTextFieldMail.getText();
 				        	
 				        	String fn = rs.getString("mdp");
 				        	String mdp = new String(jPasswordField0.getPassword());
-				        	
+				        		        	
 				        	if (ln.equals(email)&& fn.equals(mdp))
 				        	{
 				        		IHMWindow.main(null);
 				        		dispose();
-				        	}	
+				        	}
+				        	else {
+				        		System.out.println("erreur coordonnées");
+								Component frame = null;
+								JOptionPane.showMessageDialog(frame ,
+									    "Il semblerait que vos identifiants ne soient pas correct. Veuillez réessayer :",
+									    "Erreur de connexion",
+									    JOptionPane.ERROR_MESSAGE);
+							}
 				       }
 				        
 				        
 					}
 					catch(SQLException e1) 
 					{
-						System.out.println("erreur coordonnées");
-						//e1.printStackTrace();
+						
+						
 					}
-					dispose();
+					
 			}	
 		});
 		

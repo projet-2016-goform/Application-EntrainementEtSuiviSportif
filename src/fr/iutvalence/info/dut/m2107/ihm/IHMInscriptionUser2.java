@@ -1,10 +1,12 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import fr.iutvalence.info.dut.m2107.Sexe;
 import fr.iutvalence.info.dut.m2107.ihm.IHMConnexionUser;
 import fr.iutvalence.info.dut.m2107.ihm.IHMInscriptionUser1;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,6 +20,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
@@ -90,40 +93,47 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 		
 		bTerminer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-//				String taille = JTextTaille.getText();
-//				String poids = JTextPoids.getText();
-//				try 
-//				{
-//				      Class.forName("com.mysql.jdbc.Driver");
-//				      System.out.println("Driver O.K.");
-//
-//				      String url = "jdbc:mysql://localhost:3307/goform";
-//				      String user = "GOFORM";
-//				      String passwd = "goform";
-//				      Connection connexion = DriverManager.getConnection(url, user, passwd);
-//				      
-//				      System.out.println("Connexion effective !");  
-//				      
-//				      Statement instruction = connexion.createStatement();
-//				        
-//				      instruction.executeUpdate("INSERT INTO  `goform`.`utilisateur` (`taille` ,`poids`)VALUES ('"+taille+"','"+poids+"');");
-//				      
-//				      System.out.println("Informations enregistrées: Taille"+taille+"et Poids :"+poids);
-//				      
+				int taille = Integer.parseInt(JTextTaille.getText());
+				int poids = Integer.parseInt(JTextPoids.getText());
+				int age = Integer.parseInt(JTextAge.getText());
+				double imc = poids * Math.sqrt(taille);
+				Sexe HOMME = null;
+				Sexe sexe = HOMME;
+				String nom = IHMInscriptionUser1.jTextFieldnom.getText();
+				String prenom = IHMInscriptionUser1.jTextFieldPrenom.getText();
+				String mail = IHMInscriptionUser1.jTextFieldMail.getText();
+				String mdp = IHMInscriptionUser1.jPasswordField0.getText();
+				try 
+				{
+				      Class.forName("com.mysql.jdbc.Driver");
+				      System.out.println("Driver O.K.");
+
+				      String url = "jdbc:mysql://localhost/goform";
+				      String user = "root";
+				      String passwd = "";
+				      Connection connexion = DriverManager.getConnection(url, user, passwd);
+				      
+				      System.out.println("Connexion effective !");  
+				      
+				      Statement instruction = connexion.createStatement();
+				        
+				      instruction.executeUpdate("INSERT INTO  `goform`.`utilisateur` (`nom` ,`prenom` ,`mail` ,`mdp` ,`sexe` ,`age` ,`imc` ,`taille` ,`poids`)"
+				      		+ "VALUES ('+"+nom+"',  '"+prenom+"',  '"+mail+"',  '"+mdp+"',  '"+sexe+"',  '"+age+"',  '"+imc+"',  '"+taille+"',  '"+poids+"');");
+				      
+				      System.out.println("Informations enregistrées: Taille"+taille+"et Poids :"+poids);
+				      
 				      
 				      dispose();
 				      IHMConnexionUser.main(null);
 				      
 				      
-				      
-				      
-//				} 
-//				catch (Exception ex) 
-//				{
-//				      ex.printStackTrace();
-//				} 
-//				
-//				
+				} 
+				catch (Exception ex) 
+				{
+				      ex.printStackTrace();
+				} 
+				
+				
 			}
 		});
 		
@@ -146,11 +156,11 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 	}
 
 	private JProgressBar getJProgressBar0() {
-		if (jProgressBarImc == null) {
+		
 			jProgressBarImc = new JProgressBar();
 			jProgressBarImc.setString("0 %");
 			
-		}
+		
 		return jProgressBarImc;
 		
 	}
@@ -206,6 +216,8 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 		if (jage == null) {
 			jage = new JLabel();
 			jage.setText("Votre âge :");
+			jage.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jage.setForeground(Color.WHITE);
 		}
 		return jage;
 	}
@@ -223,6 +235,8 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 		if (jTaille == null) {
 			jTaille = new JLabel();
 			jTaille.setText("Votre taille :");
+			jTaille.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jTaille.setForeground(Color.WHITE);
 		}
 		return jTaille;
 	}
@@ -238,6 +252,8 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 		if (jLabel2 == null) {
 			jLabel2 = new JLabel();
 			jLabel2.setText("Votre poids :");
+			jLabel2.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jLabel2.setForeground(Color.WHITE);
 		}
 		return jLabel2;
 	}
@@ -252,7 +268,9 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 	private JLabel getJLabel0() {
 		if (jLabel0 == null) {
 			jLabel0 = new JLabel();
-			jLabel0.setText("Votre sexe :");
+			jLabel0.setText("Votre sexe :");			
+			jLabel0.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jLabel0.setForeground(Color.WHITE);
 		}
 		return jLabel0;
 	}

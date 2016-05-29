@@ -39,14 +39,14 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 	Color red = Color.decode("#c86560");
 	private JLabel jLabel2;
 	private JLabel jPrenom;
-	private JTextField jTextFieldPrenom;
+	static JTextField jTextFieldPrenom;
 	private JLabel jNom;
-	private JTextField jTextFieldnom;
+	static JTextField jTextFieldnom;
 	private JLabel jEmail;
-	private JTextField jTextFieldMail;
+	static JTextField jTextFieldMail;
 	private JLabel jmdp;
 	private JLabel jconfirmmdp;
-	private JPasswordField jPasswordField0;
+	static JPasswordField jPasswordField0;
 	private JPasswordField jPasswordField1;
 	private JLabel jIntro;
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
@@ -106,6 +106,8 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 		if (jIntro == null) {
 			jIntro = new JLabel();
 			jIntro.setText("<html>Veuillez renseigner les champs suivant afin de vous inscrire aux différents programmes d'entraînements :</html>");
+			jIntro.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jIntro.setForeground(Color.WHITE);
 		}
 		return jIntro;
 	}
@@ -114,6 +116,8 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 		if (jPasswordField1 == null) {
 			jPasswordField1 = new JPasswordField();
 			jPasswordField1.setText("motdepasse");
+			jPasswordField1.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jPasswordField1.setForeground(Color.WHITE);
 			jPasswordField1.setEchoChar('•');
 		}
 		return jPasswordField1;
@@ -124,6 +128,8 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 			jPasswordField0 = new JPasswordField();
 			jPasswordField0.setText("motdepasse");
 			jPasswordField0.setEchoChar('•');
+			jPasswordField0.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jPasswordField0.setForeground(Color.WHITE);
 		}
 		return jPasswordField0;
 	}
@@ -132,6 +138,8 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 		if (jconfirmmdp == null) {
 			jconfirmmdp = new JLabel();
 			jconfirmmdp.setText("Confirmer le mot de passe :");
+			jconfirmmdp.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jconfirmmdp.setForeground(Color.WHITE);
 		}
 		return jconfirmmdp;
 	}
@@ -140,6 +148,8 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 		if (jmdp == null) {
 			jmdp = new JLabel();
 			jmdp.setText("Mot de passe :");
+			jmdp.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jmdp.setForeground(Color.WHITE);
 		}
 		return jmdp;
 	}
@@ -156,6 +166,8 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 		if (jEmail == null) {
 			jEmail = new JLabel();
 			jEmail.setText("E-mail :");
+			jEmail.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jEmail.setForeground(Color.WHITE);
 		}
 		return jEmail;
 	}
@@ -172,6 +184,8 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 		if (jNom == null) {
 			jNom = new JLabel();
 			jNom.setText("Nom :");
+			jNom.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jNom.setForeground(Color.WHITE);
 		}
 		return jNom;
 	}
@@ -188,6 +202,8 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 		if (jPrenom == null) {
 			jPrenom = new JLabel();
 			jPrenom.setText("Prénom :");
+			jPrenom.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jPrenom.setForeground(Color.WHITE);
 		}
 		return jPrenom;
 	}
@@ -196,6 +212,8 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 		if (jLabel2 == null) {
 			jLabel2 = new JLabel();
 			jLabel2.setText("Indiquez vos coordonnées :");
+			jLabel2.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jLabel2.setForeground(Color.WHITE);
 		}
 		return jLabel2;
 	}
