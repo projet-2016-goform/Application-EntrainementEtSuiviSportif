@@ -82,21 +82,32 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 				        	String mdp = new String(jPasswordField0.getPassword());
 				        	
 				        	if (ln.equals(email)&& fn.equals(mdp))
-				        	
-				        		
-			        			IHMWindow.main(null);     	
-				        	
+				        	{
+				        		IHMWindow.main(null);
+				        		dispose();
+				        	}	
 				       }
 				        
 				        
 					}
 					catch(SQLException e1) 
 					{
-						System.out.println("ggggg");
+						System.out.println("erreur coordonnées");
 						//e1.printStackTrace();
 					}
+					dispose();
 			}	
 		});
+		
+		bInscription.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				IHMInscriptionUser1.main(null);
+				
+			}	
+		});
+			
 	}
 	private JButton getJButton2() {
 		if (bQuitter == null) {
@@ -128,7 +139,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	private JPasswordField getJPasswordField0() {
 		if (jPasswordField0 == null) {
 			jPasswordField0 = new JPasswordField();
-			jPasswordField0.setText("Motdepasse");
+			jPasswordField0.setText("pers1");
 			jPasswordField0.setEchoChar('•');
 		}
 		return jPasswordField0;
@@ -155,7 +166,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	private JTextField getJTextField0() {
 		if (jTextFieldMail == null) {
 			jTextFieldMail = new JTextField();
-			jTextFieldMail.setText("exemple@exemple.com");
+			jTextFieldMail.setText("pers1@test.test");
 		}
 		return jTextFieldMail;
 	}
@@ -191,7 +202,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	 * It is not expected to be managed by the designer.
 	 * You can modify it as you like.
 	 */
-	public static void main(String[] args ) {
+	public static void main(String[] args) {
 		
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {

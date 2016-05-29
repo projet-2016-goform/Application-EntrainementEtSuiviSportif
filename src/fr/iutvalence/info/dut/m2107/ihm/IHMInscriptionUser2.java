@@ -5,13 +5,19 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
+import javax.swing.JProgressBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTextField;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
@@ -21,271 +27,250 @@ import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 
 
-public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
+public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
+	private JTextField jTextField0;
+	private JComboBox jComboBox0;
 	private JLabel jLabel0;
-	private JRadioButton jRadioButton0;
-	private JRadioButton jRadioButton1;
-	private JRadioButton jRadioButton2;
 	private JLabel jLabel1;
-	private JRadioButton jRadioButton3;
-	private JRadioButton jRadioButton4;
-	private JRadioButton jRadioButton5;
-	private JButton bAnnuler;
-	private JButton bSuivant;
-	private ImageIcon img = new ImageIcon("img/icon.png");
-	Color red = Color.decode("#c86560");
 	private JLabel jLabel2;
-	private JLabel jPrenom;
-	private JTextField jTextFieldPrenom;
-	private JLabel jNom;
-	private JTextField jTextFieldnom;
-	private JLabel jEmail;
-	private JTextField jTextFieldMail;
-	private JLabel jmdp;
-	private JLabel jconfirmmdp;
-	private JPasswordField jPasswordField0;
-	private JPasswordField jPasswordField1;
-	private JLabel jIntro;
+	private JTextField JTextPoids;
+	private JLabel jTaille;
+	private JTextField JTextTaille;
+	private JLabel jage;
+	private JTextField JTextAge;
+	private JButton bannuler;
+	private JButton bTerminer;
+	private JScrollPane jScrollPane0;
+	private JLabel jImc;
+	private JLabel jIndiceImc;
+	private JProgressBar jProgressBarImc;
+	private JLabel jLabel7;
+	private JScrollPane jScrollPane1;
+	private JLabel jintro;
+	private ImageIcon img = new ImageIcon("img/icon.png");
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
+	
 	public IHMInscriptionUser2() {
 		initComponents();
-		
 	}
 
 	private void initComponents() {
 		setLayout(new BorderLayout());
-		setContentPane(new JLabel(new ImageIcon("img/bg_inscription2.jpg")));
+		setContentPane(new JLabel(new ImageIcon("img/bg_inscription.jpg")));
 		setIconImage(img.getImage());
 		setTitle("GoForm");
 		setLayout(new GroupLayout());
-		add(getbAnnuler(), new Constraints(new Leading(398, 10, 10), new Leading(655, 12, 12)));
-		add(getbSuivant(), new Constraints(new Leading(299, 12, 12), new Leading(655, 12, 12)));
-		add(getJLabel2(), new Constraints(new Leading(43, 10, 10), new Leading(97, 18, 10, 10)));
-		add(getjNom(), new Constraints(new Leading(43, 41, 10, 10), new Leading(141, 10, 10)));
-		add(getjTextFieldnom(), new Constraints(new Leading(102, 130, 10, 10), new Leading(139, 10, 10)));
-		add(getjEmail(), new Constraints(new Leading(42, 10, 10), new Leading(188, 10, 10)));
-		add(getjPrenom(), new Constraints(new Leading(269, 10, 10), new Leading(139, 20, 10, 10)));
-		add(getjTextFieldPrenom(), new Constraints(new Leading(338, 127, 10, 10), new Leading(139, 10, 10)));
-		add(getjTextFieldMail(), new Constraints(new Leading(101, 185, 10, 10), new Leading(183, 12, 12)));
-		add(getjIntro(), new Constraints(new Leading(39, 426, 12, 12), new Leading(12, 70, 12, 12)));
-		add(getjmdp(), new Constraints(new Leading(43, 12, 12), new Leading(227, 15, 10, 10)));
-		add(getjconfirmmdp(), new Constraints(new Leading(42, 12, 12), new Leading(284, 10, 10)));
-		add(getJPasswordField1(), new Constraints(new Leading(42, 156, 12, 12), new Leading(312, 10, 10)));
-		add(getJPasswordField0(), new Constraints(new Leading(43, 152, 12, 12), new Leading(254, 10, 10)));
-		add(getJLabel1(), new Constraints(new Leading(43, 12, 12), new Leading(475, 12, 12)));
-		add(getJRadioButton3(), new Constraints(new Leading(62, 86, 12, 12), new Leading(509, 12, 12)));
-		add(getJRadioButton4(), new Constraints(new Leading(62, 12, 12), new Leading(532, 20, 10, 10)));
-		add(getJRadioButton5(), new Constraints(new Leading(62, 12, 12), new Leading(551, 12, 12)));
-		add(getJRadioButton2(), new Constraints(new Leading(62, 178, 12, 12), new Leading(433, 12, 12)));
-		add(getJRadioButton0(), new Constraints(new Leading(62, 178, 12, 12), new Leading(388, 12, 12)));
-		add(getJRadioButton1(), new Constraints(new Leading(62, 178, 12, 12), new Leading(410, 10, 10)));
-		add(getJLabel0(), new Constraints(new Leading(43, 12, 12), new Leading(354, 12, 12)));
+		add(getJTextField0(), new Constraints(new Leading(113, 10, 10), new Leading(40, -8, 10, 10)));
+		add(getJButton0(), new Constraints(new Leading(398, 10, 10), new Leading(660, 10, 10)));
+		add(getJButton1(), new Constraints(new Leading(289, 10, 10), new Leading(660, 12, 12)));
+		add(getJComboBox0(), new Constraints(new Leading(49, 12, 12), new Leading(142, 12, 12)));
+		add(getJLabel2(), new Constraints(new Leading(49, 12, 12), new Leading(184, 12, 12)));
+		add(getJLabel3(), new Constraints(new Leading(49, 12, 12), new Leading(246, 12, 12)));
+		add(getJLabel4(), new Constraints(new Leading(49, 12, 12), new Leading(308, 12, 12)));
+		add(getJLabel5(), new Constraints(new Leading(49, 12, 12), new Leading(370, 12, 12)));
+		add(getJLabel6(), new Constraints(new Leading(49, 12, 12), new Leading(466, 10, 10)));
+		add(getJTextPoids(), new Constraints(new Leading(49, 414, 12, 12), new Leading(212, 12, 12)));
+		add(getJTextTaille(), new Constraints(new Leading(49, 414, 12, 12), new Leading(274, 12, 12)));
+		add(getJTextAge(), new Constraints(new Leading(49, 414, 12, 12), new Leading(336, 12, 12)));
+		add(getJProgressBar0(), new Constraints(new Leading(49, 414, 12, 12), new Leading(404, 17, 12, 12)));
+		add(getJLabel1(), new Constraints(new Leading(49, 12, 12), new Leading(35, 10, 10)));
+		add(getJLabel0(), new Constraints(new Leading(49, 12, 12), new Leading(114, 12, 12)));
+		add(getJLabel8(), new Constraints(new Leading(49, 414, 12, 12), new Leading(35, 63, 10, 10)));
 		setSize(500, 700);
-	}
+		bannuler.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		
+		bTerminer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String taille = JTextTaille.getText();
+				String poids = JTextPoids.getText();
+				try 
+				{
+				      Class.forName("com.mysql.jdbc.Driver");
+				      System.out.println("Driver O.K.");
 
-	
-	private JLabel getjIntro() {
-		if (jIntro == null) {
-			jIntro = new JLabel();
-			jIntro.setText("<html>Veuillez renseigner les champs suivant afin de vous inscrire aux différents programmes d'entraînements :</html>");
-		}
-		return jIntro;
+				      String url = "jdbc:mysql://localhost:3307/goform";
+				      String user = "GOFORM";
+				      String passwd = "goform";
+				      Connection connexion = DriverManager.getConnection(url, user, passwd);
+				      
+				      System.out.println("Connexion effective !");  
+				      
+				      Statement instruction = connexion.createStatement();
+				        
+				      instruction.executeUpdate("INSERT INTO  `goform`.`utilisateur` (`taille` ,`poids`)VALUES ('"+taille+"','"+poids+"');");
+				      
+				      System.out.println("Informations enregistrées: Taille"+taille+"et Poids :"+poids);
+				      
+				      
+				      dispose();
+				      
+				      IHMConnexionUser.main(null);
+				      
+				      
+				} 
+				catch (Exception ex) 
+				{
+				      ex.printStackTrace();
+				} 
+				
+				
+			}
+		});
+		
+		
+		
 	}
-
-	private JPasswordField getJPasswordField1() {
-		if (jPasswordField1 == null) {
-			jPasswordField1 = new JPasswordField();
-			jPasswordField1.setText("motdepasse");
-			jPasswordField1.setEchoChar('•');
-		}
-		return jPasswordField1;
-	}
-
-	private JPasswordField getJPasswordField0() {
-		if (jPasswordField0 == null) {
-			jPasswordField0 = new JPasswordField();
-			jPasswordField0.setText("motdepasse");
-			jPasswordField0.setEchoChar('•');
-		}
-		return jPasswordField0;
-	}
-
-	private JLabel getjconfirmmdp() {
-		if (jconfirmmdp == null) {
-			jconfirmmdp = new JLabel();
-			jconfirmmdp.setText("Confirmer le mot de passe :");
-		}
-		return jconfirmmdp;
-	}
-
-	private JLabel getjmdp() {
-		if (jmdp == null) {
-			jmdp = new JLabel();
-			jmdp.setText("Mot de passe :");
-		}
-		return jmdp;
-	}
-
-	private JTextField getjTextFieldMail() {
-		if (jTextFieldMail == null) {
-			jTextFieldMail = new JTextField();
-			jTextFieldMail.setText("exemple@exemple.com");
-		}
-		return jTextFieldMail;
-	}
-
-	private JLabel getjEmail() {
-		if (jEmail == null) {
-			jEmail = new JLabel();
-			jEmail.setText("E-mail :");
-		}
-		return jEmail;
-	}
-
-	private JTextField getjTextFieldnom() {
-		if (jTextFieldnom == null) {
-			jTextFieldnom = new JTextField();
-			jTextFieldnom.setText("votre nom");
-		}
-		return jTextFieldnom;
-	}
-
-	private JLabel getjNom() {
-		if (jNom == null) {
-			jNom = new JLabel();
-			jNom.setText("Nom :");
-		}
-		return jNom;
-	}
-
-	private JTextField getjTextFieldPrenom() {
-		if (jTextFieldPrenom == null) {
-			jTextFieldPrenom = new JTextField();
-			jTextFieldPrenom.setText("votre prénom");
-		}
-		return jTextFieldPrenom;
-	}
-
-	private JLabel getjPrenom() {
-		if (jPrenom == null) {
-			jPrenom = new JLabel();
-			jPrenom.setText("Prénom :");
-		}
-		return jPrenom;
-	}
-
-	private JLabel getJLabel2() {
-		if (jLabel2 == null) {
-			jLabel2 = new JLabel();
-			jLabel2.setText("Indiquez vos coordonnées :");
-		}
-		return jLabel2;
-	}
-
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
+	private JLabel getJLabel8() {
+		if (jintro == null) {
+			jintro = new JLabel();
+			jintro.setText("<html>Veuillez renseigner les champs suivant afin de vous inscrire aux différents programmes d'entraînements :</html>");
+			jintro.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jintro.setForeground(Color.WHITE);
+		}
+		return jintro;
+	}
+
+	private JProgressBar getJProgressBar0() {
+		if (jProgressBarImc == null) {
+			jProgressBarImc = new JProgressBar();
+			jProgressBarImc.setString("0 %");
+			
+		}
+		return jProgressBarImc;
+		
+	}
+
+	private JLabel getJLabel6() {
+		if (jIndiceImc == null) {
+			jIndiceImc = new JLabel();
+			jIndiceImc.setText("IMC* : Indice de masse corporelle.");
+		}
+		return jIndiceImc;
+	}
 	
-	private JButton getbSuivant() {
-		if (bSuivant == null) {
-			bSuivant = new JButton();
-			bSuivant.setText("Suivant");
+	private JLabel getJLabel5() {
+		if (jImc == null) {
+			jImc = new JLabel();
+			jImc.setText("Votre IMC* est de :");
+			
 		}
-		return bSuivant;
+		return jImc;
+		
+		
 	}
 
-	private JButton getbAnnuler() {
-		if (bAnnuler == null) {
-			bAnnuler = new JButton();
-			bAnnuler.setText("Annuler");
+	
+
+	private JButton getJButton1() {
+		if (bTerminer == null) {
+			bTerminer = new JButton();
+			bTerminer.setText("Terminer");
 		}
-		return bAnnuler;
+		
+		return bTerminer;
 	}
 
-	private JRadioButton getJRadioButton5() {
-		if (jRadioButton5 == null) {
-			jRadioButton5 = new JRadioButton();
-			jRadioButton5.setBackground(new Color(200, 101, 96));
-			jRadioButton5.setSelected(true);
-			jRadioButton5.setText("Explosivité");
+	private JButton getJButton0() {
+		if (bannuler == null) {
+			bannuler = new JButton();
+			bannuler.setText("Annuler");
 		}
-		return jRadioButton5;
+		return bannuler;
+		
+	}
+	
+
+	private JTextField getJTextAge() {
+		if (JTextAge == null) {
+			JTextAge = new JTextField();
+		}
+		return JTextAge;
 	}
 
-	private JRadioButton getJRadioButton4() {
-		if (jRadioButton4 == null) {
-			jRadioButton4 = new JRadioButton();
-			jRadioButton4.setBackground(new Color(200, 101, 96));
-			jRadioButton4.setSelected(true);
-			jRadioButton4.setText("Endurence");
+	private JLabel getJLabel4() {
+		if (jage == null) {
+			jage = new JLabel();
+			jage.setText("Votre âge :");
 		}
-		return jRadioButton4;
+		return jage;
+	}
+	
+
+
+	private JTextField getJTextTaille() {
+		if (JTextTaille == null) {
+			JTextTaille = new JTextField();
+		}
+		return JTextTaille;
 	}
 
-	private JRadioButton getJRadioButton3() {
-		if (jRadioButton3 == null) {
-			jRadioButton3 = new JRadioButton();
-			jRadioButton3.setBackground(new Color(200, 101, 96));
-			jRadioButton3.setSelected(true);
-			jRadioButton3.setText("Fitnesse");
+	private JLabel getJLabel3() {
+		if (jTaille == null) {
+			jTaille = new JLabel();
+			jTaille.setText("Votre taille :");
 		}
-		return jRadioButton3;
+		return jTaille;
+	}
+
+	private JTextField getJTextPoids() {
+		if (JTextPoids == null) {
+			JTextPoids = new JTextField();
+		}
+		return JTextPoids;
+	}
+
+	private JLabel getJLabel2() {
+		if (jLabel2 == null) {
+			jLabel2 = new JLabel();
+			jLabel2.setText("Votre poids :");
+		}
+		return jLabel2;
 	}
 
 	private JLabel getJLabel1() {
 		if (jLabel1 == null) {
 			jLabel1 = new JLabel();
-			jLabel1.setText("Quelle entraînement souhaitez vous suivre ?");
-			jLabel1.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-			jLabel1.setForeground(Color.black);
 		}
 		return jLabel1;
-	}
-
-	private JRadioButton getJRadioButton2() {
-		if (jRadioButton2 == null) {
-			jRadioButton2 = new JRadioButton();
-			jRadioButton2.setBackground(new Color(200, 101, 96));
-			jRadioButton2.setSelected(true);
-			jRadioButton2.setText("Une fois par mois");
-		}
-		return jRadioButton2;
-	}
-
-	private JRadioButton getJRadioButton1() {
-		if (jRadioButton1 == null) {
-			jRadioButton1 = new JRadioButton();
-			jRadioButton1.setBackground(new Color(200, 101, 96));
-			jRadioButton1.setSelected(true);
-			jRadioButton1.setText("Une fois par semaine");
-		}
-		return jRadioButton1;
-	}
-
-	private JRadioButton getJRadioButton0() {
-		if (jRadioButton0 == null) {
-			jRadioButton0 = new JRadioButton();
-			jRadioButton0.setBackground(new Color(200, 101, 96));
-			jRadioButton0.setSelected(true);
-			jRadioButton0.setText("Plusieurs fois par semaine");
-		}
-		return jRadioButton0;
 	}
 
 	private JLabel getJLabel0() {
 		if (jLabel0 == null) {
 			jLabel0 = new JLabel();
-			jLabel0.setText("A quelle fréquence pratiquez vous une activité sportive :");
-			jLabel0.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-			jLabel0.setForeground(Color.black);
+			jLabel0.setText("Votre sexe :");
 		}
 		return jLabel0;
 	}
 
+	private JComboBox getJComboBox0() {
+		if (jComboBox0 == null) {
+			jComboBox0 = new JComboBox();
+			jComboBox0.setModel(new DefaultComboBoxModel(new Object[] { "Femme", "Homme"}));
+			jComboBox0.setDoubleBuffered(false);
+			jComboBox0.setBorder(null);
+		}
+		return jComboBox0;
+	}
+
+	private JTextField getJTextField0() {
+		if (jTextField0 == null) {
+			jTextField0 = new JTextField();
+			jTextField0.setText("jTextField0");
+		}
+		return jTextField0;
+	}
+	
 	private static void installLnF() {
 		try {
 			String lnfClassname = PREFERRED_LOOK_AND_FEEL;
@@ -296,7 +281,9 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 			System.err.println("Cannot install " + PREFERRED_LOOK_AND_FEEL
 					+ " on this platform:" + e.getMessage());
 		}
+		
 	}
+	
 
 	/**
 	 * Main entry of the class.
@@ -306,18 +293,20 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 	 */
 	public static void main(String[] args) {
 		installLnF();
+		
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				
 				IHMInscriptionUser2 frame = new IHMInscriptionUser2();
 				frame.setDefaultCloseOperation(IHMInscriptionUser2.EXIT_ON_CLOSE);
-				frame.setTitle("IHMInscriptionUser2");
+				frame.setTitle("IHMIscriptionUser");
 				frame.getContentPane().setPreferredSize(frame.getSize());
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
-				frame.setResizable(false);
 			}
 		});
+		
 	}
-
+	
 }
