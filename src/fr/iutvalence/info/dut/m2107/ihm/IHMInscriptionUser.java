@@ -5,6 +5,9 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
@@ -79,6 +82,37 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 		bannuler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				System.exit(0);
+			}
+		});
+		
+		bsuivant.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String taille = JTextTaille.getText();
+				String poids = JTextPoids.getText();
+				try 
+				{
+				      Class.forName("com.mysql.jdbc.Driver");
+				      System.out.println("Driver O.K.");
+
+				      String url = "jdbc:mysql://localhost/goform";
+				      String user = "root";
+				      String passwd = "";
+				      Connection connexion = DriverManager.getConnection(url, user, passwd);
+				      
+				      System.out.println("Connexion effective !");  
+				      
+				      Statement instruction = connexion.createStatement();
+				        
+				      instruction.executeUpdate("INSERT INTO  `goform`.`utilisateur` (`taille` ,`poids`)VALUES ('"+taille+"','"+poids+"');");
+				      
+				      System.out.println("Informations enregistrées: Taille"+taille+"et Poids :"+poids);
+				} 
+				catch (Exception ex) 
+				{
+				      ex.printStackTrace();
+				} 
+				
+				
 			}
 		});
 		
