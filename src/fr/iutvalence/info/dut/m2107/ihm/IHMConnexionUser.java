@@ -68,22 +68,34 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		});
 		
 		bConnexion.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e) {	
 				Connection cnx;
-				try {
-					System.out.println("test");
-					cnx = DriverManager.getConnection("jdbc:postgresql://gigondas:5432/ambrym","ambrym","ambrym");
-					Statement instructioncnx = cnx.createStatement();
-					ResultSet resultatcnx = instructioncnx.executeQuery("Select * FROM chambre");	
-											
-				} 
-				catch (SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				
-			}
+					try {
+				        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3307/goform","GOFORM","goform");
+				        Statement stmt = con.createStatement();
+				        ResultSet rs = stmt.executeQuery("SELECT email, mdp FROM utilisateur");
+				        while (rs.next()) {
+				        	String ln = rs.getString("email");
+				        	String email = jTextFieldMail.getText();
+				        	
+				        	String fn = rs.getString("mdp");
+				        	String mdp = new String(jPasswordField0.getPassword());
+				        	
+				        	if (ln.equals(email)&& fn.equals(mdp))
+				        	
+				        		
+			        			IHMWindow.main(null);     	
+				        	
+				       }
+				        
+				        
+					}
+					catch(SQLException e1) 
+					{
+						System.out.println("ggggg");
+						//e1.printStackTrace();
+					}
+			}	
 		});
 	}
 	private JButton getJButton2() {

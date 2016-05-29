@@ -3,13 +3,16 @@ package fr.iutvalence.info.dut.m2107.ihm;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPasswordField;
 import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -29,13 +32,23 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 	private JRadioButton jRadioButton3;
 	private JRadioButton jRadioButton4;
 	private JRadioButton jRadioButton5;
-	private JButton jButton2;
-	private JButton jButton1;
-	private JButton jButton0;
-	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
+	private JButton bAnnuler;
+	private JButton bSuivant;
 	private ImageIcon img = new ImageIcon("img/icon.png");
 	Color red = Color.decode("#c86560");
-	
+	private JLabel jLabel2;
+	private JLabel jPrenom;
+	private JTextField jTextFieldPrenom;
+	private JLabel jNom;
+	private JTextField jTextFieldnom;
+	private JLabel jEmail;
+	private JTextField jTextFieldMail;
+	private JLabel jmdp;
+	private JLabel jconfirmmdp;
+	private JPasswordField jPasswordField0;
+	private JPasswordField jPasswordField1;
+	private JLabel jIntro;
+	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
 	public IHMInscriptionUser2() {
 		initComponents();
 		
@@ -47,72 +60,168 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 		setIconImage(img.getImage());
 		setTitle("GoForm");
 		setLayout(new GroupLayout());
-		add(getJRadioButton0(), new Constraints(new Leading(63, 10, 10), new Leading(112, 10, 10)));
-		add(getJRadioButton1(), new Constraints(new Leading(63, 10, 10), new Leading(133, 10, 10)));
-		add(getJRadioButton2(), new Constraints(new Leading(63, 10, 10), new Leading(154, 10, 10)));
-		add(getJLabel0(), new Constraints(new Leading(45, 12, 12), new Leading(84, 12, 12)));
-		add(getJRadioButton3(), new Constraints(new Leading(63, 12, 12), new Leading(261, 10, 10)));
-		add(getJRadioButton4(), new Constraints(new Leading(63, 12, 12), new Leading(283, 10, 10)));
-		add(getJRadioButton5(), new Constraints(new Leading(63, 12, 12), new Leading(303, 10, 10)));
-		add(getJLabel1(), new Constraints(new Leading(45, 12, 12), new Leading(237, 10, 10)));
-		add(getJButton2(), new Constraints(new Leading(398, 10, 10), new Leading(655, 12, 12)));
-		add(getJButton1(), new Constraints(new Leading(299, 12, 12), new Leading(655, 12, 12)));
-		add(getJButton0(), new Constraints(new Leading(203, 12, 12), new Leading(655, 12, 12)));
+		add(getbAnnuler(), new Constraints(new Leading(398, 10, 10), new Leading(655, 12, 12)));
+		add(getbSuivant(), new Constraints(new Leading(299, 12, 12), new Leading(655, 12, 12)));
+		add(getJLabel2(), new Constraints(new Leading(43, 10, 10), new Leading(97, 18, 10, 10)));
+		add(getjNom(), new Constraints(new Leading(43, 41, 10, 10), new Leading(141, 10, 10)));
+		add(getjTextFieldnom(), new Constraints(new Leading(102, 130, 10, 10), new Leading(139, 10, 10)));
+		add(getjEmail(), new Constraints(new Leading(42, 10, 10), new Leading(188, 10, 10)));
+		add(getjPrenom(), new Constraints(new Leading(269, 10, 10), new Leading(139, 20, 10, 10)));
+		add(getjTextFieldPrenom(), new Constraints(new Leading(338, 127, 10, 10), new Leading(139, 10, 10)));
+		add(getjTextFieldMail(), new Constraints(new Leading(101, 185, 10, 10), new Leading(183, 12, 12)));
+		add(getjIntro(), new Constraints(new Leading(39, 426, 12, 12), new Leading(12, 70, 12, 12)));
+		add(getjmdp(), new Constraints(new Leading(43, 12, 12), new Leading(227, 15, 10, 10)));
+		add(getjconfirmmdp(), new Constraints(new Leading(42, 12, 12), new Leading(284, 10, 10)));
+		add(getJPasswordField1(), new Constraints(new Leading(42, 156, 12, 12), new Leading(312, 10, 10)));
+		add(getJPasswordField0(), new Constraints(new Leading(43, 152, 12, 12), new Leading(254, 10, 10)));
+		add(getJLabel1(), new Constraints(new Leading(43, 12, 12), new Leading(475, 12, 12)));
+		add(getJRadioButton3(), new Constraints(new Leading(62, 86, 12, 12), new Leading(509, 12, 12)));
+		add(getJRadioButton4(), new Constraints(new Leading(62, 12, 12), new Leading(532, 20, 10, 10)));
+		add(getJRadioButton5(), new Constraints(new Leading(62, 12, 12), new Leading(551, 12, 12)));
+		add(getJRadioButton2(), new Constraints(new Leading(62, 178, 12, 12), new Leading(433, 12, 12)));
+		add(getJRadioButton0(), new Constraints(new Leading(62, 178, 12, 12), new Leading(388, 12, 12)));
+		add(getJRadioButton1(), new Constraints(new Leading(62, 178, 12, 12), new Leading(410, 10, 10)));
+		add(getJLabel0(), new Constraints(new Leading(43, 12, 12), new Leading(354, 12, 12)));
 		setSize(500, 700);
-		jButton2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});	
 	}
+
+	
+	private JLabel getjIntro() {
+		if (jIntro == null) {
+			jIntro = new JLabel();
+			jIntro.setText("<html>Veuillez renseigner les champs suivant afin de vous inscrire aux différents programmes d'entraînements :</html>");
+		}
+		return jIntro;
+	}
+
+	private JPasswordField getJPasswordField1() {
+		if (jPasswordField1 == null) {
+			jPasswordField1 = new JPasswordField();
+			jPasswordField1.setText("motdepasse");
+			jPasswordField1.setEchoChar('•');
+		}
+		return jPasswordField1;
+	}
+
+	private JPasswordField getJPasswordField0() {
+		if (jPasswordField0 == null) {
+			jPasswordField0 = new JPasswordField();
+			jPasswordField0.setText("motdepasse");
+			jPasswordField0.setEchoChar('•');
+		}
+		return jPasswordField0;
+	}
+
+	private JLabel getjconfirmmdp() {
+		if (jconfirmmdp == null) {
+			jconfirmmdp = new JLabel();
+			jconfirmmdp.setText("Confirmer le mot de passe :");
+		}
+		return jconfirmmdp;
+	}
+
+	private JLabel getjmdp() {
+		if (jmdp == null) {
+			jmdp = new JLabel();
+			jmdp.setText("Mot de passe :");
+		}
+		return jmdp;
+	}
+
+	private JTextField getjTextFieldMail() {
+		if (jTextFieldMail == null) {
+			jTextFieldMail = new JTextField();
+			jTextFieldMail.setText("exemple@exemple.com");
+		}
+		return jTextFieldMail;
+	}
+
+	private JLabel getjEmail() {
+		if (jEmail == null) {
+			jEmail = new JLabel();
+			jEmail.setText("E-mail :");
+		}
+		return jEmail;
+	}
+
+	private JTextField getjTextFieldnom() {
+		if (jTextFieldnom == null) {
+			jTextFieldnom = new JTextField();
+			jTextFieldnom.setText("votre nom");
+		}
+		return jTextFieldnom;
+	}
+
+	private JLabel getjNom() {
+		if (jNom == null) {
+			jNom = new JLabel();
+			jNom.setText("Nom :");
+		}
+		return jNom;
+	}
+
+	private JTextField getjTextFieldPrenom() {
+		if (jTextFieldPrenom == null) {
+			jTextFieldPrenom = new JTextField();
+			jTextFieldPrenom.setText("votre prénom");
+		}
+		return jTextFieldPrenom;
+	}
+
+	private JLabel getjPrenom() {
+		if (jPrenom == null) {
+			jPrenom = new JLabel();
+			jPrenom.setText("Prénom :");
+		}
+		return jPrenom;
+	}
+
+	private JLabel getJLabel2() {
+		if (jLabel2 == null) {
+			jLabel2 = new JLabel();
+			jLabel2.setText("Indiquez vos coordonnées :");
+		}
+		return jLabel2;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
 		
 	}
 	
-	private JButton getJButton0() {
-		if (jButton0 == null) {
-			jButton0 = new JButton();
-			jButton0.setText("Précédent");
+	private JButton getbSuivant() {
+		if (bSuivant == null) {
+			bSuivant = new JButton();
+			bSuivant.setText("Suivant");
 		}
-		return jButton0;
+		return bSuivant;
 	}
 
-	private JButton getJButton1() {
-		if (jButton1 == null) {
-			jButton1 = new JButton();
-			jButton1.setText("Terminer");
+	private JButton getbAnnuler() {
+		if (bAnnuler == null) {
+			bAnnuler = new JButton();
+			bAnnuler.setText("Annuler");
 		}
-		return jButton1;
-	}
-
-	private JButton getJButton2() {
-		if (jButton2 == null) {
-			jButton2 = new JButton();
-			jButton2.setText("Annuler");
-		}
-		return jButton2;
+		return bAnnuler;
 	}
 
 	private JRadioButton getJRadioButton5() {
-		
 		if (jRadioButton5 == null) {
 			jRadioButton5 = new JRadioButton();
+			jRadioButton5.setBackground(new Color(200, 101, 96));
 			jRadioButton5.setSelected(true);
 			jRadioButton5.setText("Explosivité");
-			jRadioButton5.setBackground(red);
 		}
 		return jRadioButton5;
 	}
-	
+
 	private JRadioButton getJRadioButton4() {
-		
 		if (jRadioButton4 == null) {
 			jRadioButton4 = new JRadioButton();
+			jRadioButton4.setBackground(new Color(200, 101, 96));
 			jRadioButton4.setSelected(true);
 			jRadioButton4.setText("Endurence");
-			jRadioButton4.setBackground(red);
 		}
 		return jRadioButton4;
 	}
@@ -120,9 +229,9 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton3() {
 		if (jRadioButton3 == null) {
 			jRadioButton3 = new JRadioButton();
+			jRadioButton3.setBackground(new Color(200, 101, 96));
 			jRadioButton3.setSelected(true);
 			jRadioButton3.setText("Fitnesse");
-			jRadioButton3.setBackground(red);
 		}
 		return jRadioButton3;
 	}
@@ -132,7 +241,7 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 			jLabel1 = new JLabel();
 			jLabel1.setText("Quelle entraînement souhaitez vous suivre ?");
 			jLabel1.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-			jLabel1.setForeground(Color.WHITE);
+			jLabel1.setForeground(Color.black);
 		}
 		return jLabel1;
 	}
@@ -140,9 +249,9 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton2() {
 		if (jRadioButton2 == null) {
 			jRadioButton2 = new JRadioButton();
+			jRadioButton2.setBackground(new Color(200, 101, 96));
 			jRadioButton2.setSelected(true);
 			jRadioButton2.setText("Une fois par mois");
-			jRadioButton2.setBackground(red);
 		}
 		return jRadioButton2;
 	}
@@ -150,9 +259,9 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton1() {
 		if (jRadioButton1 == null) {
 			jRadioButton1 = new JRadioButton();
+			jRadioButton1.setBackground(new Color(200, 101, 96));
 			jRadioButton1.setSelected(true);
 			jRadioButton1.setText("Une fois par semaine");
-			jRadioButton1.setBackground(red);
 		}
 		return jRadioButton1;
 	}
@@ -160,9 +269,9 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton0() {
 		if (jRadioButton0 == null) {
 			jRadioButton0 = new JRadioButton();
+			jRadioButton0.setBackground(new Color(200, 101, 96));
 			jRadioButton0.setSelected(true);
 			jRadioButton0.setText("Plusieurs fois par semaine");
-			jRadioButton0.setBackground(red);
 		}
 		return jRadioButton0;
 	}
@@ -172,7 +281,7 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener  {
 			jLabel0 = new JLabel();
 			jLabel0.setText("A quelle fréquence pratiquez vous une activité sportive :");
 			jLabel0.setFont(new Font("Sans Serif", Font.PLAIN, 12));
-			jLabel0.setForeground(Color.WHITE);
+			jLabel0.setForeground(Color.black);
 		}
 		return jLabel0;
 	}

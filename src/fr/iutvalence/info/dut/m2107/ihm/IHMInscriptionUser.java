@@ -94,9 +94,9 @@ public class IHMInscriptionUser extends JFrame implements ActionListener {
 				      Class.forName("com.mysql.jdbc.Driver");
 				      System.out.println("Driver O.K.");
 
-				      String url = "jdbc:mysql://localhost/goform";
-				      String user = "root";
-				      String passwd = "";
+				      String url = "jdbc:mysql://localhost:3307/goform";
+				      String user = "GOFORM";
+				      String passwd = "goform";
 				      Connection connexion = DriverManager.getConnection(url, user, passwd);
 				      
 				      System.out.println("Connexion effective !");  
