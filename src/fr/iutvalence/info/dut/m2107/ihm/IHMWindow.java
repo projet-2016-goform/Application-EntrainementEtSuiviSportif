@@ -115,6 +115,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 		if (jButton5 == null) {
 			jButton5 = new JButton();
 			jButton5.setText("Appliquer");
+			
 		}
 		return jButton5;
 	}
@@ -122,7 +123,33 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JTextField getJTextField5() {
 		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
-			jTextField5.setText("Poids");
+			try 
+			{
+	        	  Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      System.out.println("Connexion effective !");  
+			      
+			      String email = IHMConnexionUser.jTextFieldMail.getText();
+			      Statement instruction = connexion.createStatement();	      
+			      ResultSet resultatcnx = instruction.executeQuery("Select poids FROM utilisateur WHERE mail = '"+email+"'");	
+				
+			      	while (resultatcnx.next()) {
+			      		String poids = resultatcnx.getString(1);
+			      		jTextField5.setText(""+poids+"");
+			        		
+			      	}
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
 			jTextField5.setAutoscrolls(true);
 		}
 		return jTextField5;
@@ -139,7 +166,33 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JTextField getJTextField3() {
 		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
-			jTextField3.setText("mot de passe");
+			try 
+			{
+	        	  Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      System.out.println("Connexion effective !");  
+			      
+			      String email = IHMConnexionUser.jTextFieldMail.getText();
+			      Statement instruction = connexion.createStatement();	      
+			      ResultSet resultatcnx = instruction.executeQuery("Select mdp FROM utilisateur WHERE mail = '"+email+"'");	
+				
+			      	while (resultatcnx.next()) {
+			      		String mdp = resultatcnx.getString(1);
+			      		jTextField3.setText(""+mdp+"");
+			        		
+			      	}
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
 			jTextField3.setAutoscrolls(true);
 		}
 		return jTextField3;
@@ -148,7 +201,33 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JTextField getJTextField4() {
 		if (jTextField4 == null) {
 			jTextField4 = new JTextField();
-			jTextField4.setText("Taille");
+			try 
+			{
+	        	  Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      System.out.println("Connexion effective !");  
+			      
+			      String email = IHMConnexionUser.jTextFieldMail.getText();
+			      Statement instruction = connexion.createStatement();	      
+			      ResultSet resultatcnx = instruction.executeQuery("Select taille FROM utilisateur WHERE mail = '"+email+"'");	
+				
+			      	while (resultatcnx.next()) {
+			      		String taille = resultatcnx.getString(1);
+			      		jTextField4.setText(""+taille+"");
+			        		
+			      	}
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
 			jTextField4.setAutoscrolls(true);
 		}
 		return jTextField4;
@@ -182,6 +261,31 @@ public class IHMWindow extends JFrame implements ActionListener {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
 			jButton1.setText("Appliquer");
+			try 
+			{
+	        	  Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      System.out.println("Connexion effective !");  
+			      String prenom = jTextField1.getText();
+			      String email = IHMConnexionUser.jTextFieldMail.getText();
+			      Statement instruction = connexion.createStatement();	      
+			      int resultatcnx = instruction.executeUpdate("UPDATE utilisateur "
+			      		+ "SET prenom='"+prenom+"'"
+			      		+ "WHERE mail = '"+email+"';");	
+				
+		
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
 		}
 		return jButton1;
 	}
@@ -189,7 +293,33 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JTextField getJTextField2() {
 		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
-			jTextField2.setText("e-mail");
+			try 
+			{
+	        	  Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      System.out.println("Connexion effective !");  
+			      
+			      String email = IHMConnexionUser.jTextFieldMail.getText();
+			      Statement instruction = connexion.createStatement();	      
+			      ResultSet resultatcnx = instruction.executeQuery("Select mail FROM utilisateur WHERE mail = '"+email+"'");	
+				
+			      	while (resultatcnx.next()) {
+			      		String mail = resultatcnx.getString(1);
+			      		jTextField2.setText(""+mail+"");
+			        		
+			      	}
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
 			jTextField2.setAutoscrolls(true);
 		}
 		return jTextField2;
@@ -198,7 +328,33 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
-			jTextField1.setText("Prénom");
+			try 
+			{
+	        	  Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      System.out.println("Connexion effective !");  
+			      
+			      String email = IHMConnexionUser.jTextFieldMail.getText();
+			      Statement instruction = connexion.createStatement();	      
+			      ResultSet resultatcnx = instruction.executeQuery("Select prenom FROM utilisateur WHERE mail = '"+email+"'");	
+				
+			      	while (resultatcnx.next()) {
+			      		String prenom = resultatcnx.getString(1);
+			      		jTextField1.setText(""+prenom+"");
+			        		
+			      	}
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
 			jTextField1.setAutoscrolls(true);
 		}
 		return jTextField1;
@@ -207,7 +363,34 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JTextField getJTextField0() {
 		if (jTextField0 == null) {
 			jTextField0 = new JTextField();
-			jTextField0.setText("Nom");
+			try 
+			{
+	        	  Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      System.out.println("Connexion effective !");  
+			      
+			      String email = IHMConnexionUser.jTextFieldMail.getText();
+			      Statement instruction = connexion.createStatement();	      
+			      ResultSet resultatcnx = instruction.executeQuery("Select nom FROM utilisateur WHERE mail = '"+email+"'");	
+				
+			      	while (resultatcnx.next()) {
+			      		String nom = resultatcnx.getString(1);
+			      		jTextField0.setText(""+nom+"");
+			        		
+			      	}
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
+			
 			jTextField0.setAutoscrolls(true);
 		}
 		return jTextField0;
@@ -378,6 +561,10 @@ public class IHMWindow extends JFrame implements ActionListener {
 			jReglages.add(getJButton5(), new Constraints(new Leading(355, 88, 12, 12), new Leading(333, 12, 12)));
 			jReglages.add(getJLabel0(), new Constraints(new Leading(15, 12, 12), new Leading(14, 12, 12)));
 			jReglages.add(getJLabel1(), new Constraints(new Leading(15, 12, 12), new Leading(390, 10, 10)));
+			
+			
+			
+			
 		}
 		return jReglages;
 	}
