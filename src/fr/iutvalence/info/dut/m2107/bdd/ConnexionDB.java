@@ -4,11 +4,11 @@ import java.sql.*;
 
 public class ConnexionDB {
  
- private static final String xPilote = "org.postgresql.Driver";
- private static final String xURL = "jdbc:postgresql://gigondas:5432/battonh";
- private static final String xUser = "battonh";
- private static final String xPassword = "battonh";
- private static Connection con = null;
+ public static final String xPilote = "org.postgresql.Driver";
+ public static final String xURL = "jdbc:postgresql://gigondas:5432/battonh";
+ public static final String xUser = "battonh";
+ public static final String xPassword = "battonh";
+ public static Connection con = null;
  
 
  public ConnexionDB() { 

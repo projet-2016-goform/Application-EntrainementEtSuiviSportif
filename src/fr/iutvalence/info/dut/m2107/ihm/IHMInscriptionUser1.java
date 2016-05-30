@@ -49,7 +49,7 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 	static JPasswordField jPasswordField0;
 	private JPasswordField jPasswordField1;
 	private JLabel jIntro;
-	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
+	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	public IHMInscriptionUser1() {
 		initComponents();
 		

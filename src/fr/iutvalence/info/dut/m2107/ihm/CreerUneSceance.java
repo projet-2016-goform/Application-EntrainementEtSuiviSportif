@@ -47,7 +47,7 @@ public class CreerUneSceance extends JFrame {
 	private JTextField jTextField3;
 	private JSpinner jSpinnerRep3;
 	private ImageIcon img = new ImageIcon("img/icon.png");
-	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
+	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	
 	public CreerUneSceance() {
 		initComponents();

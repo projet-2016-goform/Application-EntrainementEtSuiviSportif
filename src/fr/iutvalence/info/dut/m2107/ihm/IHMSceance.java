@@ -16,14 +16,14 @@ public class IHMSceance extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
 	private JButton jButton0;
-	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
+	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	public IHMSceance() {
 		initComponents();
 	}
 
 	private void initComponents() {
 		setLayout(new GroupLayout());
-		add(getJLabel0(), new Constraints(new Leading(183, 123, 10, 10), new Leading(39, 10, 10)));
+		add(getJLabel0(), new Constraints(new Leading(183, 123, 10, 10), new Leading(40, 10, 10)));
 		add(getJButton0(), new Constraints(new Leading(400, 10, 10), new Leading(660, 10, 10)));
 		setSize(500, 700);
 	}

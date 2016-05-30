@@ -44,7 +44,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	private JButton bInscription;
 	private JLabel jLabel2;
 	private JButton bQuitter;
-	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
+	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	private ImageIcon img = new ImageIcon("img/icon.png");
 	public IHMConnexionUser() {
 		initComponents();

@@ -1,4 +1,5 @@
 package fr.iutvalence.info.dut.m2107.ihm;
+import fr.iutvalence.info.dut.m2107.bdd.*;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -123,6 +124,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JTextField getJTextField5() {
 		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
+			
 			try 
 			{
 	        	  Class.forName("org.postgresql.Driver");
@@ -131,12 +133,12 @@ public class IHMWindow extends JFrame implements ActionListener {
 			      String url = "jdbc:postgresql://gigondas:5432/battonh";
 			      String user = "battonh";
 			      String passwd = "battonh";
-			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
 			      
 			      System.out.println("Connexion effective !");  
 			      
 			      String email = IHMConnexionUser.jTextFieldMail.getText();
-			      Statement instruction = connexion.createStatement();	      
+			      Statement instruction = ConnexionDB.con.createStatement();	      
 			      ResultSet resultatcnx = instruction.executeQuery("Select poids FROM utilisateur WHERE mail = '"+email+"'");	
 				
 			      	while (resultatcnx.next()) {
