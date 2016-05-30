@@ -18,6 +18,7 @@ import javax.swing.JList;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -47,6 +48,22 @@ public class IHMWindow extends JFrame {
 	private JList jList1;
 	private JScrollPane jScrollPane1;
 	private JButton bQuitter;
+	private JButton bCreerSeance;
+	private JTextField jTextField0;
+	private JTextField jTextField1;
+	private JTextField jTextField2;
+	private JButton jButton1;
+	private JButton jButton2;
+	private JButton jButton0;
+	private JButton jButton3;
+	private JTextField jTextField4;
+	private JTextField jTextField3;
+	private JButton jButton4;
+	private JTextField jTextField5;
+	private JButton jButton5;
+	private JButton bValider;
+	private JLabel jLabel0;
+	private JLabel jLabel1;
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	private ImageIcon img = new ImageIcon("img/icon.png");
 	Color red = Color.decode("#c86650");
@@ -61,7 +78,131 @@ public class IHMWindow extends JFrame {
 		setIconImage(img.getImage());
 		setSize(500, 700);
 	}
+	private JLabel getJLabel1() {
+		if (jLabel1 == null) {
+			jLabel1 = new JLabel();
+			jLabel1.setText("Réglages application:");
+		}
+		return jLabel1;
+	}
 
+	private JLabel getJLabel0() {
+		if (jLabel0 == null) {
+			jLabel0 = new JLabel();
+			jLabel0.setText("Réglage profil :");
+		}
+		return jLabel0;
+	}
+
+	private JButton getJButton7() {
+		if (bValider == null) {
+			bValider = new JButton();
+			bValider.setText("Tout valider");
+		}
+		return bValider;
+	}
+
+	private JButton getJButton5() {
+		if (jButton5 == null) {
+			jButton5 = new JButton();
+			jButton5.setText("Appliquer");
+		}
+		return jButton5;
+	}
+
+	private JTextField getJTextField5() {
+		if (jTextField5 == null) {
+			jTextField5 = new JTextField();
+			jTextField5.setText("Poids");
+			jTextField5.setAutoscrolls(true);
+		}
+		return jTextField5;
+	}
+
+	private JButton getJButton4() {
+		if (jButton4 == null) {
+			jButton4 = new JButton();
+			jButton4.setText("Appliquer");
+		}
+		return jButton4;
+	}
+
+	private JTextField getJTextField3() {
+		if (jTextField3 == null) {
+			jTextField3 = new JTextField();
+			jTextField3.setText("mot de passe");
+			jTextField3.setAutoscrolls(true);
+		}
+		return jTextField3;
+	}
+
+	private JTextField getJTextField4() {
+		if (jTextField4 == null) {
+			jTextField4 = new JTextField();
+			jTextField4.setText("Taille");
+			jTextField4.setAutoscrolls(true);
+		}
+		return jTextField4;
+	}
+
+	private JButton getJButton3() {
+		if (jButton3 == null) {
+			jButton3 = new JButton();
+			jButton3.setText("Appliquer");
+		}
+		return jButton3;
+	}
+
+	private JButton getJButton0() {
+		if (jButton0 == null) {
+			jButton0 = new JButton();
+			jButton0.setText("Appliquer");
+		}
+		return jButton0;
+	}
+
+	private JButton getJButton2() {
+		if (jButton2 == null) {
+			jButton2 = new JButton();
+			jButton2.setText("Appliquer");
+		}
+		return jButton2;
+	}
+
+	private JButton getJButton1() {
+		if (jButton1 == null) {
+			jButton1 = new JButton();
+			jButton1.setText("Appliquer");
+		}
+		return jButton1;
+	}
+
+	private JTextField getJTextField2() {
+		if (jTextField2 == null) {
+			jTextField2 = new JTextField();
+			jTextField2.setText("e-mail");
+			jTextField2.setAutoscrolls(true);
+		}
+		return jTextField2;
+	}
+
+	private JTextField getJTextField1() {
+		if (jTextField1 == null) {
+			jTextField1 = new JTextField();
+			jTextField1.setText("Prénom");
+			jTextField1.setAutoscrolls(true);
+		}
+		return jTextField1;
+	}
+
+	private JTextField getJTextField0() {
+		if (jTextField0 == null) {
+			jTextField0 = new JTextField();
+			jTextField0.setText("Nom");
+			jTextField0.setAutoscrolls(true);
+		}
+		return jTextField0;
+	}
 	private JButton getbQuitter() {
 		if (bQuitter == null) {
 			bQuitter = new JButton();
@@ -69,6 +210,8 @@ public class IHMWindow extends JFrame {
 		}
 		return bQuitter;
 	}
+	
+	
 
 	private JScrollPane getJScrollPane1() {
 		if (jScrollPane1 == null) {
@@ -129,6 +272,14 @@ public class IHMWindow extends JFrame {
 		
 		return jTabbSeance;
 	}
+	
+	private JButton getbCreerSeance() {
+		if (bCreerSeance == null) {
+			bCreerSeance = new JButton();
+			bCreerSeance.setText("Créer une séance");
+		}
+		return bCreerSeance;
+	}
 
 	private JPanel getJSeanceUser() {
 		if (jSeanceUser == null) {
@@ -188,19 +339,36 @@ public class IHMWindow extends JFrame {
 				catch (Exception e){
 					System.out.println(e.toString());
 				}
-		    
+				
+		JLabel infos = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><u>Informations</u> : <br></p></html>");
+		jAccueil.add(infos);
 		jAccueil.add(getbQuitter(), new Constraints(new Leading(412, 10, 10), new Trailing(12, 12, 12)));
+		
 	
 	return jAccueil;
 }
 
 
 	private JPanel getjReglages() {
-		
+		if (jReglages == null) {
 			jReglages = new JPanel();
 			jReglages.setLayout(new GroupLayout());
-			
-		
+			jReglages.add(getJTextField0(), new Constraints(new Leading(39, 290, 142, 154), new Leading(42, 10, 10)));
+			jReglages.add(getJTextField1(), new Constraints(new Leading(39, 290, 151, 151), new Leading(97, 10, 10)));
+			jReglages.add(getJTextField2(), new Constraints(new Leading(39, 290, 12, 12), new Leading(152, 10, 10)));
+			jReglages.add(getJTextField3(), new Constraints(new Leading(39, 290, 12, 12), new Leading(213, 10, 10)));
+			jReglages.add(getJTextField4(), new Constraints(new Leading(39, 290, 130, 130), new Leading(273, 10, 10)));
+			jReglages.add(getJTextField5(), new Constraints(new Leading(39, 290, 12, 12), new Leading(333, 10, 10)));
+			jReglages.add(getJButton7(), new Constraints(new Leading(400, 10, 10), new Leading(626, 10, 10)));
+			jReglages.add(getJButton1(), new Constraints(new Leading(355, 88, 12, 12), new Leading(97, 12, 12)));
+			jReglages.add(getJButton0(), new Constraints(new Leading(355, 88, 12, 12), new Leading(42, 12, 12)));
+			jReglages.add(getJButton2(), new Constraints(new Leading(355, 88, 12, 12), new Leading(152, 12, 12)));
+			jReglages.add(getJButton3(), new Constraints(new Leading(355, 88, 12, 12), new Leading(213, 12, 12)));
+			jReglages.add(getJButton4(), new Constraints(new Leading(355, 88, 12, 12), new Leading(273, 12, 12)));
+			jReglages.add(getJButton5(), new Constraints(new Leading(355, 88, 12, 12), new Leading(333, 12, 12)));
+			jReglages.add(getJLabel0(), new Constraints(new Leading(15, 12, 12), new Leading(14, 12, 12)));
+			jReglages.add(getJLabel1(), new Constraints(new Leading(15, 12, 12), new Leading(390, 10, 10)));
+		}
 		return jReglages;
 	}
 
@@ -217,7 +385,7 @@ public class IHMWindow extends JFrame {
 				ResultSet resultatcnx = instruction.executeQuery("Select * FROM medecin");	
 				System.out.println("test");
 		      	while (resultatcnx.next()) {
-		        		JLabel id = new JLabel("<html><ul><li>"+resultatcnx.getString("n_med")+"</li>"+resultatcnx.getString("identite_med")+"<li></li></ul></html>");
+		        		JLabel id = new JLabel("<html><ul style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><li>"+resultatcnx.getString("n_med")+"</li>"+resultatcnx.getString("identite_med")+"<li></li></ul></html>");
 
 						jSuivi.add(id);
 		        		
@@ -264,17 +432,18 @@ public class IHMWindow extends JFrame {
 			      ResultSet resultatcnx = instruction.executeQuery("Select * FROM utilisateur WHERE mail = '"+email+"'");	
 					System.out.println("test");
 			      	while (resultatcnx.next()) {
-			        		JLabel id = new JLabel("<html>Nom :"+resultatcnx.getString("nom")+"<br>"
-			        				+ "Prénom : "+resultatcnx.getString("prenom")+"<br>"
-					        		+ "E-mail : "+resultatcnx.getString("mail")+"<br>"
-			        				+ "Age : "+resultatcnx.getString("age")+"<br>"
-			        				+ "Taille : "+resultatcnx.getString("taille")+"<br>"
-			        				+ "Poids : "+resultatcnx.getString("poids")+"<br></html>");
+			        		JLabel id = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Nom :"+resultatcnx.getString("nom")+"</p><br>"
+			        				+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Prénom : "+resultatcnx.getString("prenom")+"</p><br>"
+					        		+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">E-mail : "+resultatcnx.getString("mail")+"</p><br>"
+			        				+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Age : "+resultatcnx.getString("age")+"</p><br>"
+			        				+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Taille : "+resultatcnx.getString("taille")+"</p><br>"
+					        		+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Poids : "+resultatcnx.getString("poids")+"</p><br>"
+			        				+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">IMC : "+resultatcnx.getString("imc")+"</p><br></html>");
 
 							jProfil.add(id);
 			        		
 			      	}
-			      
+			      	jProfil.add(getbQuitter(), new Constraints(new Leading(412, 10, 10), new Trailing(12, 12, 12)));
 			      
 			} 
 			catch (Exception ex) 

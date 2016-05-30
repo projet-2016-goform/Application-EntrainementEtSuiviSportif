@@ -119,7 +119,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	public JPasswordField getJPasswordField0() {
 		if (jPasswordField0 == null) {
 			jPasswordField0 = new JPasswordField();
-			jPasswordField0.setText("pers1");
+			jPasswordField0.setText("azertyuiop");
 			jPasswordField0.setEchoChar('•');
 		}
 		return jPasswordField0;
@@ -146,7 +146,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	public JTextField getJTextField0() {
 		if (jTextFieldMail == null) {
 			jTextFieldMail = new JTextField();
-			jTextFieldMail.setText("pers1@test.test");
+			jTextFieldMail.setText("maxime.ambry@iut-valence.fr");
 		}
 		return jTextFieldMail;
 	}

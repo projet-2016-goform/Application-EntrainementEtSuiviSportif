@@ -3,7 +3,10 @@
  */
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import java.awt.BorderLayout;
+
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -35,6 +38,7 @@ public class CreerUneSceance extends JFrame {
 	private JSpinner jSpinnerRep2;
 	private JTextField jTextField3;
 	private JSpinner jSpinnerRep3;
+	private ImageIcon img = new ImageIcon("img/icon.png");
 	private static final String PREFERRED_LOOK_AND_FEEL = "javax.swing.plaf.metal.MetalLookAndFeel";
 	public CreerUneSceance() {
 		initComponents();
@@ -44,7 +48,11 @@ public class CreerUneSceance extends JFrame {
 	}
 
 	private void initComponents() {
+		setLayout(new BorderLayout());
+		setContentPane(new JLabel(new ImageIcon("img/bg_seance.jpg")));
 		setLayout(new GroupLayout());
+		setIconImage(img.getImage());
+		setTitle("GoForm");
 		add(getJLabel1(), new Constraints(new Leading(25, 10, 10), new Leading(107, 12, 12)));
 		add(getJTextFieldNomSceance(), new Constraints(new Leading(164, 269, 10, 10), new Leading(105, 10, 10)));
 		add(getJNbExo(), new Constraints(new Leading(23, 10, 10), new Leading(192, 12, 12)));
@@ -58,7 +66,7 @@ public class CreerUneSceance extends JFrame {
 		add(getJSpinnerRep2(), new Constraints(new Leading(291, 50, 12, 12), new Leading(347, 12, 12)));
 		add(getJTextField3(), new Constraints(new Leading(44, 88, 12, 12), new Leading(406, 10, 10)));
 		add(getJSpinnerRep3(), new Constraints(new Leading(291, 50, 12, 12), new Leading(406, 12, 12)));
-		add(getJLabel0(), new Constraints(new Leading(95, 278, 10, 10), new Leading(21, 10, 10)));
+		add(getJLabel0(), new Constraints(new Leading(125, 278, 10, 10), new Leading(21, 10, 10)));
 		setSize(500, 700);
 	}
 
@@ -168,7 +176,7 @@ public class CreerUneSceance extends JFrame {
 	private JLabel getJLabel0() {
 		if (jTitre == null) {
 			jTitre = new JLabel();
-			jTitre.setText("<html><h2>Créez votre scéance d'enfer</h2></html>");
+			jTitre.setText("<html><h2 style=\"color: white;\">Créez votre scéance d'enfer</h2></html>");
 		}
 		return jTitre;
 	}
