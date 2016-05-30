@@ -23,7 +23,7 @@ class GoForm {
 		   System.out.println("Entrez vos identifiants :");
 		   String mail = sc.nextLine();
 		   String mdp = sc.nextLine();
-		   Connexion connexion = new Connexion(mail, mdp);
+		   Connexion connexion = new Connexion();
 		   connexion.toString();
 		   
 		   System.out.println("--------------------- PROFIL ---------------------");

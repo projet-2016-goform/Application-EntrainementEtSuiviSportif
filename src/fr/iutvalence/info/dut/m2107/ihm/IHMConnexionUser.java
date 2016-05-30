@@ -1,4 +1,5 @@
 package fr.iutvalence.info.dut.m2107.ihm;
+import fr.iutvalence.info.dut.m2107.Connexion;
 import fr.iutvalence.info.dut.m2107.ihm.IHMInscriptionUser1;
 import fr.iutvalence.info.dut.m2107.ihm.IHMWindow;
 
@@ -36,10 +37,10 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 	Font f;
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
-	static JTextField jTextFieldMail;
+	public static JTextField jTextFieldMail;
 	private JButton bConnexion;
 	private JLabel jMdp;
-	private JPasswordField jPasswordField0;
+	public static JPasswordField jPasswordField0;
 	private JButton bInscription;
 	private JLabel jLabel2;
 	private JButton bQuitter;
@@ -73,51 +74,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		
 		bConnexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
-					try {
-						try {
-							Class.forName("org.postgresql.Driver");
-						} catch (ClassNotFoundException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-				        System.out.println("Driver O.K.");
-
-				        String url = "jdbc:postgresql://gigondas:5432/battonh";
-					    String user = "battonh";
-					    String passwd = "battonh";
-					    Connection connexion = DriverManager.getConnection(url, user, passwd);
-				        
-				        Statement stmt = connexion.createStatement();
-				        ResultSet rs = stmt.executeQuery("SELECT mail, mdp FROM utilisateur");
-				        while (rs.next()) {
-				        	String ln = rs.getString("mail");
-				        	String email = jTextFieldMail.getText();
-				        	
-				        	String fn = rs.getString("mdp");
-				        	String mdp = new String(jPasswordField0.getPassword());
-				        		        	
-				        	if (ln.equals(email)&& fn.equals(mdp))
-				        	{
-				        		IHMWindow.main(null);
-				        		dispose();
-				        	}
-				        	else {
-				        		System.out.println("erreur coordonnées");
-								Component frame = null;
-								JOptionPane.showMessageDialog(frame ,
-									    "Il semblerait que vos identifiants ne soient pas correct. Veuillez réessayer :",
-									    "Erreur de connexion",
-									    JOptionPane.ERROR_MESSAGE);
-							}
-				       }
-				        
-				        
-					}
-					catch(SQLException e1) 
-					{
-						
-						
-					}
+					Connexion newCo = new Connexion();
 					
 			}	
 		});
@@ -159,7 +116,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		return bInscription;
 	}
 
-	private JPasswordField getJPasswordField0() {
+	public JPasswordField getJPasswordField0() {
 		if (jPasswordField0 == null) {
 			jPasswordField0 = new JPasswordField();
 			jPasswordField0.setText("pers1");
@@ -186,7 +143,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		return bConnexion;
 	}
 
-	private JTextField getJTextField0() {
+	public JTextField getJTextField0() {
 		if (jTextFieldMail == null) {
 			jTextFieldMail = new JTextField();
 			jTextFieldMail.setText("pers1@test.test");
