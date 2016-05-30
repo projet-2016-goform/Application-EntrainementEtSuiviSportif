@@ -4,24 +4,35 @@ import java.awt.List;
 import java.text.DateFormat;
 import java.util.*;
 
-/**
- * Classe permettant de lancer ses entrainement ou d'en créer
+/** 
+ * Classe permettant de lancer ses entrainements ou d'en créer
  */
 public class Entrainement {
 
-	/**
+	/** 
 	 * Type d'entrainement (force, endurance, etc.)
 	 */
 	private TypeEntrainement type;
-	/**
-	 * Nom de l'entrainement
+	
+	/** 
+	 * Nom de l'entrainement 
 	 */
 	private String libelle;
+	
 	/**
 	 * Date de l'entrainement
 	 */
 	private Date date;
+	
+	/** 
+	 *Liste de séances  
+	 */
 	private ArrayList<Seance> seances;
+	
+	/** 
+	 * Methode pour ajouter une séance d'exercices
+	 * @return la séance 
+	 */
 	
 	public ArrayList<Seance> createSeances()
 	{

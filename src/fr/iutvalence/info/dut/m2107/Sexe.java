@@ -7,14 +7,23 @@ public enum Sexe {
 	HOMME("FEMME"), 
 	FEMME("HOMME");
 	
+	/** Le sexe */ 
 	private final String sexe;
 	
+	/** 
+	 * Constructeur d'un sexe 
+	 * @param sexe
+	 */
 	private Sexe(String sexe)
 	{
 		this.sexe = sexe;
 	}
 	
-	@Override
+	
+	/**
+	 * retourne le mot de passe
+	 * @return Le mot de passe correspondant, sous forme d'une chaine de caractères.
+	 */
 	public String toString() {
 		return sexe;
 	}

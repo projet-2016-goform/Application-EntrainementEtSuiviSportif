@@ -1,5 +1,7 @@
 package fr.iutvalence.info.dut.m2107.test;
-
+/**
+ * Classe de test d'une connexion
+ */
 import fr.iutvalence.info.dut.m2107.Connexion;
 import junit.framework.*;
 
@@ -31,7 +33,7 @@ public class testConnexion extends TestCase{
 			assertEquals(Connexion.estUneConnexion("moi@couc45ou.com","atZ0"),false);
 			
 			/**
-			 * Ceci est le test qui fonctionne avec les deux entrées valide
+			 * test connexion valide
 			 */
 			assertEquals(Connexion.estUneConnexion("moi@couc45ou.com","Motdepasse"),true);
 

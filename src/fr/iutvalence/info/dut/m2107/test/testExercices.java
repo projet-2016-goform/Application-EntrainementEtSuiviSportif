@@ -2,6 +2,9 @@ package fr.iutvalence.info.dut.m2107.test;
 
 import fr.iutvalence.info.dut.m2107.Exercices;
 import junit.framework.*;
+/**
+ * test de estExerice d'un exerice
+ */
 public class testExercices extends TestCase {
 
 	public testExercices(String name)
@@ -9,15 +12,26 @@ public class testExercices extends TestCase {
 		super(name);
 	}
 
+	/**
+	 * methode de test
+	 */
 	public void estExercice(){
-		/** test avec un caractere invalide dans une chaine */
+		/** 
+		 * Premier test sur un caractère non valide ou chiffre sur le nom de l'exercice
+		 */
 		assertEquals(Exercices.estUnExercice("Pompe@2",5),false);
-		/** Un nombre d'exercice qui n'est pas strictement supérieur a 1 **/
+		assertEquals(Exercices.estUnExercice("2Pompe",5),false);
 		
+		/**
+		 *  Deuxième test sur un nombre non valide de répétition 
+		 */
 		assertEquals(Exercices.estUnExercice("PompeV1",0),false);
-		/** Un nombre d'exercices négatif qui n'est pas un entier valide*/ 
 		assertEquals(Exercices.estUnExercice("Pompe", -1),false);
-		/** Une entrée d'exercice valide */
+		assertEquals(Exercices.estUnExercice("Pompe", 251),false);
+	
+		/**
+		 *  test exercice valide
+		 */
 		assertEquals(Exercices.estUnExercice("PompeV1",5),true);
 	}
 	public static Test suite() 
@@ -25,5 +39,5 @@ public class testExercices extends TestCase {
 		TestSuite suite= new TestSuite();
 		suite.addTest(new testExercices("estExercice"));
 		return suite;
-		}
+	}
 }

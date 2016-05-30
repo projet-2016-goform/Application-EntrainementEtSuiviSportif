@@ -2,13 +2,27 @@ package fr.iutvalence.info.dut.m2107;
 
 /**
  * Statut permettent de supprimer ou créer un entrainement
+ * Un admin qui hérite de utilisateur qui aura un accès plus avancé 
  */
 public class Admin extends Utilisateur {
+
 	/**
-	 * Droit de l'administrateur pour le différentier d'un utilisateur
+	 * droits : true si on peu supprimer  ou créer un entrainement  
 	 */
 	private boolean droits;
 
+	/**
+	 * constructeur d'un admin qui est redéfinie par un droit
+	 * @param prenom
+	 * @param nom
+	 * @param sexe
+	 * @param mail
+	 * @param mdp
+	 * @param age
+	 * @param taille
+	 * @param poids
+	 * @param droits
+	 */
 	public Admin(String prenom, String nom, Sexe sexe, String mail, String mdp, int age, int taille, int poids, boolean droits) 
 	{
 		super(prenom, nom, sexe, mail, mdp, age, taille, poids);

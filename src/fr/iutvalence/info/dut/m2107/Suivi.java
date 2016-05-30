@@ -5,21 +5,47 @@ import java.util.*;
  */
 public class Suivi {
 	
+	/** 
+	 *une constante d'un nombre d'exercice max
+	 */
 	public static final int NB_EXERCICES_MAX = 250;
 
+	/**
+	 * la date
+	 */ 
 	private Date date;
+	
+	/**
+	 * la largeur
+	 */ 
 	private int width;
+	
+	/**
+	 * la taille 
+	 */
 	private int height;
 	
+	/**
+	 * Un tableau double pour un suivi 
+	 */
 	private Suivi[][] suivis;
+	
 	private Seance seance = new SeanceTest();
 			
-
+	 /**
+	  * Constructeur d'un suivi avec une date 
+	  * @param date
+	  */
 	public Suivi(Date date) {
 		// Affichage de la liste des exercice fait dans la journée
 		System.out.println(date);
 	}
 
+	/**
+	 * constructeur d'un suivi avec une date de debut et de fin
+	 * @param date
+	 * @param dateFin
+	 */
 	public Suivi(Date date, Date dateFin) {
 		System.out.println("------ Suivis du jour ------");
 		//Affichage d'un tableau (eventuellement d'un graphique) des exercices faits sur un intervalle donné
@@ -36,10 +62,7 @@ public class Suivi {
 			}
 		}
 		
-		//On ajoute les données qu'il y a dans la liste de séance
-		
-		
-		
+		//On ajoute les données qu'il y a dans la liste de séance	
 	}
 	
 	@Override

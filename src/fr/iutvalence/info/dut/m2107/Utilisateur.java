@@ -43,7 +43,17 @@ public class Utilisateur implements Profil {
 	private Sexe sexe;
 	
 	
-
+	/**
+	 * Constructeur d'un utilisteur
+	 * @param prenom
+	 * @param nom
+	 * @param sexe
+	 * @param mail
+	 * @param mdp
+	 * @param age
+	 * @param taille
+	 * @param poids
+	 */
 	public Utilisateur(String prenom, String nom, Sexe sexe, String mail, String mdp, int age, int taille, int poids) {
 		this.prenom = prenom;
 		this.nom = nom;
@@ -56,44 +66,81 @@ public class Utilisateur implements Profil {
 		this.imc = this.poids / Math.pow(this.taille, 2);
 	}
 	
+	/**
+	 * retourne le prenom 
+	 * @return le prenom correspondant, sous forme d'une chaine de caractères.
+	 */
 	public String getPrenom() {
 		return this.prenom;
 	}
 
+	/**
+	 * retourne le nom
+	 * @return le nom correspondant, sous forme d'une chaine de caractères.
+	 */
 	public String getNom() {
 		return this.nom;
 	}
 	
+	/**
+	 * retourne le sexe
+	 * @return le sexe correspondant, sous forme d'une chaine de caractères (Un enum).
+	 */
 	public Sexe getSexe() {
 		return this.sexe;
 	}
-
+	
+	/**
+	 * retourne le mail
+	 * @return le mail correspondant, sous forme d'une chaine de caractères.
+	 */
 	public String getMail() {
 		return this.mail;
 	}
 
+	/**
+	 * retourne le mot de passe
+	 * @return le mot de passe  correspondant, sous forme d'une chaine de caractères.
+	 */
 	public String getMdp() {
 		return this.mdp;
 	}
 
+	/**
+	 * retourne l'age
+	 * @return l'age  correspondant, sous forme d'un entier.
+	 */
 	public int getAge() {
 		return this.age;
 	}
 	
+	/**
+	 * retourne la taille 
+	 * @return la taille correspondant, sous forme d'un entier.
+	 */
 	public int getTaille() {
 		return this.taille;
 	}
 	
+	/**
+	 * retourne le poids
+	 * @return le poids  correspondant, sous forme d'un entier.
+	 */
 	public int getPoids() {
 		return this.poids;
 	}
 
+	/**
+	 * retourne l'imc 
+	 * @return l'imc correspondant, sous forme d'un nombre réel double.
+	 */
 	public double getImc() {
 		return this.imc;
 	}
 
 	/**
-	 * Deconnexion
+	 * methode permettant une deconnexion avec le nom
+	 * @param nom
 	 */
 	public void deconnexion(String nom){
 		
@@ -126,7 +173,11 @@ public class Utilisateur implements Profil {
 		// TODO - implement Utilisateur.abandonnerEntrainement
 		throw new UnsupportedOperationException();
 	}
-	@Override
+	
+	/**
+	 * retourne le profil
+	 * @return le profil sous forme d'une chaine de caractère 
+	 */
 	public String toString() {
 		return "Votre profil : "
 				+ 
