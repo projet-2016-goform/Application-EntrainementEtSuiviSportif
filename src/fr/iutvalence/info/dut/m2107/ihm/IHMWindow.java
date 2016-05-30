@@ -1,6 +1,8 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -30,7 +32,7 @@ import org.dyno.visual.swing.layouts.Trailing;
 
 import java.sql.*;
 
-public class IHMWindow extends JFrame {
+public class IHMWindow extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane jTabbOnglets;
@@ -77,6 +79,13 @@ public class IHMWindow extends JFrame {
 		add(getjTabbOnglets(), new Constraints(new Bilateral(0, 0, 0), new Bilateral(0, 0, 50)));
 		setIconImage(img.getImage());
 		setSize(500, 700);
+	
+	bCreerSeance.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			CreerUneSceance.main(null);
+			
+		}
+	});
 	}
 	private JLabel getJLabel1() {
 		if (jLabel1 == null) {
@@ -285,8 +294,9 @@ public class IHMWindow extends JFrame {
 		if (jSeanceUser == null) {
 			jSeanceUser = new JPanel();
 			jSeanceUser.setVisible(false);
-			jSeanceUser.setLayout(new GroupLayout());
+			jSeanceUser.getLayout();
 			jSeanceUser.add(getJScrollPane1(), new Constraints(new Leading(117, 100, 10, 10), new Leading(36, 135, 10, 10)));
+			jSeanceUser.add(getbCreerSeance());
 		}
 		return jSeanceUser;
 	}
@@ -499,6 +509,12 @@ public class IHMWindow extends JFrame {
 				
 			}
 		});
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
