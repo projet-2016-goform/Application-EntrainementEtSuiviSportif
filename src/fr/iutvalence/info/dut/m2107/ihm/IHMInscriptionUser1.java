@@ -36,7 +36,7 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 	private JButton bAnnuler;
 	private JButton bSuivant;
 	private ImageIcon img = new ImageIcon("img/icon.png");
-	Color red = Color.decode("#c86560");
+	Color red = Color.decode("#e74c3c");
 	private JLabel jLabel2;
 	private JLabel jPrenom;
 	static JTextField jTextFieldPrenom;
@@ -243,7 +243,7 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton5() {
 		if (jRadioButton5 == null) {
 			jRadioButton5 = new JRadioButton();
-			jRadioButton5.setBackground(new Color(200, 101, 96));
+			jRadioButton5.setBackground(red);
 			jRadioButton5.setSelected(true);
 			jRadioButton5.setText("Explosivité");
 		}
@@ -253,7 +253,7 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton4() {
 		if (jRadioButton4 == null) {
 			jRadioButton4 = new JRadioButton();
-			jRadioButton4.setBackground(new Color(200, 101, 96));
+			jRadioButton4.setBackground(red);
 			jRadioButton4.setSelected(true);
 			jRadioButton4.setText("Endurence");
 		}
@@ -263,7 +263,7 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton3() {
 		if (jRadioButton3 == null) {
 			jRadioButton3 = new JRadioButton();
-			jRadioButton3.setBackground(new Color(200, 101, 96));
+			jRadioButton3.setBackground(red);
 			jRadioButton3.setSelected(true);
 			jRadioButton3.setText("Fitnesse");
 		}
@@ -283,7 +283,7 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton2() {
 		if (jRadioButton2 == null) {
 			jRadioButton2 = new JRadioButton();
-			jRadioButton2.setBackground(new Color(200, 101, 96));
+			jRadioButton2.setBackground(red);
 			jRadioButton2.setSelected(true);
 			jRadioButton2.setText("Une fois par mois");
 		}
@@ -293,7 +293,7 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton1() {
 		if (jRadioButton1 == null) {
 			jRadioButton1 = new JRadioButton();
-			jRadioButton1.setBackground(new Color(200, 101, 96));
+			jRadioButton1.setBackground(red);
 			jRadioButton1.setSelected(true);
 			jRadioButton1.setText("Une fois par semaine");
 		}
@@ -303,7 +303,7 @@ public class IHMInscriptionUser1 extends JFrame implements ActionListener  {
 	private JRadioButton getJRadioButton0() {
 		if (jRadioButton0 == null) {
 			jRadioButton0 = new JRadioButton();
-			jRadioButton0.setBackground(new Color(200, 101, 96));
+			jRadioButton0.setBackground(red);
 			jRadioButton0.setSelected(true);
 			jRadioButton0.setText("Plusieurs fois par semaine");
 		}
