@@ -15,6 +15,9 @@ public class IHMGoform {
 	public static void main(String[] args) {
 		IHMConnexionUser cnxUser = new IHMConnexionUser();
 		cnxUser.setVisible(true);
+		cnxUser.setLocationRelativeTo(null);;
+		cnxUser.setSize(310, 390);
+		
 	}
 
 }
