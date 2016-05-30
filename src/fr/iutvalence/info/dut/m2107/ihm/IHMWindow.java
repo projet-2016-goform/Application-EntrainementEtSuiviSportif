@@ -247,13 +247,14 @@ public class IHMWindow extends JFrame {
 			System.out.println(email);
 	        try 
 			{
-			      Class.forName("com.mysql.jdbc.Driver");
+	        	Class.forName("org.postgresql.Driver");
 			      System.out.println("Driver O.K.");
 
-			      String url = "jdbc:mysql://localhost/goform";
-			      String user = "root";
-			      String passwd = "";
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
 			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
 			      
 			      System.out.println("Connexion effective !");  
 			      

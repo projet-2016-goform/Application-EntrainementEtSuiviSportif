@@ -105,20 +105,22 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 				String mdp = IHMInscriptionUser1.jPasswordField0.getText();
 				try 
 				{
-				      Class.forName("com.mysql.jdbc.Driver");
+					  Class.forName("org.postgresql.Driver");
 				      System.out.println("Driver O.K.");
 
-				      String url = "jdbc:mysql://localhost/goform";
-				      String user = "root";
-				      String passwd = "";
+				      String url = "jdbc:postgresql://gigondas:5432/battonh";
+				      String user = "battonh";
+				      String passwd = "battonh";
 				      Connection connexion = DriverManager.getConnection(url, user, passwd);
 				      
 				      System.out.println("Connexion effective !");  
 				      
 				      Statement instruction = connexion.createStatement();
 				        
-				      instruction.executeUpdate("INSERT INTO  `goform`.`utilisateur` (`nom` ,`prenom` ,`mail` ,`mdp` ,`sexe` ,`age` ,`imc` ,`taille` ,`poids`)"
-				      		+ "VALUES ('+"+nom+"',  '"+prenom+"',  '"+mail+"',  '"+mdp+"',  '"+sexe+"',  '"+age+"',  '"+imc+"',  '"+taille+"',  '"+poids+"');");
+				      instruction.executeUpdate(""
+				      		+ ""
+				      		+ "INSERT INTO  utilisateur ( nom  , prenom  , mail  , mdp  , sexe  , imc  , taille  , poids , age)"
+				      		+ "VALUES ('+"+nom+"',  '"+prenom+"',  '"+mail+"',  '"+mdp+"',  '"+sexe+"',  '"+imc+"',  '"+taille+"',  '"+poids+"', '"+age+"');");
 				      
 				      System.out.println("Informations enregistrées: Taille"+taille+"et Poids :"+poids);
 				      
