@@ -6,7 +6,6 @@ import java.awt.Font;
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JInternalFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -14,7 +13,6 @@ import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
-import javax.swing.border.SoftBevelBorder;
 import javax.swing.border.TitledBorder;
 
 import org.dyno.visual.swing.layouts.Constraints;
@@ -29,13 +27,10 @@ public class IHMSceance extends JFrame {
 	private JLabel jLabel0;
 	//private static JPanel jPanelAffichage;
 	private JButton jButton0;
-	private JTextArea jTextArea0;
-	private JScrollPane jScrollPane0;
 	private JTextArea jTextArea1;
 	private JScrollPane jScrollPane1;
 	private JButton jButton1;
-	private JInternalFrame jInternalFrame0;
-	private JPanel jPanel0;
+	static JPanel jPanel0;
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	public IHMSceance() {
 		initComponents();
@@ -61,15 +56,7 @@ public class IHMSceance extends JFrame {
 		return jPanel0;
 	}
 
-	private JInternalFrame getJInternalFrame0() {
-		if (jInternalFrame0 == null) {
-			jInternalFrame0 = new JInternalFrame();
-			jInternalFrame0.setVisible(true);
-			jInternalFrame0.setOpaque(true);
-			jInternalFrame0.setLayout(new GroupLayout());
-		}
-		return jInternalFrame0;
-	}
+	
 
 	private JButton getJButton1() {
 		if (jButton1 == null) {
@@ -87,72 +74,25 @@ public class IHMSceance extends JFrame {
 		return jScrollPane1;
 	}
 
-	private JTextArea getJTextArea1() {
-		if (jTextArea1 == null) {
-			jTextArea1 = new JTextArea();
-			jTextArea1.setAutoscrolls(true);
-		}
-		return jTextArea1;
-	}
-
-	private JScrollPane getJScrollPane0() {
-		if (jScrollPane0 == null) {
-			jScrollPane0 = new JScrollPane();
-			jScrollPane0.setBorder(BorderFactory.createEmptyBorder(0, 0, 0, 0));
-			jScrollPane0.setViewportView(getJTextArea0());
-		}
-		return jScrollPane0;
-	}
-
-	private JTextArea getJTextArea0() {
-		if (jTextArea0 == null) {
-			jTextArea0 = new JTextArea();
-			jTextArea0.setText("jTextArea0");
-			jTextArea0.setAutoscrolls(true);
-			jTextArea0.setBorder(new SoftBevelBorder(BevelBorder.LOWERED, null, null, null, null));
-		}
-		return jTextArea0;
-	}
-
 	
 
-	
 	
 //	public static JPanel getPanelAffichage() {
 //		
-//		try {
-//			
-//			try {
-//				Class.forName("org.postgresql.Driver");
-//			} catch (ClassNotFoundException e1) {
-//				// TODO Auto-generated catch block
-//				e1.printStackTrace();
-//			}
-//	        System.out.println("Driver O.K.");
-//
-//	        String url = "jdbc:postgresql://gigondas:5432/battonh";
-//		    String user = "battonh";
-//		    String passwd = "battonh";
-//		    Connection connexion = DriverManager.getConnection(url, user, passwd);
-//	        
-//	        java.sql.Statement instruction = connexion.createStatement();
-//			ResultSet resultatcnx = instruction.executeQuery("Select * FROM exercice WHERE id_seance = 3");	
-//			jPanelAffichage = new JPanel();
-//	      	while (resultatcnx.next()) {
-//	      		JLabel intituleNom = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">"+resultatcnx.getString("libelle_exercice")+"</p></html>");
-//
-//				jPanelAffichage.add(intituleNom);
-//	      	}
-//	        
-//		}
-//		catch(SQLException e2) 
-//		{
-//		
-//			System.out.println("Erreur");
-//			e2.printStackTrace();
-//		}
+
 //		return jPanelAffichage;
 //	}
+
+	private JTextArea getJTextArea1() {
+		if (jTextArea1 == null) {
+			jTextArea1 = new JTextArea();
+			jTextArea1.setBackground(new Color(214, 217, 223));
+			jTextArea1.setEditable(false);
+			jTextArea1.setAutoscrolls(true);
+			jTextArea1.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+		}
+		return jTextArea1;
+	}
 
 	private JButton getJButton0() {
 		if (jButton0 == null) {

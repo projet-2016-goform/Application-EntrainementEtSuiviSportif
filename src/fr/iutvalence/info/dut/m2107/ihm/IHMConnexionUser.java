@@ -75,6 +75,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		bConnexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {	
 					Connexion newCo = new Connexion();
+					dispose();
 					
 			}	
 		});

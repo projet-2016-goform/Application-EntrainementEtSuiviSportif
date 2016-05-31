@@ -103,7 +103,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 	jList1.addListSelectionListener( new ListSelectionListener() {
 		public void valueChanged(ListSelectionEvent e) {
 			
-			add(IHMSceance.getPanelAffichage(), jList1.getSelectedValue());
+			//add(IHMSceance.getPanelAffichage(), jList1.getSelectedValue());
 			//add(IHMSceance.getLabelAffichage().setText((String)jList1.getSelectedValue()));
 
 		}
