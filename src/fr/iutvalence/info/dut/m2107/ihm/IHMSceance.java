@@ -39,10 +39,12 @@ public class IHMSceance extends JFrame {
 	private JLabel getJLabel0() {
 		if (jLabel0 == null) {
 			jLabel0 = new JLabel();
-			jLabel0.setText("Id de la scéance");
+			jLabel0.setText("Vous avez choisi la séance Test1");
 		}
 		return jLabel0;
 	}
+	
+	
 
 	private static void installLnF() {
 		try {

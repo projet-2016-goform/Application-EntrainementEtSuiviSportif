@@ -1,7 +1,11 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 import fr.iutvalence.info.dut.m2107.bdd.*;
+
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
@@ -39,7 +43,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JTabbedPane jTabbOnglets;
 	private JPanel jAccueil;
 	private JPanel jProfil;
-	private JPanel jEntrainement;
+	public JPanel jEntrainement;
 	private JPanel jSuivi;
 	private JPanel jReglages;
 	private JPanel jApropos;
@@ -69,7 +73,8 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JLabel jLabel1;
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	private ImageIcon img = new ImageIcon("img/icon.png");
-	Color red = Color.decode("#c86650");
+	Color red = Color.decode("#E84C3D");
+	Color blue = Color.decode("#2D3E50");
 	
 	public IHMWindow() {
 		initComponents();
@@ -262,7 +267,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
-			jButton1.setText("Appliquer");
+			jButton1.setText("Changer Prenom");
 			try 
 			{
 	        	  Class.forName("org.postgresql.Driver");
@@ -274,10 +279,13 @@ public class IHMWindow extends JFrame implements ActionListener {
 			      Connection connexion = DriverManager.getConnection(url, user, passwd);
 			      
 			      System.out.println("Connexion effective !");  
+			      
 			      String prenom = jTextField1.getText();
+			      System.out.println(prenom);
 			      String email = IHMConnexionUser.jTextFieldMail.getText();
+			      
 			      Statement instruction = connexion.createStatement();	      
-			      int resultatcnx = instruction.executeUpdate("UPDATE utilisateur "
+			      instruction.executeUpdate("UPDATE utilisateur "
 			      		+ "SET prenom='"+prenom+"'"
 			      		+ "WHERE mail = '"+email+"';");	
 				
@@ -446,15 +454,41 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JList getJList0() {
 		
 			jList0 = new JList();
-			DefaultListModel listModel = new DefaultListModel();
-			listModel.addElement("Séance1");
-			listModel.addElement("Séance2");
-			listModel.addElement("Séance2");
-			listModel.addElement("séance3");
-			listModel.addElement("Séance4");
-			listModel.addElement("Séance de lolololololollo");
-			jList0.setModel(listModel);
-		
+			
+			try 
+			{
+	        	Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      
+			      System.out.println("Connexion effective !");  
+			      
+			      Statement instruction = connexion.createStatement();
+			        
+			      
+			      ResultSet resultatcnx = instruction.executeQuery("Select libelle_seance FROM seance WHERE seance_g = TRUE");	
+				  System.out.println("Libelle :");
+
+                  DefaultListModel dlm=new DefaultListModel();
+		    	  while(resultatcnx.next())
+                  { 
+                      dlm.addElement(resultatcnx.getString("libelle_seance"));
+                  }
+                  jList0.setModel(dlm);
+
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
+			
+	
 		return jList0;
 	}
 
@@ -482,6 +516,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 			jSeanceUser.getLayout();
 			jSeanceUser.add(getJScrollPane1(), new Constraints(new Leading(117, 100, 10, 10), new Leading(36, 135, 10, 10)));
 			jSeanceUser.add(getbCreerSeance());
+			jSeanceUser.setBackground(red);
 		}
 		return jSeanceUser;
 	}
@@ -491,7 +526,8 @@ public class IHMWindow extends JFrame implements ActionListener {
 			jSeanceGoform = new JPanel();
 			jSeanceGoform.setLayout(new GroupLayout());
 			jSeanceGoform.add(getJScrollPane0(), new Constraints(new Leading(32, 111, 10, 10), new Leading(32, 82, 10, 10)));
-		
+			jSeanceGoform.setBackground(red);
+			
 		return jSeanceGoform;
 	}
 
@@ -563,6 +599,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 			jReglages.add(getJButton5(), new Constraints(new Leading(355, 88, 12, 12), new Leading(333, 12, 12)));
 			jReglages.add(getJLabel0(), new Constraints(new Leading(15, 12, 12), new Leading(14, 12, 12)));
 			jReglages.add(getJLabel1(), new Constraints(new Leading(15, 12, 12), new Leading(390, 10, 10)));
+			jReglages.setBackground(red);
 			
 			
 			
@@ -575,6 +612,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 		
 			jSuivi = new JPanel();
 			jSuivi.getLayout();
+			jSuivi.setBackground(red);
 			
 			Connection connexion;
 			try {
@@ -601,14 +639,14 @@ public class IHMWindow extends JFrame implements ActionListener {
 			jEntrainement = new JPanel();
 			jEntrainement.setLayout(new GroupLayout());
 			jEntrainement.add(getJTabbSeance(), new Constraints(new Leading(0, 500, 12, 12), new Leading(0, 655, 12, 12)));
-		
+			
 		return jEntrainement;
 	}
 
 	private JPanel getjProfil() {
 		
 			jProfil = new JPanel();
-			jProfil.setBackground(red);
+			jProfil.setBackground(blue);
 			jProfil.getLayout();
 	        String email = IHMConnexionUser.jTextFieldMail.getText();
 			System.out.println(email);
@@ -631,13 +669,13 @@ public class IHMWindow extends JFrame implements ActionListener {
 			      ResultSet resultatcnx = instruction.executeQuery("Select * FROM utilisateur WHERE mail = '"+email+"'");	
 					System.out.println("test");
 			      	while (resultatcnx.next()) {
-			        		JLabel id = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Nom :"+resultatcnx.getString("nom")+"</p><br>"
-			        				+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Prénom : "+resultatcnx.getString("prenom")+"</p><br>"
-					        		+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">E-mail : "+resultatcnx.getString("mail")+"</p><br>"
-			        				+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Age : "+resultatcnx.getString("age")+"</p><br>"
-			        				+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Taille : "+resultatcnx.getString("taille")+"</p><br>"
-					        		+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">Poids : "+resultatcnx.getString("poids")+"</p><br>"
-			        				+ "<p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">IMC : "+resultatcnx.getString("imc")+"</p><br></html>");
+			        		JLabel id = new JLabel("<html><p style=\"width: 350px; color: white; background-color: #E84C3D; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Nom :"+resultatcnx.getString("nom")+"</p><br>"
+			        				+ "<p style=\"width: 350px; color: white; background-color: #E84C3D; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Prénom : "+resultatcnx.getString("prenom")+"</p><br>"
+					        		+ "<p style=\"width: 350px; color: white; background-color: #E84C3D; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">E-mail : "+resultatcnx.getString("mail")+"</p><br>"
+			        				+ "<p style=\"width: 350px; color: white; background-color: #E84C3D; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Age : "+resultatcnx.getString("age")+"</p><br>"
+			        				+ "<p style=\"width: 350px; color: white; background-color: #E84C3D; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Taille : "+resultatcnx.getString("taille")+"</p><br>"
+					        		+ "<p style=\"width: 350px; color: white; background-color: #E84C3D; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Poids : "+resultatcnx.getString("poids")+"</p><br>"
+			        				+ "<p style=\"width: 350px; color: white; background-color: #E84C3D; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">IMC : "+resultatcnx.getString("imc")+"</p><br></html>");
 
 							jProfil.add(id);
 			        		
@@ -661,6 +699,9 @@ public class IHMWindow extends JFrame implements ActionListener {
 		
 			jApropos = new JPanel();
 			jApropos.setLayout(new GroupLayout());
+			jApropos.setBackground(red);
+			
+			
 		
 		return jApropos;
 	}
@@ -688,6 +729,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				Color blue = Color.decode("#2D3E50");
 				IHMWindow fwindow = new IHMWindow();
 				fwindow.setDefaultCloseOperation(IHMWindow.EXIT_ON_CLOSE);
 				fwindow.setTitle("IHMWindow");
@@ -695,7 +737,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 				fwindow.pack();
 				fwindow.setLocationRelativeTo(null);
 				fwindow.setVisible(true);
-				
+				fwindow.setBackground(blue);	
 			}
 		});
 	}

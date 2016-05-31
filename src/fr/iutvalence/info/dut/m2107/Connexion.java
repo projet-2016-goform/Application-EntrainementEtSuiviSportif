@@ -65,12 +65,12 @@ public class Connexion {
         		
         	}
         	else {
-        		System.out.println("erreur coordonnées");
-				Component frame = null;
-				JOptionPane.showMessageDialog(frame ,
-					    "Il semblerait que vos identifiants ne soient pas correct. Veuillez réessayer :",
-					    "Erreur de connexion",
-					    JOptionPane.ERROR_MESSAGE);
+//        		System.out.println("erreur coordonnées");
+//				Component frame = null;
+//				JOptionPane.showMessageDialog(frame ,
+//					    "Il semblerait que vos identifiants ne soient pas correct. Veuillez réessayer :",
+//					    "Erreur de connexion",
+//					    JOptionPane.ERROR_MESSAGE);
 			}
         }
         

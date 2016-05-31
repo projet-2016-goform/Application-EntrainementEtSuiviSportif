@@ -92,7 +92,7 @@ public class CreerUneSceance extends JFrame {
 				      System.out.println("Connexion effective !");  
 				      
 				      Statement instruction = connexion.createStatement();
-				      instruction.executeUpdate("INSERT INTO seance(libelle_seance, nb_exercices) VALUES ('"+nom_seance+"', "+nb_exos+");");
+				      instruction.executeUpdate("INSERT INTO seance(libelle_seance, nb_exercices, seance_g) VALUES ('"+nom_seance+"', "+nb_exos+", FALSE);");
 				      
 				      Statement test = connexion.createStatement();
 				      ResultSet id_seance = test.executeQuery("SELECT id_seance FROM seance WHERE libelle_seance = '"+nom_seance+"'");
