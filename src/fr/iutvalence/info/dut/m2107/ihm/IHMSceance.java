@@ -27,7 +27,7 @@ public class IHMSceance extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
-	private JPanel jPanelAffichage;
+	private static JPanel jPanelAffichage;
 	private JButton jButton0;
 	private ImageIcon img = new ImageIcon("img/icon.png");
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
@@ -60,7 +60,7 @@ public class IHMSceance extends JFrame {
 		return jLabel0;
 	}
 	
-	private JPanel getPanelAffichage() {
+	public static JPanel getPanelAffichage() {
 		
 		try {
 			
@@ -78,7 +78,7 @@ public class IHMSceance extends JFrame {
 		    Connection connexion = DriverManager.getConnection(url, user, passwd);
 	        
 	        java.sql.Statement instruction = connexion.createStatement();
-			ResultSet resultatcnx = instruction.executeQuery("Select * FROM exercice WHERE id_seance = 2");	
+			ResultSet resultatcnx = instruction.executeQuery("Select * FROM exercice WHERE id_seance = 3");	
 			jPanelAffichage = new JPanel();
 	      	while (resultatcnx.next()) {
 	      		JLabel intituleNom = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">"+resultatcnx.getString("libelle_exercice")+"</p></html>");

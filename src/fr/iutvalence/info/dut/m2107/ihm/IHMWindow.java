@@ -28,6 +28,10 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
+import javax.swing.event.ListDataEvent;
+import javax.swing.event.ListDataListener;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 import org.dyno.visual.swing.layouts.Bilateral;
 import org.dyno.visual.swing.layouts.Constraints;
@@ -50,9 +54,11 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JPanel jSeanceGoform;
 	private JPanel jSeanceUser;
 	private JTabbedPane jTabbSeance;
-	private JList jList0;
+	@SuppressWarnings("rawtypes")
+	public JList jList0;
 	private JScrollPane jScrollPane0;
-	private JList jList1;
+	@SuppressWarnings("rawtypes")
+	public JList jList1;
 	private JScrollPane jScrollPane1;
 	private JButton bQuitter;
 	private JButton bCreerSeance;
@@ -92,6 +98,18 @@ public class IHMWindow extends JFrame implements ActionListener {
 			
 		}
 	});
+	
+	
+	jList1.addListSelectionListener( new ListSelectionListener() {
+		public void valueChanged(ListSelectionEvent e) {
+			
+			add(IHMSceance.getPanelAffichage(), jList1.getSelectedValue());
+			//add(IHMSceance.getLabelAffichage().setText((String)jList1.getSelectedValue()));
+
+		}
+	});	
+	
+	
 	}
 	private JLabel getJLabel1() {
 		if (jLabel1 == null) {
@@ -126,6 +144,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jButton5;
 	}
 
+	@SuppressWarnings("unused")
 	private JTextField getJTextField5() {
 		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
@@ -422,26 +441,52 @@ public class IHMWindow extends JFrame implements ActionListener {
 		}
 		return jScrollPane1;
 	}
+	
+	
+	
+	public JList getJList1() {
+		jList1 = new JList();
+		
+		try 
+		{
+        	Class.forName("org.postgresql.Driver");
+		      System.out.println("Driver O.K.");
 
-	private JList getJList1() {
-		if (jList1 == null) {
-			jList1 = new JList();
-			DefaultListModel listModel = new DefaultListModel();
-			listModel.addElement("fgdfgdgdf");
-			listModel.addElement("dfgdgdfgdfg");
-			listModel.addElement("gdfgdfgdfgdgdgd");
-			listModel.addElement("gdgdgd");
-			listModel.addElement("dg");
-			listModel.addElement("dd");
-			listModel.addElement("null");
-			listModel.addElement("dgdggdfdgfdfdd");
-			listModel.addElement("item1");
-			listModel.addElement("item2");
-			listModel.addElement("item3");
-			jList1.setModel(listModel);
-		}
+		      String url = "jdbc:postgresql://gigondas:5432/battonh";
+		      String user = "battonh";
+		      String passwd = "battonh";
+		      Connection connexion = DriverManager.getConnection(url, user, passwd);
+		      
+		      
+		      System.out.println("Connexion effective !");  
+		      
+		      Statement instruction = connexion.createStatement();
+		        
+		      
+		      ResultSet resultatcnx = instruction.executeQuery("Select libelle_seance FROM seance WHERE seance_g = FALSE");	
+			  System.out.println("Libelle :");
+
+              DefaultListModel dlm=new DefaultListModel();
+	    	  while(resultatcnx.next())
+              { 
+                  dlm.addElement(resultatcnx.getString("libelle_seance"));
+              }
+              jList1.setModel(dlm);
+
+		      
+		} 
+		catch (Exception ex) 
+		{
+		      ex.printStackTrace();
+		} 
+		
+		
 		return jList1;
 	}
+	
+	
+	
+	
 
 	private JScrollPane getJScrollPane0() {
 		if (jScrollPane0 == null) {
@@ -451,6 +496,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jScrollPane0;
 	}
 
+	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private JList getJList0() {
 		
 			jList0 = new JList();
