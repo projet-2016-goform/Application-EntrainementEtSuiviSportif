@@ -1,8 +1,20 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 
@@ -15,7 +27,9 @@ public class IHMSceance extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
+	private JPanel jPanelAffichage;
 	private JButton jButton0;
+	private ImageIcon img = new ImageIcon("img/icon.png");
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	public IHMSceance() {
 		initComponents();
@@ -23,8 +37,10 @@ public class IHMSceance extends JFrame {
 
 	private void initComponents() {
 		setLayout(new GroupLayout());
+		setIconImage(img.getImage());
 		add(getJLabel0(), new Constraints(new Leading(183, 123, 10, 10), new Leading(40, 10, 10)));
 		add(getJButton0(), new Constraints(new Leading(400, 10, 10), new Leading(660, 10, 10)));
+		add(getPanelAffichage(), new Constraints(new Leading(30, 10, 10), new Leading(60, 10, 10)));
 		setSize(500, 700);
 	}
 
@@ -44,7 +60,41 @@ public class IHMSceance extends JFrame {
 		return jLabel0;
 	}
 	
-	
+	private JPanel getPanelAffichage() {
+		
+		try {
+			
+			try {
+				Class.forName("org.postgresql.Driver");
+			} catch (ClassNotFoundException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+	        System.out.println("Driver O.K.");
+
+	        String url = "jdbc:postgresql://gigondas:5432/battonh";
+		    String user = "battonh";
+		    String passwd = "battonh";
+		    Connection connexion = DriverManager.getConnection(url, user, passwd);
+	        
+	        java.sql.Statement instruction = connexion.createStatement();
+			ResultSet resultatcnx = instruction.executeQuery("Select * FROM exercice WHERE id_seance = 2");	
+			jPanelAffichage = new JPanel();
+	      	while (resultatcnx.next()) {
+	      		JLabel intituleNom = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\">"+resultatcnx.getString("libelle_exercice")+"</p></html>");
+
+				jPanelAffichage.add(intituleNom);
+	      	}
+	        
+		}
+		catch(SQLException e2) 
+		{
+		
+			System.out.println("Erreur");
+			e2.printStackTrace();
+		}
+		return jPanelAffichage;
+	}
 
 	private static void installLnF() {
 		try {

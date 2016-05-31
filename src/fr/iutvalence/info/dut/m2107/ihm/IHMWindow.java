@@ -622,7 +622,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 				ResultSet resultatcnx = instruction.executeQuery("Select * FROM medecin");	
 				System.out.println("test");
 		      	while (resultatcnx.next()) {
-		        		JLabel id = new JLabel("<html><ul style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><li>"+resultatcnx.getString("n_med")+"</li>"+resultatcnx.getString("identite_med")+"<li></li></ul></html>");
+		        		JLabel id = new JLabel("<html><ul style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><li>"+resultatcnx.getString("n_med")+"</li>"+resultatcnx.getString("identite_med")+"</li></ul></html>");
 
 						jSuivi.add(id);
 		        		
