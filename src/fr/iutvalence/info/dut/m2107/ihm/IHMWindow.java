@@ -63,7 +63,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 	public JList jList0;
 	private JScrollPane jScrollPane0;
 	@SuppressWarnings("rawtypes")
-	public JList jList1;
+	public static JList jList1;
 	private JScrollPane jScrollPane1;
 	private JButton bQuitter;
 	private JButton bCreerSeance;
@@ -452,17 +452,27 @@ public class IHMWindow extends JFrame implements ActionListener {
 	public JList getJList1() {
 		jList1 = new JList();
 		jList1.addMouseListener(new MouseAdapter() {
-		    public void mouseClicked(MouseEvent evt) {
-		        JList jList0 = (JList)evt.getSource();
-		        if (evt.getClickCount() == 2) 
-		        	IHMSceance.main(null);
-		        	
-		        
-		    }
+			
+			public void mouseClicked(MouseEvent e){
+		    	if(e.getClickCount() == 2){
+		    		IHMSceance.main(null);
+		        }
+		     }
+		    
+		    public String nomSeance(MouseEvent e){
+		    	if(e.getClickCount() == 2){
+		    		 String item = (String) jList1.getModel().getElementAt(jList1.locationToIndex(e.getPoint()));
+				     return item;
+		        }
+				return null;
+		     }
+			
 		});
+		
+			 
 		try 
 		{
-        	  Class.forName("org.postgresql.Driver");
+        	Class.forName("org.postgresql.Driver");
 		      System.out.println("Driver O.K.");
 
 		      String url = "jdbc:postgresql://gigondas:5432/battonh";
@@ -514,12 +524,15 @@ public class IHMWindow extends JFrame implements ActionListener {
 		
 			jList0 = new JList();
 			jList0.addMouseListener(new MouseAdapter() {
-			    public void mouseClicked(MouseEvent evt) {
-			        JList jList0 = (JList)evt.getSource();
-			        if (evt.getClickCount() == 2) 
-			        	IHMSceance.main(null);
-			        
-			    }
+			    public void mouseClicked(MouseEvent e){
+		        	   if(e.getClickCount() == 2){
+		        	     int index = jList0.locationToIndex(e.getPoint());
+		        	     ListModel dlm = jList0.getModel();
+		        	     Object item = dlm.getElementAt(index);;
+		        	     jList0.ensureIndexIsVisible(index);
+		        	     System.out.println("Double clicked on " + item);
+		        	     IHMSceance.main(null);
+		        	   }}
 			});
 			try 
 			{

@@ -2,6 +2,8 @@ package fr.iutvalence.info.dut.m2107.ihm;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -21,6 +23,7 @@ import javax.swing.UIManager;
 import javax.swing.border.BevelBorder;
 import javax.swing.border.TitledBorder;
 
+import org.dyno.visual.swing.base.Item;
 import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
@@ -96,9 +99,10 @@ public class IHMSceance extends JFrame {
 			//jP.setEditable(false);
 			jP.setAutoscrolls(false);
 			jP.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+						
 			try 
 			{
-	        	  Class.forName("org.postgresql.Driver");
+	        	Class.forName("org.postgresql.Driver");
 			      System.out.println("Driver O.K.");
 
 			      String url = "jdbc:postgresql://gigondas:5432/battonh";
@@ -110,9 +114,19 @@ public class IHMSceance extends JFrame {
 			      System.out.println("Connexion effective !");  
 			      
 			      Statement instruction = connexion.createStatement();
-			        
-			      
-			      ResultSet resultatcnx = instruction.executeQuery("Select libelle_exercice FROM exercice WHERE id_seance = 2");	
+			   
+			      IHMWindow.jList1.addMouseListener(new MouseAdapter() {
+				
+			    	  public String nomSeance(MouseEvent e){
+					    	if(e.getClickCount() == 2){
+					    		 Object item = IHMWindow.jList1.getModel().getElementAt(IHMWindow.jList1.locationToIndex(e.getPoint()));
+							     return item.toString();
+					        }
+							return null;
+					     }
+			      });
+			      String id_seance = "test";
+			      ResultSet resultatcnx = instruction.executeQuery("Select libelle_exercice FROM exercice WHERE id_seance = "+id_seance+"");	
 				  System.out.println("Libelle :");
 
 				  while(resultatcnx.next())
@@ -121,8 +135,7 @@ public class IHMSceance extends JFrame {
 	                  jP.add(intituleNom);
 					  
 	              }
-				 
-				  
+
 			      
 			} 
 			catch (Exception ex) 
