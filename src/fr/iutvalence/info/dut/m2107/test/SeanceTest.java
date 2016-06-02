@@ -1,7 +1,10 @@
-package fr.iutvalence.info.dut.m2107;
+package fr.iutvalence.info.dut.m2107.test;
 
 import java.util.LinkedList;
 import java.util.List;
+
+import fr.iutvalence.info.dut.m2107.Exercices;
+import fr.iutvalence.info.dut.m2107.Seance;
 
 public class SeanceTest implements Seance {
 	

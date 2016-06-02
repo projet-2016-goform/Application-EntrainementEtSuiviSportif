@@ -115,17 +115,17 @@ public class IHMSceance extends JFrame {
 			      
 			      Statement instruction = connexion.createStatement();
 			   
-			      IHMWindow.jList1.addMouseListener(new MouseAdapter() {
+			      IHMWindow.jListUser.addMouseListener(new MouseAdapter() {
 				
 			    	  public String nomSeance(MouseEvent e){
 					    	if(e.getClickCount() == 2){
-					    		 Object item = IHMWindow.jList1.getModel().getElementAt(IHMWindow.jList1.locationToIndex(e.getPoint()));
+					    		 Object item = IHMWindow.jListUser.getModel().getElementAt(IHMWindow.jListUser.locationToIndex(e.getPoint()));
 							     return item.toString();
 					        }
 							return null;
 					     }
 			      });
-			      String id_seance = "test";
+			     String id_seance = "test";
 			      ResultSet resultatcnx = instruction.executeQuery("Select libelle_exercice FROM exercice WHERE id_seance = "+id_seance+"");	
 				  System.out.println("Libelle :");
 

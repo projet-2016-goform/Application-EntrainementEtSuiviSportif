@@ -79,7 +79,7 @@ public class Connexion {
 	catch(SQLException e2) 
 	{
 	
-		System.out.println("gfjldhi");
+		System.err.println("Problème de connexion");
 		e2.printStackTrace();
 	}
 	}

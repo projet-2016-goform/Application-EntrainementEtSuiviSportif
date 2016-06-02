@@ -60,10 +60,10 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JPanel jSeanceUser;
 	private JTabbedPane jTabbSeance;
 	@SuppressWarnings("rawtypes")
-	public JList jList0;
+	public static JList jListGoform;
 	private JScrollPane jScrollPane0;
 	@SuppressWarnings("rawtypes")
-	public static JList jList1;
+	public static JList jListUser;
 	private JScrollPane jScrollPane1;
 	private JButton bQuitter;
 	private JButton bCreerSeance;
@@ -93,7 +93,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 
 	private void initComponents() {
 		setLayout(new GroupLayout());
-		add(getjTabbOnglets(), new Constraints(new Bilateral(0, 0, 0), new Bilateral(0, 0, 50)));
+		add(getjTabbOnglets(), new Constraints(new Bilateral(0, 0, 0), new Bilateral(0, 0, 0)));
 		setIconImage(img.getImage());
 		setSize(500, 700);
 	
@@ -105,7 +105,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 	});
 	
 	
-	jList1.addListSelectionListener( new ListSelectionListener() {
+	jListUser.addListSelectionListener( new ListSelectionListener() {
 		public void valueChanged(ListSelectionEvent e) {
 			
 			//add(IHMSceance.getPanelAffichage(), jList1.getSelectedValue());
@@ -442,16 +442,16 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JScrollPane getJScrollPane1() {
 		if (jScrollPane1 == null) {
 			jScrollPane1 = new JScrollPane();
-			jScrollPane1.setViewportView(getJList1());
+			jScrollPane1.setViewportView(getJListUser());
 		}
 		return jScrollPane1;
 	}
 	
 	
 	
-	public JList getJList1() {
-		jList1 = new JList();
-		jList1.addMouseListener(new MouseAdapter() {
+	public JList getJListUser() {
+		jListUser = new JList();
+		jListUser.addMouseListener(new MouseAdapter() {
 			
 			public void mouseClicked(MouseEvent e){
 		    	if(e.getClickCount() == 2){
@@ -461,7 +461,8 @@ public class IHMWindow extends JFrame implements ActionListener {
 		    
 		    public String nomSeance(MouseEvent e){
 		    	if(e.getClickCount() == 2){
-		    		 String item = (String) jList1.getModel().getElementAt(jList1.locationToIndex(e.getPoint()));
+		    		 String item = (String) jListUser.getModel().getElementAt(jListUser.locationToIndex(e.getPoint()));
+		    		 System.out.println(item);
 				     return item;
 		        }
 				return null;
@@ -494,7 +495,7 @@ public class IHMWindow extends JFrame implements ActionListener {
               { 
                   dlm.addElement(resultatcnx.getString("libelle_seance"));
               }
-              jList1.setModel(dlm);
+              jListUser.setModel(dlm);
 
 		      
 		} 
@@ -504,7 +505,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 		} 
 		
 		
-		return jList1;
+		return jListUser;
 	}
 	
 	
@@ -514,22 +515,22 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JScrollPane getJScrollPane0() {
 		if (jScrollPane0 == null) {
 			jScrollPane0 = new JScrollPane();
-			jScrollPane0.setViewportView(getJList0());
+			jScrollPane0.setViewportView(getJListGoform());
 		}
 		return jScrollPane0;
 	}
 
 	@SuppressWarnings({ "rawtypes", "unchecked" })
-	private JList getJList0() {
+	private JList getJListGoform() {
 		
-			jList0 = new JList();
-			jList0.addMouseListener(new MouseAdapter() {
+			jListGoform = new JList();
+			jListGoform.addMouseListener(new MouseAdapter() {
 			    public void mouseClicked(MouseEvent e){
 		        	   if(e.getClickCount() == 2){
-		        	     int index = jList0.locationToIndex(e.getPoint());
-		        	     ListModel dlm = jList0.getModel();
+		        	     int index = jListGoform.locationToIndex(e.getPoint());
+		        	     ListModel dlm = jListGoform.getModel();
 		        	     Object item = dlm.getElementAt(index);;
-		        	     jList0.ensureIndexIsVisible(index);
+		        	     jListGoform.ensureIndexIsVisible(index);
 		        	     System.out.println("Double clicked on " + item);
 		        	     IHMSceance.main(null);
 		        	   }}
@@ -558,7 +559,7 @@ public class IHMWindow extends JFrame implements ActionListener {
                   { 
                       dlm.addElement(resultatcnx.getString("libelle_seance"));
                   }
-                  jList0.setModel(dlm);
+                  jListGoform.setModel(dlm);
 			      
 			} 
 			catch (Exception ex) 
@@ -567,7 +568,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 			} 
 			
 	
-		return jList0;
+		return jListGoform;
 	}
 	
 	private JTabbedPane getJTabbSeance() {

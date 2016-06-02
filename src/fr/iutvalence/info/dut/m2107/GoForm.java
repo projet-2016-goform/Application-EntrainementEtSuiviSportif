@@ -9,6 +9,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
+import fr.iutvalence.info.dut.m2107.test.SeanceTest;
+
 class GoForm {
 
 

@@ -1,5 +1,7 @@
 package fr.iutvalence.info.dut.m2107;
 import java.util.*;
+
+import fr.iutvalence.info.dut.m2107.test.SeanceTest;
 /**
  * Propre à chaque utilisateur, le suivis affiche des statistiques relative aux entrainements
  */
