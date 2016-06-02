@@ -2,8 +2,14 @@ package fr.iutvalence.info.dut.m2107.ihm;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
+import java.util.function.IntUnaryOperator;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -27,7 +33,7 @@ public class IHMSceance extends JFrame {
 	private JLabel jLabel0;
 	//private static JPanel jPanelAffichage;
 	private JButton jButton0;
-	private JTextArea jTextArea1;
+	private JPanel jP;
 	private JScrollPane jScrollPane1;
 	private JButton jButton1;
 	static JPanel jPanel0;
@@ -83,15 +89,48 @@ public class IHMSceance extends JFrame {
 //		return jPanelAffichage;
 //	}
 
-	private JTextArea getJTextArea1() {
-		if (jTextArea1 == null) {
-			jTextArea1 = new JTextArea();
-			jTextArea1.setBackground(new Color(214, 217, 223));
-			jTextArea1.setEditable(false);
-			jTextArea1.setAutoscrolls(true);
-			jTextArea1.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+	private JPanel getJTextArea1() {
+		if (jP == null) {
+			jP = new JPanel();
+			jP.setBackground(new Color(214, 217, 223));
+			//jP.setEditable(false);
+			jP.setAutoscrolls(false);
+			jP.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED, null, null, null, null));
+			try 
+			{
+	        	  Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      
+			      
+			      System.out.println("Connexion effective !");  
+			      
+			      Statement instruction = connexion.createStatement();
+			        
+			      
+			      ResultSet resultatcnx = instruction.executeQuery("Select libelle_exercice FROM exercice WHERE id_seance = 2");	
+				  System.out.println("Libelle :");
+
+				  while(resultatcnx.next())
+	              { 
+	                  JLabel intituleNom = new JLabel("<html><div style=\"float: left; display: block;\">"+resultatcnx.getString("libelle_exercice")+"<br></div></html>");
+	                  jP.add(intituleNom);
+					  
+	              }
+				 
+				  
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
 		}
-		return jTextArea1;
+		return jP;
 	}
 
 	private JButton getJButton0() {
