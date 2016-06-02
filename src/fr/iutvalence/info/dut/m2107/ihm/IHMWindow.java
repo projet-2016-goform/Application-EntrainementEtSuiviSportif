@@ -2,8 +2,11 @@ package fr.iutvalence.info.dut.m2107.ihm;
 import fr.iutvalence.info.dut.m2107.bdd.*;
 
 import java.awt.Color;
+import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.GridBagLayout;
 import java.awt.Image;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -15,7 +18,9 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URL;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 import javax.imageio.ImageIO;
@@ -45,6 +50,8 @@ import org.dyno.visual.swing.layouts.Leading;
 import org.dyno.visual.swing.layouts.Trailing;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class IHMWindow extends JFrame implements ActionListener {
 
@@ -66,6 +73,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 	public static JList jListUser;
 	private JScrollPane jScrollPane1;
 	private JButton bQuitter;
+	private JButton bLien;
 	private JButton bCreerSeance;
 	private JTextField jTextField0;
 	private JTextField jTextField1;
@@ -82,6 +90,9 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JButton bValider;
 	private JLabel jLabel0;
 	private JLabel jLabel1;
+	private BufferedImage bg;
+	private BufferedImage bg_propos;
+	private BufferedImage bg_reglages;
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	private ImageIcon img = new ImageIcon("img/icon.png");
 	Color red = Color.decode("#E84C3D");
@@ -117,26 +128,28 @@ public class IHMWindow extends JFrame implements ActionListener {
 	
 	}
 	private JLabel getJLabel1() {
-		if (jLabel1 == null) {
 			jLabel1 = new JLabel();
 			jLabel1.setText("Réglages application:");
-		}
+			jLabel1.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jLabel1.setForeground(Color.WHITE);
+		
 		return jLabel1;
 	}
 
 	private JLabel getJLabel0() {
-		if (jLabel0 == null) {
 			jLabel0 = new JLabel();
 			jLabel0.setText("Réglage profil :");
-		}
+			jLabel0.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jLabel0.setForeground(Color.WHITE);
+		
 		return jLabel0;
 	}
 
 	private JButton getJButton7() {
-		if (bValider == null) {
+
 			bValider = new JButton();
 			bValider.setText("Tout valider");
-		}
+		
 		return bValider;
 	}
 
@@ -627,9 +640,28 @@ public class IHMWindow extends JFrame implements ActionListener {
 
 	private JPanel getjAccueil() {
 		
-		jAccueil = new JPanel();
-		jAccueil.getLayout();
-		jAccueil.setBackground(red);
+		try {
+        	InputStream is= new FileInputStream("img/bg_accueil.jpg");
+            bg = ImageIO.read(is);
+        } catch (IOException ex) {
+            Logger.getLogger(TabBackground.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JPanel jAccueil = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(bg, 0, 0, getWidth(), getHeight(), this);
+            }
+
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(400, 300);
+            }
+        };
+		
+		
+
 
 		 String fichier ="conseils";	
 				try{
@@ -660,30 +692,48 @@ public class IHMWindow extends JFrame implements ActionListener {
 
 
 	private JPanel getjReglages() {
-		if (jReglages == null) {
-			jReglages = new JPanel();
+		try {
+        	InputStream is= new FileInputStream("img/bg_reglages.jpg");
+            bg_reglages = ImageIO.read(is);
+        } catch (IOException ex) {
+            Logger.getLogger(TabBackground.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JPanel jReglages = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(bg_reglages, 0, 0, getWidth(), getHeight(), this);
+            }
+
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(400, 300);
+            }
+        };
+        
 			jReglages.setLayout(new GroupLayout());
-			jReglages.add(getJTextField0(), new Constraints(new Leading(39, 290, 142, 154), new Leading(42, 10, 10)));
-			jReglages.add(getJTextField1(), new Constraints(new Leading(39, 290, 151, 151), new Leading(97, 10, 10)));
-			jReglages.add(getJTextField2(), new Constraints(new Leading(39, 290, 12, 12), new Leading(152, 10, 10)));
-			jReglages.add(getJTextField3(), new Constraints(new Leading(39, 290, 12, 12), new Leading(213, 10, 10)));
-			jReglages.add(getJTextField4(), new Constraints(new Leading(39, 290, 130, 130), new Leading(273, 10, 10)));
-			jReglages.add(getJTextField5(), new Constraints(new Leading(39, 290, 12, 12), new Leading(333, 10, 10)));
-			jReglages.add(getJButton7(), new Constraints(new Leading(400, 10, 10), new Leading(626, 10, 10)));
-			jReglages.add(getJButton1(), new Constraints(new Leading(355, 88, 12, 12), new Leading(97, 12, 12)));
-			jReglages.add(getJButton0(), new Constraints(new Leading(355, 88, 12, 12), new Leading(42, 12, 12)));
-			jReglages.add(getJButton2(), new Constraints(new Leading(355, 88, 12, 12), new Leading(152, 12, 12)));
-			jReglages.add(getJButton3(), new Constraints(new Leading(355, 88, 12, 12), new Leading(213, 12, 12)));
-			jReglages.add(getJButton4(), new Constraints(new Leading(355, 88, 12, 12), new Leading(273, 12, 12)));
-			jReglages.add(getJButton5(), new Constraints(new Leading(355, 88, 12, 12), new Leading(333, 12, 12)));
-			jReglages.add(getJLabel0(), new Constraints(new Leading(15, 12, 12), new Leading(14, 12, 12)));
-			jReglages.add(getJLabel1(), new Constraints(new Leading(15, 12, 12), new Leading(390, 10, 10)));
+			jReglages.add(getJTextField0(), new Constraints(new Leading(39, 290, 142, 154), new Leading(56, 10, 10)));
+			jReglages.add(getJTextField1(), new Constraints(new Leading(39, 290, 151, 151), new Leading(111, 10, 10)));
+			jReglages.add(getJTextField2(), new Constraints(new Leading(39, 290, 12, 12), new Leading(166, 10, 10)));
+			jReglages.add(getJTextField3(), new Constraints(new Leading(39, 290, 12, 12), new Leading(227, 10, 10)));
+			jReglages.add(getJTextField4(), new Constraints(new Leading(39, 290, 130, 130), new Leading(287, 10, 10)));
+			jReglages.add(getJTextField5(), new Constraints(new Leading(39, 290, 12, 12), new Leading(347, 10, 10)));
+			jReglages.add(getJButton7(), new Constraints(new Leading(210, 10, 10), new Leading(620, 10, 10)));
+			jReglages.add(getJButton1(), new Constraints(new Leading(355, 88, 12, 12), new Leading(111, 12, 12)));
+			jReglages.add(getJButton0(), new Constraints(new Leading(355, 88, 12, 12), new Leading(56, 12, 12)));
+			jReglages.add(getJButton2(), new Constraints(new Leading(355, 88, 12, 12), new Leading(166, 12, 12)));
+			jReglages.add(getJButton3(), new Constraints(new Leading(355, 88, 12, 12), new Leading(227, 12, 12)));
+			jReglages.add(getJButton4(), new Constraints(new Leading(355, 88, 12, 12), new Leading(287, 12, 12)));
+			jReglages.add(getJButton5(), new Constraints(new Leading(355, 88, 12, 12), new Leading(347, 12, 12)));
+			jReglages.add(getJLabel0(), new Constraints(new Leading(39, 12, 12), new Leading(15, 12, 12)));
+			jReglages.add(getJLabel1(), new Constraints(new Leading(39, 12, 12), new Leading(404, 10, 10)));
 			jReglages.setBackground(red);
 			
 			
 			
 			
-		}
+		
 		return jReglages;
 	}
 
@@ -777,13 +827,38 @@ public class IHMWindow extends JFrame implements ActionListener {
 	
 	private JPanel getjApropos() {
 		
-			jApropos = new JPanel();
-			jApropos.setLayout(new GroupLayout());
-			jApropos.setBackground(red);
+		try {
+        	InputStream is = new FileInputStream("img/bg_propos.jpg");
+            bg_propos = ImageIO.read(is);
+        } catch (IOException ex) {
+            Logger.getLogger(TabBackground.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JPanel jApropos = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(bg_propos, 0, 0, getWidth(), getHeight(), this);
+            }
+
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(400, 300);
+            }
+        };
 			
 			
-		
+
+		jApropos.add(getJButton8(), new Constraints(new Leading(600, 10, 10), new Leading(620, 10, 10)));
 		return jApropos;
+	}
+
+	private JButton getJButton8() {
+
+			bLien = new JButton();
+			bLien.setText("Code GitHub");
+		
+		return bLien;
 	}
 
 	private static void installLnF() {

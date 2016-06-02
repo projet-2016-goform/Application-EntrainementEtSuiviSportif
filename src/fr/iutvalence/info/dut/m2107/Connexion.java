@@ -36,16 +36,16 @@ public class Connexion {
 	try {
 	
 		try {
-			Class.forName("org.postgresql.Driver");
+			Class.forName("com.mysql.jdbc.Driver");
 		} catch (ClassNotFoundException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
         System.out.println("Driver O.K.");
 
-        String url = "jdbc:postgresql://gigondas:5432/battonh";
-	    String user = "battonh";
-	    String passwd = "battonh";
+        String url = "jdbc:mysql://localhost/goform";
+	    String user = "root";
+	    String passwd = "";
 	    Connection connexion = DriverManager.getConnection(url, user, passwd);
         
         Statement stmt = connexion.createStatement();

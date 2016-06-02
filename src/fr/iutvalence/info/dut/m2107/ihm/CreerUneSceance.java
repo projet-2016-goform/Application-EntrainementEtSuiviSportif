@@ -4,6 +4,8 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -59,19 +61,19 @@ public class CreerUneSceance extends JFrame {
 		setLayout(new GroupLayout());
 		setIconImage(img.getImage());
 		setTitle("GoForm");
-		add(getJLabel1(), new Constraints(new Leading(25, 10, 10), new Leading(107, 12, 12)));
-		add(getJTextFieldNomSceance(), new Constraints(new Leading(164, 269, 10, 10), new Leading(105, 10, 10)));
-		add(getJNbExo(), new Constraints(new Leading(23, 10, 10), new Leading(192, 12, 12)));
-		add(getJButton0(), new Constraints(new Leading(400, 10, 10), new Leading(660, 10, 10)));
-		add(getJComboBox0(), new Constraints(new Leading(184, 10, 10), new Leading(188, 12, 12)));
-		add(getJNomExo(), new Constraints(new Leading(34, 10, 10), new Leading(251, 12, 12)));
-		add(getJNbRep(), new Constraints(new Leading(254, 10, 10), new Leading(251, 12, 12)));
-		add(getJTextField1(), new Constraints(new Leading(44, 88, 12, 12), new Leading(293, 10, 10)));
-		add(getJSpinnerRep1(), new Constraints(new Leading(291, 50, 12, 12), new Leading(293, 12, 12)));
-		add(getJTextField2(), new Constraints(new Leading(44, 88, 12, 12), new Leading(347, 10, 10)));
-		add(getJSpinnerRep2(), new Constraints(new Leading(291, 50, 12, 12), new Leading(347, 12, 12)));
-		add(getJTextField3(), new Constraints(new Leading(44, 88, 12, 12), new Leading(406, 10, 10)));
-		add(getJSpinnerRep3(), new Constraints(new Leading(291, 50, 12, 12), new Leading(406, 12, 12)));
+		add(getJLabel1(), new Constraints(new Leading(55, 10, 10), new Leading(110, 12, 12)));
+		add(getJTextFieldNomSceance(), new Constraints(new Leading(185, 269, 10, 10), new Leading(105, 10, 10)));
+		add(getJNbExo(), new Constraints(new Leading(150, 10, 10), new Leading(192, 12, 12)));
+		add(getJButton0(), new Constraints(new Leading(215, 10, 10), new Leading(660, 10, 10)));
+		add(getJComboBox0(), new Constraints(new Leading(275, 10, 10), new Leading(188, 12, 12)));
+		add(getJNomExo(), new Constraints(new Leading(80, 10, 10), new Leading(251, 12, 12)));
+		add(getJNbRep(), new Constraints(new Leading(305, 10, 10), new Leading(251, 12, 12)));
+		add(getJTextField1(), new Constraints(new Leading(84, 88, 12, 12), new Leading(293, 10, 10)));
+		add(getJSpinnerRep1(), new Constraints(new Leading(331, 50, 12, 12), new Leading(293, 12, 12)));
+		add(getJTextField2(), new Constraints(new Leading(84, 88, 12, 12), new Leading(347, 10, 10)));
+		add(getJSpinnerRep2(), new Constraints(new Leading(331, 50, 12, 12), new Leading(347, 12, 12)));
+		add(getJTextField3(), new Constraints(new Leading(84, 88, 12, 12), new Leading(406, 10, 10)));
+		add(getJSpinnerRep3(), new Constraints(new Leading(331, 50, 12, 12), new Leading(406, 12, 12)));
 		add(getJLabel0(), new Constraints(new Leading(125, 278, 10, 10), new Leading(21, 10, 10)));
 		setSize(500, 700);
 		
@@ -178,7 +180,9 @@ public class CreerUneSceance extends JFrame {
 	private JLabel getJNbRep() {
 		if (jNbRep == null) {
 			jNbRep = new JLabel();
-			jNbRep.setText("Nombre de répétition :");
+			jNbRep.setText("Nombre de répétition");
+			jNbRep.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jNbRep.setForeground(Color.WHITE);
 		}
 		return jNbRep;
 	}
@@ -186,7 +190,9 @@ public class CreerUneSceance extends JFrame {
 	private JLabel getJNomExo() {
 		if (jNomExo == null) {
 			jNomExo = new JLabel();
-			jNomExo.setText("Nom de l'exercice :");
+			jNomExo.setText("Nom de l'exercice");
+			jNomExo.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jNomExo.setForeground(Color.WHITE);
 		}
 		return jNomExo;
 	}
@@ -213,6 +219,8 @@ public class CreerUneSceance extends JFrame {
 		if (jNbExo == null) {
 			jNbExo = new JLabel();
 			jNbExo.setText("Nombre d'exercices :");
+			jNbExo.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jNbExo.setForeground(Color.WHITE);
 		}
 		return jNbExo;
 	}
@@ -229,6 +237,8 @@ public class CreerUneSceance extends JFrame {
 		if (jNomSceance == null) {
 			jNomSceance = new JLabel();
 			jNomSceance.setText("Nom de la scéance :");
+			jNomSceance.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+			jNomSceance.setForeground(Color.WHITE);
 		}
 		return jNomSceance;
 	}
