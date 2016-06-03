@@ -911,9 +911,16 @@ public class IHMWindow extends JFrame implements ActionListener {
 					System.out.println(e.toString());
 				}
 				
-		JLabel infos = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><u>Informations</u> : <br></p></html>");
+		JLabel infos = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px; margin-bottom: 336px;\"><u>Informations</u> : <br></p></html>");
 		jAccueil.add(infos);
-		jAccueil.add(getbQuitter(), new Constraints(new Leading(412, 10, 10), new Trailing(12, 12, 12)));
+		jAccueil.add(getbQuitter());
+		bQuitter.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				IHMConnexionUser.main(null);
+				
+			}
+			});
 
 		return jAccueil;
 	}
