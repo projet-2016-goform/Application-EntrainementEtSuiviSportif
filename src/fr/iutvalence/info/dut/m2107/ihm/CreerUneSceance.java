@@ -104,10 +104,10 @@ public class CreerUneSceance extends JFrame {
 
 				      		  String nom_exos1 = jTextField1.getText();
 					    	  int qt1 = (Integer) jSpinnerRep1.getValue();
-					    	  String nom_exos2 = jTextField1.getText();
-					    	  int qt2 = (Integer) jSpinnerRep1.getValue();
-					    	  String nom_exos3 = jTextField1.getText();
-					    	  int qt3 = (Integer) jSpinnerRep1.getValue();
+					    	  String nom_exos2 = jTextField2.getText();
+					    	  int qt2 = (Integer) jSpinnerRep2.getValue();
+					    	  String nom_exos3 = jTextField3.getText();
+					    	  int qt3 = (Integer) jSpinnerRep3.getValue();
 					    	  
 					    	  Statement ajoutExos = connexion.createStatement();
 					    	  ajoutExos.executeUpdate("INSERT INTO exercice(libelle_exercice, nb_repetition, id_seance)"

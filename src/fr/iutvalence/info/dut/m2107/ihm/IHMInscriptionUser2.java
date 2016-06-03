@@ -90,7 +90,7 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 				System.exit(0);
 			}
 		});
-		
+	
 		bTerminer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int taille = Integer.parseInt(JTextTaille.getText());

@@ -90,9 +90,13 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private JButton bValider;
 	private JLabel jLabel0;
 	private JLabel jLabel1;
+	private JLabel jLabel2;
+	private JLabel jLabel3;
 	private BufferedImage bg;
 	private BufferedImage bg_propos;
 	private BufferedImage bg_reglages;
+	private BufferedImage bg_seance;
+	private BufferedImage bg_profil;
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	private ImageIcon img = new ImageIcon("img/icon.png");
 	Color red = Color.decode("#E84C3D");
@@ -126,6 +130,24 @@ public class IHMWindow extends JFrame implements ActionListener {
 	});	
 	
 	
+	}
+	
+	private JLabel getJLabelSeanceG() {
+		jLabel2 = new JLabel();
+		jLabel2.setText("Choisissez parmi les séances que nous vous proposons !");
+		jLabel2.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		jLabel2.setForeground(Color.WHITE);
+	
+	return jLabel2;
+    }
+	
+	private JLabel getJLabelSeance() {
+		jLabel3 = new JLabel();
+		jLabel3.setText("Choisissez parmi les séance de la communauté !");
+		jLabel3.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+		jLabel3.setForeground(Color.WHITE);
+	
+	return jLabel0;
 	}
 	private JLabel getJLabel1() {
 			jLabel1 = new JLabel();
@@ -465,7 +487,6 @@ public class IHMWindow extends JFrame implements ActionListener {
 	public static void nomSeanceG(MouseEvent e){
     	if(e.getClickCount() == 2){
     		 String item = (String) jListGoform.getModel().getElementAt(jListGoform.locationToIndex(e.getPoint()));
-    		 System.out.println("---------------------------"+item);
     		 try 
  			 {
  	        	Class.forName("org.postgresql.Driver");
@@ -556,37 +577,37 @@ public class IHMWindow extends JFrame implements ActionListener {
 	     			} 
 	        	     IHMSceance.main(null);
 	        	   }}
-		});
-		try 
-		{
-     	Class.forName("org.postgresql.Driver");
-		      System.out.println("Driver O.K.");
-
-		      String url = "jdbc:postgresql://gigondas:5432/battonh";
-		      String user = "battonh";
-		      String passwd = "battonh";
-		      Connection connexion = DriverManager.getConnection(url, user, passwd);
-		      
-		      
-		      System.out.println("Connexion effective !");  
-		      
-		      Statement instruction = connexion.createStatement();
-		        
-		      
-		      ResultSet resultatcnx = instruction.executeQuery("Select libelle_seance FROM seance WHERE seance_g = FALSE");	
-
-           DefaultListModel dlm = new DefaultListModel();
-	       while(resultatcnx.next())
-           { 
-               dlm.addElement(resultatcnx.getString("libelle_seance"));
-           }
-	       jListUser.setModel(dlm);
-		      
-		} 
-		catch (Exception ex) 
-		{
-		      ex.printStackTrace();
-		} 
+					});
+					try 
+					{
+			     	Class.forName("org.postgresql.Driver");
+					      System.out.println("Driver O.K.");
+			
+					      String url = "jdbc:postgresql://gigondas:5432/battonh";
+					      String user = "battonh";
+					      String passwd = "battonh";
+					      Connection connexion = DriverManager.getConnection(url, user, passwd);
+					      
+					      
+					      System.out.println("Connexion effective !");  
+					      
+					      Statement instruction = connexion.createStatement();
+					        
+					      
+					      ResultSet resultatcnx = instruction.executeQuery("Select libelle_seance FROM seance WHERE seance_g = FALSE");	
+			
+			           DefaultListModel dlm = new DefaultListModel();
+				       while(resultatcnx.next())
+			           { 
+			               dlm.addElement(resultatcnx.getString("libelle_seance"));
+			           }
+				       jListUser.setModel(dlm);
+					      
+					} 
+					catch (Exception ex) 
+					{
+					      ex.printStackTrace();
+					} 
 		
 		
 		return jListUser;
@@ -680,6 +701,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 			jTabbSeance = new JTabbedPane();
 			jTabbSeance.addTab("Seances crées par GoForm", getJSeanceGoform());
 			jTabbSeance.addTab("Seances crées par les utilisateurs", getJSeanceUser());
+
 		
 		return jTabbSeance;
 	}
@@ -691,26 +713,63 @@ public class IHMWindow extends JFrame implements ActionListener {
 		}
 		return bCreerSeance;
 	}
-
+ 
     private JPanel getJSeanceUser() {
-        jSeanceUser = new JPanel();
+
+        try {
+        	InputStream is = new FileInputStream("img/bg_seanceList.jpg");
+            bg_seance = ImageIO.read(is);
+        } catch (IOException ex) {
+            Logger.getLogger(TabBackground.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        JPanel jSeanceUser = new JPanel() {
+            @Override
+            protected void paintComponent(Graphics g) {
+                super.paintComponent(g);
+                g.drawImage(bg_seance, 0, 0, getWidth(), getHeight(), this);
+            }
+
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(400, 300);
+            }
+        };
         jSeanceUser.setVisible(false);
         jSeanceUser.setLayout(new GroupLayout());
-        jSeanceUser.add(getJScrollPane1(), new Constraints(new Leading(50, 400, 15, 15), new Leading(100, 465, 15, 15)));
-        jSeanceUser.add(getbCreerSeance(), new Constraints(new Leading(200, 10, 10), new Trailing(12, 12, 12)));
-        jSeanceUser.setBackground(red);
+        jSeanceUser.add(getJScrollPane1(), new Constraints(new Leading(50, 400, 15, 15), new Leading(100, 440, 15, 15)));
+        jSeanceUser.add(getbCreerSeance(), new Constraints(new Leading(200, 10, 10), new Trailing(20, 12, 12)));
+        jSeanceUser.add(getJLabelSeanceG(), new Constraints(new Leading(75, 400, 12, 12), new Leading(25, 50, 12, 12)));
 
 	return jSeanceUser;
 	}
 	
 	private JPanel getJSeanceGoform() {
+			try {
+	        	InputStream is = new FileInputStream("img/bg_seanceList.jpg");
+	            bg_seance = ImageIO.read(is);
+	        } catch (IOException ex) {
+	            Logger.getLogger(TabBackground.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+
+	        JPanel jSeanceGoForm = new JPanel() {
+	            @Override
+	            protected void paintComponent(Graphics g) {
+	                super.paintComponent(g);
+	                g.drawImage(bg_seance, 0, 0, getWidth(), getHeight(), this);
+	            }
 	
-	        jSeanceGoform = new JPanel();
-	        jSeanceGoform.setLayout(new GroupLayout());
-	        jSeanceGoform.add(getJScrollPane0(), new Constraints(new Leading(50, 400, 15, 15), new Leading(100, 465, 15, 15)));
-	        jSeanceGoform.setBackground(red);
+	            @Override
+	            public Dimension getPreferredSize() {
+	                return new Dimension(400, 300);
+	            }
+	        };
+	        jSeanceGoForm.setLayout(new GroupLayout());
+	        jSeanceGoForm.add(getJScrollPane0(), new Constraints(new Leading(50, 400, 15, 15), new Leading(100, 440, 15, 15)));
+	        jSeanceGoForm.add(getJLabelSeanceG(), new Constraints(new Leading(75, 400, 12, 12), new Leading(25, 50, 12, 12)));
 	        
-	return jSeanceGoform;
+	        
+	return jSeanceGoForm;
 	}
 
 	private JTabbedPane getjTabbOnglets() {
@@ -857,7 +916,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 		
 			jEntrainement = new JPanel();
 			jEntrainement.setLayout(new GroupLayout());
-			jEntrainement.add(getJTabbSeance(), new Constraints(new Leading(0, 500, 12, 12), new Leading(0, 655, 12, 12)));
+			jEntrainement.add(getJTabbSeance(), new Constraints(new Leading(0, 500, 12, 12), new Leading(0, 670, 12, 12)));
 			
 		return jEntrainement;
 	}
@@ -865,8 +924,26 @@ public class IHMWindow extends JFrame implements ActionListener {
 
 	private JPanel getjProfil() {
 		
-			jProfil = new JPanel();
-			jProfil.setBackground(red);
+			try {
+	        	InputStream is= new FileInputStream("img/bg_profil.jpg");
+	            bg_profil = ImageIO.read(is);
+	        } catch (IOException ex) {
+	            Logger.getLogger(TabBackground.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+	
+	        JPanel jProfil = new JPanel() {
+	            @Override
+	            protected void paintComponent(Graphics g) {
+	                super.paintComponent(g);
+	                g.drawImage(bg_profil, 0, 0, getWidth(), getHeight(), this);
+	            }
+	
+	            @Override
+	            public Dimension getPreferredSize() {
+	                return new Dimension(400, 300);
+	            }
+	        };
+	        
 			jProfil.getLayout(); 
 	        String email = IHMConnexionUser.jTextFieldMail.getText();
 			System.out.println(email);
@@ -889,29 +966,25 @@ public class IHMWindow extends JFrame implements ActionListener {
 			      ResultSet resultatcnx = instruction.executeQuery("Select * FROM utilisateur WHERE mail = '"+email+"'");	
 					System.out.println("test");
 			      	while (resultatcnx.next()) {
-			        		JLabel id = new JLabel("<html><p style=\"width: 350px; color: white; background-color: #2D3E50; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Nom :"+resultatcnx.getString("nom")+"</p><br>"
-			        				+ "<p style=\"width: 350px; color: white; background-color: #2D3E50; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Prénom : "+resultatcnx.getString("prenom")+"</p><br>"
-					        		+ "<p style=\"width: 350px; color: white; background-color: #2D3E50; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">E-mail : "+resultatcnx.getString("mail")+"</p><br>"
-			        				+ "<p style=\"width: 350px; color: white; background-color: #2D3E50; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Age : "+resultatcnx.getString("age")+"</p><br>"
-			        				+ "<p style=\"width: 350px; color: white; background-color: #2D3E50; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Taille : "+resultatcnx.getString("taille")+"</p><br>"
-					        		+ "<p style=\"width: 350px; color: white; background-color: #2D3E50; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">Poids : "+resultatcnx.getString("poids")+"</p><br>"
-			        				+ "<p style=\"width: 350px; color: white; background-color: #2D3E50; padding: 15px; margin-top: 10px; border-top: 3px solid white; border-bottom: 3px solid white;\">IMC : "+resultatcnx.getString("imc")+"</p><br></html>");
+			        		JLabel id = new JLabel("<html><p style=\"width: 350px; color: black; background-color: white; padding: 15px; margin-top: 10px; \">Nom :"+resultatcnx.getString("nom")+"</p><br>"
+			        				+ "<p style=\"width: 350px; color: black; background-color: white; padding: 15px; margin-top: 10px; \">Prénom : "+resultatcnx.getString("prenom")+"</p><br>"
+					        		+ "<p style=\"width: 350px; color: black; background-color: white; padding: 15px; margin-top: 10px; \">E-mail : "+resultatcnx.getString("mail")+"</p><br>"
+			        				+ "<p style=\"width: 350px; color: black; background-color: white; padding: 15px; margin-top: 10px; \">Age : "+resultatcnx.getString("age")+"</p><br>"
+			        				+ "<p style=\"width: 350px; color: black; background-color: white; padding: 15px; margin-top: 10px; \">Taille : "+resultatcnx.getString("taille")+"</p><br>"
+					        		+ "<p style=\"width: 350px; color: black; background-color: white; padding: 15px; margin-top: 10px; \">Poids : "+resultatcnx.getString("poids")+"</p><br>"
+			        				+ "<p style=\"width: 350px; color: black; background-color: white; padding: 15px; margin-top: 10px; margin-bottom: 20px;\">IMC : "+resultatcnx.getString("imc")+"</p><br></html>");
 
 							jProfil.add(id);
 			        		
 			      	}
-			      	jProfil.add(getbQuitter(), new Constraints(new Leading(412, 10, 10), new Trailing(12, 12, 12)));
+			      	jProfil.add(getbQuitter(), new Constraints(new Leading(500, 10, 10), new Trailing(12, 12, 12)));
 			      
 			} 
 			catch (Exception ex) 
 			{
 			      ex.printStackTrace();
 			} 
-	        
-	        
-	        
-			
-		
+
 		return jProfil;
 	}
 	
@@ -939,7 +1012,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 			
 			
 
-		jApropos.add(getJButton8(), new Constraints(new Leading(600, 10, 10), new Leading(620, 10, 10)));
+        jApropos.add(getJButton8(), new Constraints(new Leading(200, 10, 10), new Trailing(20, 12, 12)));
 		return jApropos;
 	}
 
@@ -950,6 +1023,7 @@ public class IHMWindow extends JFrame implements ActionListener {
 		
 		return bLien;
 	}
+	
 
 	private static void installLnF() {
 		try {

@@ -1,20 +1,34 @@
 package fr.iutvalence.info.dut.m2107.ihm;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.function.IntUnaryOperator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
+import javax.imageio.ImageIO;
 import javax.swing.BorderFactory;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
@@ -35,32 +49,39 @@ public class IHMSceance extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
 	//private static JPanel jPanelAffichage;
-	private JButton jButton0;
+	private static JButton jButton0;
 	private JPanel jP;
 	private JScrollPane jScrollPane1;
-	private JButton jButton1;
+	private static JButton jButton1;
 	static JPanel jPanel0;
+	private ImageIcon img = new ImageIcon("img/icon.png");
+	Color blue = Color.decode("#2D3E50");
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	public IHMSceance() {
 		initComponents();
 	}
 
 	private void initComponents() {
+		setLayout(new BorderLayout());
+		setContentPane(new JLabel(new ImageIcon("img/bg_encours.jpg")));
 		setLayout(new GroupLayout());
+		setIconImage(img.getImage());
 		add(getJScrollPane1(), new Constraints(new Leading(56, 380, 12, 12), new Leading(104, 302, 10, 10)));
-		add(getJLabel0(), new Constraints(new Leading(56, 380, 12, 12), new Leading(40, 10, 10)));
-		add(getJButton1(), new Constraints(new Leading(56, 12, 12), new Trailing(12, 26, 141, 418)));
-		add(getJButton0(), new Constraints(new Leading(284, 152, 12, 12), new Trailing(12, 26, 141, 418)));
+		add(getJLabel0(), new Constraints(new Leading(120, 380, 12, 12), new Leading(40, 10, 10)));
+		add(getJButton1(), new Constraints(new Leading(56, 12, 12), new Trailing(25, 26, 141, 418)));
+		add(getJButton0(), new Constraints(new Leading(284, 152, 12, 12), new Trailing(25, 26, 141, 418)));
 		add(getJPanel0(), new Constraints(new Leading(56, 380, 12, 12), new Leading(440, 143, 10, 10)));
 		setSize(500, 700);
+		
 	}
 
 	private JPanel getJPanel0() {
 		if (jPanel0 == null) {
 			jPanel0 = new JPanel();
 			jPanel0.setBorder(BorderFactory.createTitledBorder(null, "Chronomètre", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new Font("SansSerif",
-					Font.BOLD, 12), new Color(59, 59, 59)));
+					Font.BOLD, 12), new Color(255, 255, 255)));
 			jPanel0.setLayout(new GroupLayout());
+			jPanel0.setBackground(blue);
 		}
 		return jPanel0;
 	}
@@ -83,20 +104,12 @@ public class IHMSceance extends JFrame {
 		return jScrollPane1;
 	}
 
-	
 
-	
-//	public static JPanel getPanelAffichage() {
-//		
-
-//		return jPanelAffichage;
-//	}
 
 	private JPanel getJTextArea1() {
 		if (jP == null) {
 			jP = new JPanel();
 			jP.setBackground(new Color(214, 217, 223));
-			//jP.setEditable(false);
 			jP.setAutoscrolls(false);
 			jP.setBorder(BorderFactory.createBevelBorder(BevelBorder.LOWERED, null, null, null, null));
 						
@@ -149,18 +162,40 @@ public class IHMSceance extends JFrame {
 	}
 
 	private JButton getJButton0() {
-		if (jButton0 == null) {
+		
 			jButton0 = new JButton();
-			jButton0.setText("valider la séance");
-		}
+			jButton0.setText("Valider la séance");
+		
 		return jButton0;
 	}
-
+	static String nom = null;
 	private JLabel getJLabel0() {
-		if (jLabel0 == null) {
+		
 			jLabel0 = new JLabel();
-			jLabel0.setText("                                    Vous avez choisi la séance Test1");
-		}
+			 try {
+				  Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
+
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      Statement instruction = connexion.createStatement();
+			      
+			      
+						
+			      ResultSet nom_seance = instruction.executeQuery("Select nom FROM infos WHERE id = 1");
+			      while(nom_seance.next())
+	              { 
+	                nom = nom_seance.getString("nom");
+				  }
+				  jLabel0.setText("C'est partie pour la séance "+nom);
+				  jLabel0.setFont(new Font("Sans Serif", Font.PLAIN, 12));
+				  jLabel0.setForeground(Color.WHITE);
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		
 		return jLabel0;
 	}
 
@@ -181,12 +216,45 @@ public class IHMSceance extends JFrame {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				IHMSceance frame = new IHMSceance();
-				frame.setDefaultCloseOperation(IHMSceance.EXIT_ON_CLOSE);
+				frame.setDefaultCloseOperation(IHMSceance.DISPOSE_ON_CLOSE);
 				frame.setTitle("IHMSceance");
 				frame.getContentPane().setPreferredSize(frame.getSize());
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
+				
+				jButton0.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						try {
+							  Class.forName("org.postgresql.Driver");
+						      System.out.println("Driver O.K.");
+
+						      String url = "jdbc:postgresql://gigondas:5432/battonh";
+						      String user = "battonh";
+						      String passwd = "battonh";
+						      Connection connexion = DriverManager.getConnection(url, user, passwd);
+						      Statement instruction = connexion.createStatement();
+
+						      instruction.executeQuery("INSERT INTO suivi(seance_real) VALUES ('"+nom+"')");
+						}
+						  catch (Exception e1) {
+							// TODO: handle exception
+						  }
+						JOptionPane d = new JOptionPane();
+						d.showConfirmDialog(frame, "Séance ajoutée à votre suivi !", "Félicitation", JOptionPane.CLOSED_OPTION);
+						frame.dispose();
+					}
+				});
+				
+				jButton1.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						JOptionPane d = new JOptionPane();
+						int option = d.showConfirmDialog(frame, "Voulez vous vraiment abandonner ?", "Une prochaine fois surement !", JOptionPane.OK_CANCEL_OPTION);
+						if (option == JOptionPane.YES_OPTION) {
+						    frame.dispose();
+						}
+					}
+				});
 			}
 		});
 	}

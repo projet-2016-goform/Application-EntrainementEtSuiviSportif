@@ -161,7 +161,7 @@ public class IHMConnexionUser extends JFrame implements ActionListener {
 		}
 		return jLabel0;
 	}
-
+	
 	private static void installLnF() {
 		try {
 			String lnfClassname = PREFERRED_LOOK_AND_FEEL;
