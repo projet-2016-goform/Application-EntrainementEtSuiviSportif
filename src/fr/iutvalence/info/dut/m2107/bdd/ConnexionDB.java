@@ -1,4 +1,6 @@
-//Classe d'accès à une base PostgreSQL
+/**
+ * Classe d'accès à une base de données PostgreSQL
+ */
 package fr.iutvalence.info.dut.m2107.bdd;
 import java.sql.*;
 

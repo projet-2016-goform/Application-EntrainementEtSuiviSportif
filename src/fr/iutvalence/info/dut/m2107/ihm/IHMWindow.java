@@ -1,3 +1,6 @@
+/**
+ * Classe priincipale de l'application.
+ */
 package fr.iutvalence.info.dut.m2107.ihm;
 import fr.iutvalence.info.dut.m2107.bdd.*;
 
@@ -1161,7 +1164,8 @@ public class IHMWindow extends JFrame implements ActionListener {
 				fwindow.pack();
 				fwindow.setLocationRelativeTo(null);
 				fwindow.setVisible(true);
-				fwindow.setBackground(blue);	
+				fwindow.setBackground(blue);
+				fwindow.setResizable(false);
 			}
 		});
 		

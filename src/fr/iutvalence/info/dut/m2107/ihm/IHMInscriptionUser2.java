@@ -1,5 +1,11 @@
+/**
+ * Classe d'inscription première étape 2.
+ */
 package fr.iutvalence.info.dut.m2107.ihm;
 
+/**
+ * Importation des librairies.
+ */
 import fr.iutvalence.info.dut.m2107.Sexe;
 import fr.iutvalence.info.dut.m2107.ihm.IHMConnexionUser;
 import fr.iutvalence.info.dut.m2107.ihm.IHMInscriptionUser1;
@@ -34,7 +40,10 @@ import org.dyno.visual.swing.layouts.Leading;
 
 
 public class IHMInscriptionUser2 extends JFrame implements ActionListener {
-
+	
+	/**
+	 * Elements de l'IHM
+	 */
 	private static final long serialVersionUID = 1L;
 	private JTextField jTextField0;
 	private JComboBox jComboBox0;
@@ -55,20 +64,30 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 	private JLabel jLabel7;
 	private JScrollPane jScrollPane1;
 	private JLabel jintro;
+	
+	/**
+	 * Icone de l'application.
+	 */
 	private ImageIcon img = new ImageIcon("img/icon.png");
+	
+	/**
+	 * Look end feel.
+	 */
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	
 	public IHMInscriptionUser2() {
 		initComponents();
 	}
 
+	/**
+	 * Positionnement des éléments dans la fenêtre.
+	 */
 	private void initComponents() {
 		setLayout(new BorderLayout());
 		setContentPane(new JLabel(new ImageIcon("img/bg_inscription.jpg")));
 		setIconImage(img.getImage());
 		setTitle("GoForm");
 		setLayout(new GroupLayout());
-		add(getJTextField0(), new Constraints(new Leading(113, 10, 10), new Leading(40, -8, 10, 10)));
 		add(getJButton0(), new Constraints(new Leading(398, 10, 10), new Leading(660, 10, 10)));
 		add(getJButton1(), new Constraints(new Leading(289, 10, 10), new Leading(660, 12, 12)));
 		add(getJComboBox0(), new Constraints(new Leading(49, 12, 12), new Leading(142, 12, 12)));
@@ -81,22 +100,30 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 		add(getJTextTaille(), new Constraints(new Leading(49, 414, 12, 12), new Leading(274, 12, 12)));
 		add(getJTextAge(), new Constraints(new Leading(49, 414, 12, 12), new Leading(336, 12, 12)));
 		add(getJProgressBar0(), new Constraints(new Leading(49, 414, 12, 12), new Leading(404, 17, 12, 12)));
-		add(getJLabel1(), new Constraints(new Leading(49, 12, 12), new Leading(35, 10, 10)));
 		add(getJLabel0(), new Constraints(new Leading(49, 12, 12), new Leading(114, 12, 12)));
 		add(getJLabel8(), new Constraints(new Leading(49, 414, 12, 12), new Leading(35, 63, 10, 10)));
 		setSize(500, 700);
+		
+		/**
+		 * Bouton annuler.
+		 */
 		bannuler.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
+				dispose();
+				IHMConnexionUser.main(null);
 			}
 		});
-	
+		
+		/**
+		 * Bouton terminer l'inscription.
+		 * Ajout des informations saisie à la Base de données.
+		 */
 		bTerminer.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int taille = Integer.parseInt(JTextTaille.getText());
 				int poids = Integer.parseInt(JTextPoids.getText());
 				int age = Integer.parseInt(JTextAge.getText());
-				double imc = poids * Math.sqrt(taille);
+				double imc = poids / Math.sqrt(taille/10);
 				Sexe HOMME = null;
 				Sexe sexe = HOMME;
 				String nom = IHMInscriptionUser1.jTextFieldnom.getText();
@@ -144,19 +171,25 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 	}
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
+	/**
+	 * Label de demande de saisie.
+	 * @return jintro
+	 */
 	private JLabel getJLabel8() {
-		if (jintro == null) {
+	
 			jintro = new JLabel();
 			jintro.setText("<html>Veuillez renseigner les champs suivant afin de vous inscrire aux différents programmes d'entraînements :</html>");
 			jintro.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 			jintro.setForeground(Color.WHITE);
-		}
+
 		return jintro;
 	}
-
+	/**
+	 * Barre de progression.
+	 * @return jProgressBarImc
+	 */
 	private JProgressBar getJProgressBar0() {
 		
 			jProgressBarImc = new JProgressBar();
@@ -166,135 +199,166 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 		return jProgressBarImc;
 		
 	}
-
+	/**
+	 * Label définition de l'anagramme IMC.
+	 * @return jIndiceImc
+	 */
 	private JLabel getJLabel6() {
-		if (jIndiceImc == null) {
+	
 			jIndiceImc = new JLabel();
 			jIndiceImc.setText("IMC* : Indice de masse corporelle.");
-		}
+
 		return jIndiceImc;
 	}
 	
+	/**
+	 * Label pour l'IMC.
+	 * @return jImc
+	 */
 	private JLabel getJLabel5() {
-		if (jImc == null) {
+
 			jImc = new JLabel();
 			jImc.setText("Votre IMC* est de :");
 			
-		}
+
 		return jImc;
 		
 		
 	}
 
 	
-
+	/**
+	 * Bouton pour terminer l'inscription.
+	 * @return bTerminer
+	 */
 	private JButton getJButton1() {
-		if (bTerminer == null) {
+
 			bTerminer = new JButton();
 			bTerminer.setText("Terminer");
-		}
+	
 		
 		return bTerminer;
 	}
-
+	/**
+	 * Bouton annuler.
+	 * @return bannuler
+	 */
 	private JButton getJButton0() {
-		if (bannuler == null) {
+
 			bannuler = new JButton();
 			bannuler.setText("Annuler");
-		}
+		
 		return bannuler;
 		
 	}
 	
-
+	/**
+	 * Saisie de l'âge.
+	 * @return JTextAge
+	 */
 	private JTextField getJTextAge() {
-		if (JTextAge == null) {
+
 			JTextAge = new JTextField();
-		}
+		
 		return JTextAge;
 	}
-
+	
+	/**
+	 *Label de demande de saisie d'âge.
+	 * @return
+	 */
 	private JLabel getJLabel4() {
-		if (jage == null) {
+
 			jage = new JLabel();
 			jage.setText("Votre âge :");
 			jage.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 			jage.setForeground(Color.WHITE);
-		}
+	
 		return jage;
 	}
 	
 
-
+	/**
+	 *Saisie de la taille.
+	 * @return JTextTaille
+	 */
 	private JTextField getJTextTaille() {
-		if (JTextTaille == null) {
+
 			JTextTaille = new JTextField();
-		}
+		
 		return JTextTaille;
 	}
 
+	/**
+	 * Label de demande de saisie de la taille.
+	 * @return jTaille
+	 */
 	private JLabel getJLabel3() {
-		if (jTaille == null) {
+
 			jTaille = new JLabel();
 			jTaille.setText("Votre taille :");
 			jTaille.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 			jTaille.setForeground(Color.WHITE);
-		}
+		
 		return jTaille;
 	}
 
+	/**
+	 * Saisie du poids.
+	 * @return JTextPoids
+	 */
 	private JTextField getJTextPoids() {
-		if (JTextPoids == null) {
+		
 			JTextPoids = new JTextField();
-		}
+		
 		return JTextPoids;
 	}
-
+	
+	/**
+	 * Label de demande de saisie du poids.
+	 * @return jLabel2
+	 */
 	private JLabel getJLabel2() {
-		if (jLabel2 == null) {
+
 			jLabel2 = new JLabel();
 			jLabel2.setText("Votre poids :");
 			jLabel2.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 			jLabel2.setForeground(Color.WHITE);
-		}
+		
 		return jLabel2;
 	}
 
-	private JLabel getJLabel1() {
-		if (jLabel1 == null) {
-			jLabel1 = new JLabel();
-		}
-		return jLabel1;
-	}
-
+	/**
+	 * Label de demande du sexe de la personne.
+	 * @return jLabel0
+	 */
 	private JLabel getJLabel0() {
-		if (jLabel0 == null) {
+
 			jLabel0 = new JLabel();
 			jLabel0.setText("Votre sexe :");			
 			jLabel0.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 			jLabel0.setForeground(Color.WHITE);
-		}
+		
 		return jLabel0;
 	}
-
+	
+	/**
+	 * Liste de choix.
+	 * @return jComboBox0
+	 */
 	private JComboBox getJComboBox0() {
-		if (jComboBox0 == null) {
+		
 			jComboBox0 = new JComboBox();
 			jComboBox0.setModel(new DefaultComboBoxModel(new Object[] { "Femme", "Homme"}));
 			jComboBox0.setDoubleBuffered(false);
 			jComboBox0.setBorder(null);
-		}
+		
 		return jComboBox0;
 	}
-
-	private JTextField getJTextField0() {
-		if (jTextField0 == null) {
-			jTextField0 = new JTextField();
-			jTextField0.setText("jTextField0");
-		}
-		return jTextField0;
-	}
 	
+	/**
+	 *Look end feel. 
+	 */
 	private static void installLnF() {
 		try {
 			String lnfClassname = PREFERRED_LOOK_AND_FEEL;
@@ -311,9 +375,6 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 
 	/**
 	 * Main entry of the class.
-	 * Note: This class is only created so that you can easily preview the result at runtime.
-	 * It is not expected to be managed by the designer.
-	 * You can modify it as you like.
 	 */
 	public static void main(String[] args) {
 		installLnF();
@@ -328,6 +389,7 @@ public class IHMInscriptionUser2 extends JFrame implements ActionListener {
 				finsc2.pack();
 				finsc2.setLocationRelativeTo(null);
 				finsc2.setVisible(true);
+				finsc2.setResizable(false);
 			}
 		});
 		

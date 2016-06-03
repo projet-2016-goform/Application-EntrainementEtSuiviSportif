@@ -1,3 +1,6 @@
+/**
+ * Classe pour réaliser la  séance choisie.
+ */
 package fr.iutvalence.info.dut.m2107.ihm;
 
 import java.awt.BorderLayout;
@@ -100,9 +103,10 @@ public class IHMSceance extends JFrame {
 					Font.BOLD, 12), new Color(255, 255, 255)));
 			jPanel0.setLayout(new GroupLayout());
 			jPanel0.setBackground(blue);
+			
 		return jPanel0;
 	}
-
+	
 	/**
 	 * Bouton d'abandon.
 	 * @return jButton1
@@ -252,6 +256,8 @@ public class IHMSceance extends JFrame {
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				
+				
 				IHMSceance frame = new IHMSceance();
 				frame.setDefaultCloseOperation(IHMSceance.DISPOSE_ON_CLOSE);
 				frame.setTitle("IHMSceance");
@@ -259,7 +265,8 @@ public class IHMSceance extends JFrame {
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
-				
+				frame.setResizable(false);
+				IHMChrono.main(null);
 				jButton0.addActionListener(new ActionListener() {
 					public void actionPerformed(ActionEvent e) {
 						try {

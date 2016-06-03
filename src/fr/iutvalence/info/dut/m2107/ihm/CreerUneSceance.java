@@ -1,5 +1,5 @@
 /**
- * 
+ * Classe de création de séance.
  */
 package fr.iutvalence.info.dut.m2107.ihm;
 
@@ -312,12 +312,13 @@ public class CreerUneSceance extends JFrame {
 		SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
 				CreerUneSceance frame = new CreerUneSceance();
-				frame.setDefaultCloseOperation(CreerUneSceance.EXIT_ON_CLOSE);
+				frame.setDefaultCloseOperation(CreerUneSceance.DISPOSE_ON_CLOSE);
 				frame.setTitle("CreerUneSceance");
 				frame.getContentPane().setPreferredSize(frame.getSize());
 				frame.pack();
 				frame.setLocationRelativeTo(null);
 				frame.setVisible(true);
+				frame.setResizable(false);
 			}
 		});
 	}

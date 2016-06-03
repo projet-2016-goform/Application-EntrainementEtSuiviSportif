@@ -1,3 +1,6 @@
+/**
+ * Classe pour afficher les images dans les onglets.
+ */
 package fr.iutvalence.info.dut.m2107.ihm;
 
 import java.awt.Dimension;
