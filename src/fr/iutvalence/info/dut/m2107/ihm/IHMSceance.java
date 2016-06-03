@@ -109,34 +109,36 @@ public class IHMSceance extends JFrame {
 			      String user = "battonh";
 			      String passwd = "battonh";
 			      Connection connexion = DriverManager.getConnection(url, user, passwd);
-			      
-			      
-			      System.out.println("Connexion effective !");  
-			      
 			      Statement instruction = connexion.createStatement();
-			   
-			      IHMWindow.jListUser.addMouseListener(new MouseAdapter() {
-				
-			    	  public String nomSeance(MouseEvent e){
-					    	if(e.getClickCount() == 2){
-					    		 Object item = IHMWindow.jListUser.getModel().getElementAt(IHMWindow.jListUser.locationToIndex(e.getPoint()));
-							     return item.toString();
-					        }
-							return null;
-					     }
-			      });
-			     String id_seance = "test";
-			      ResultSet resultatcnx = instruction.executeQuery("Select libelle_exercice FROM exercice WHERE id_seance = "+id_seance+"");	
-				  System.out.println("Libelle :");
-
+			      
+			      String nom = null;
+			      String id = null;
+						
+			      ResultSet nom_seance = instruction.executeQuery("Select nom FROM infos WHERE id = 1");
+			      while(nom_seance.next())
+	              { 
+	                  nom = nom_seance.getString("nom");
+				  }
+			      System.out.println(nom);
+			      ResultSet id_seance = instruction.executeQuery("Select id_seance FROM seance WHERE libelle_seance = '"+nom+"'");
+			      while(id_seance.next())
+	              { 
+	                  id = id_seance.getString("id_seance");
+				  }
+			      JLabel intituleNom = null;
+			      JLabel rep = null;
+			      System.out.println(id);
+			      ResultSet resultatcnx = instruction.executeQuery("Select libelle_exercice, nb_repetition FROM exercice WHERE id_seance = "+id+"");	
 				  while(resultatcnx.next())
 	              { 
-	                  JLabel intituleNom = new JLabel("<html><div style=\"float: left; display: block;\">"+resultatcnx.getString("libelle_exercice")+"<br></div></html>");
-	                  jP.add(intituleNom);
-					  
+	                  intituleNom = new JLabel(resultatcnx.getString("libelle_exercice"));
+	                  rep = new JLabel(resultatcnx.getString("nb_repetition")+" répétitions !");
+					  jP.add(intituleNom);
+					  jP.add(rep);
+	                  System.out.println(intituleNom);
+	                  System.out.println(rep);
+	                  
 	              }
-
-			      
 			} 
 			catch (Exception ex) 
 			{

@@ -176,11 +176,12 @@ public class IHMWindow extends JFrame implements ActionListener {
 			      String user = "battonh";
 			      String passwd = "battonh";
 			      
-			      
+
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
 			      System.out.println("Connexion effective !");  
 			      
 			      String email = IHMConnexionUser.jTextFieldMail.getText();
-			      Statement instruction = ConnexionDB.con.createStatement();	      
+			      Statement instruction = connexion.createStatement();	      
 			      ResultSet resultatcnx = instruction.executeQuery("Select poids FROM utilisateur WHERE mail = '"+email+"'");	
 				
 			      	while (resultatcnx.next()) {
@@ -461,32 +462,104 @@ public class IHMWindow extends JFrame implements ActionListener {
 	}
 	
 	
+	public static void nomSeanceG(MouseEvent e){
+    	if(e.getClickCount() == 2){
+    		 String item = (String) jListGoform.getModel().getElementAt(jListGoform.locationToIndex(e.getPoint()));
+    		 System.out.println("---------------------------"+item);
+    		 try 
+ 			 {
+ 	        	Class.forName("org.postgresql.Driver");
+ 			      System.out.println("Driver O.K.");
+
+ 			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+ 			      String user = "battonh";
+ 			      String passwd = "battonh";
+ 			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+ 			       			      
+ 			      System.out.println("Connexion effective !");  
+ 			      
+ 			      Statement instruction = connexion.createStatement();
+ 						
+ 			      ResultSet resultatcnx = instruction.executeQuery("INSERT INTO infos(nom) VALUES"+item+";");	
+ 			      
+ 				  System.out.println("Libelle :"+resultatcnx.getString("id_seance"));
+			      
+ 			} 
+ 			catch (Exception ex) 
+ 			{
+ 			      ex.printStackTrace();
+ 			} 
+        }
+    }
 	
-	public JList getJListUser() {
+	public static void nomSeance(MouseEvent e){
+    	if(e.getClickCount() == 2){
+    		 String item = (String) jListUser.getModel().getElementAt(jListUser.locationToIndex(e.getPoint()));
+    		 System.out.println("---------------------------"+item);
+    		 try 
+ 			 {
+ 	        	Class.forName("org.postgresql.Driver");
+ 			      System.out.println("Driver O.K.");
+
+ 			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+ 			      String user = "battonh";
+ 			      String passwd = "battonh";
+ 			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+ 			       			      
+ 			      System.out.println("Connexion effective !");  
+ 			      
+ 			      Statement instruction = connexion.createStatement();
+ 						
+ 			      ResultSet resultatcnx = instruction.executeQuery("INSERT INTO infos(nom) VALUES"+item+";");	
+ 			      
+ 				  System.out.println("Libelle :"+resultatcnx.getString("id_seance"));
+			      
+ 			} 
+ 			catch (Exception ex) 
+ 			{
+ 			      ex.printStackTrace();
+ 			} 
+        }
+    }
+	
+	
+	
+	public static JList getJListUser() {
 		jListUser = new JList();
 		jListUser.addMouseListener(new MouseAdapter() {
-			
-			public void mouseClicked(MouseEvent e){
-		    	if(e.getClickCount() == 2){
-		    		IHMSceance.main(null);
-		        }
-		     }
-		    
-		    public String nomSeance(MouseEvent e){
-		    	if(e.getClickCount() == 2){
-		    		 String item = (String) jListUser.getModel().getElementAt(jListUser.locationToIndex(e.getPoint()));
-		    		 System.out.println(item);
-				     return item;
-		        }
-				return null;
-		     }
-			
+		    public void mouseClicked(MouseEvent e){
+	        	   if(e.getClickCount() == 2){
+	        	     int index = jListUser.locationToIndex(e.getPoint());
+	        	     ListModel dlm = jListUser.getModel();
+	        	     Object item = dlm.getElementAt(index);;
+	        	     jListUser.ensureIndexIsVisible(index);
+	        	     System.out.println("Double clicked on " + item);
+	        	     try 
+	     			 {
+	     	        	Class.forName("org.postgresql.Driver");
+	     			      System.out.println("Driver O.K.");
+
+	     			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+	     			      String user = "battonh";
+	     			      String passwd = "battonh";
+	     			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+	     			       			      
+	     			      System.out.println("Connexion effective !");  
+	     			      
+	     			      Statement instruction = connexion.createStatement();
+	     				  instruction.executeQuery("UPDATE infos SET nom='"+item+"' WHERE id = 1;");	
+	     			      	    			      
+	     			} 
+	     			catch (Exception ex) 
+	     			{
+	     			      ex.printStackTrace();
+	     			} 
+	        	     IHMSceance.main(null);
+	        	   }}
 		});
-		
-			 
 		try 
 		{
-        	Class.forName("org.postgresql.Driver");
+     	Class.forName("org.postgresql.Driver");
 		      System.out.println("Driver O.K.");
 
 		      String url = "jdbc:postgresql://gigondas:5432/battonh";
@@ -501,15 +574,13 @@ public class IHMWindow extends JFrame implements ActionListener {
 		        
 		      
 		      ResultSet resultatcnx = instruction.executeQuery("Select libelle_seance FROM seance WHERE seance_g = FALSE");	
-			  System.out.println("Libelle :");
 
-              DefaultListModel dlm=new DefaultListModel();
-	    	  while(resultatcnx.next())
-              { 
-                  dlm.addElement(resultatcnx.getString("libelle_seance"));
-              }
-              jListUser.setModel(dlm);
-
+           DefaultListModel dlm = new DefaultListModel();
+	       while(resultatcnx.next())
+           { 
+               dlm.addElement(resultatcnx.getString("libelle_seance"));
+           }
+	       jListUser.setModel(dlm);
 		      
 		} 
 		catch (Exception ex) 
@@ -545,6 +616,27 @@ public class IHMWindow extends JFrame implements ActionListener {
 		        	     Object item = dlm.getElementAt(index);;
 		        	     jListGoform.ensureIndexIsVisible(index);
 		        	     System.out.println("Double clicked on " + item);
+		        	     try 
+		     			 {
+		     	        	Class.forName("org.postgresql.Driver");
+		     			      System.out.println("Driver O.K.");
+
+		     			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+		     			      String user = "battonh";
+		     			      String passwd = "battonh";
+		     			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+		     			       			      
+		     			      System.out.println("Connexion effective !");  
+		     			      
+		     			      Statement instruction = connexion.createStatement();
+		     				  instruction.executeQuery("UPDATE infos SET nom='"+item+"' WHERE id = 1;");	
+		     			      
+		    			      
+		     			} 
+		     			catch (Exception ex) 
+		     			{
+		     			      ex.printStackTrace();
+		     			} 
 		        	     IHMSceance.main(null);
 		        	   }}
 			});
@@ -565,7 +657,6 @@ public class IHMWindow extends JFrame implements ActionListener {
 			        
 			      
 			      ResultSet resultatcnx = instruction.executeQuery("Select libelle_seance FROM seance WHERE seance_g = TRUE");	
-				  System.out.println("Libelle :");
 
                   DefaultListModel dlm = new DefaultListModel();
 		    	  while(resultatcnx.next())
@@ -601,26 +692,25 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return bCreerSeance;
 	}
 
-	private JPanel getJSeanceUser() {
-		if (jSeanceUser == null) {
-			jSeanceUser = new JPanel();
-			jSeanceUser.setVisible(false);
-			jSeanceUser.getLayout();
-			jSeanceUser.add(getJScrollPane1(), new Constraints(new Leading(117, 100, 10, 10), new Leading(36, 135, 10, 10)));
-			jSeanceUser.add(getbCreerSeance());
-			jSeanceUser.setBackground(red);
-		}
-		return jSeanceUser;
-	}
+    private JPanel getJSeanceUser() {
+        jSeanceUser = new JPanel();
+        jSeanceUser.setVisible(false);
+        jSeanceUser.setLayout(new GroupLayout());
+        jSeanceUser.add(getJScrollPane1(), new Constraints(new Leading(50, 400, 15, 15), new Leading(100, 465, 15, 15)));
+        jSeanceUser.add(getbCreerSeance(), new Constraints(new Leading(200, 10, 10), new Trailing(12, 12, 12)));
+        jSeanceUser.setBackground(red);
 
+	return jSeanceUser;
+	}
+	
 	private JPanel getJSeanceGoform() {
-		
-			jSeanceGoform = new JPanel();
-			jSeanceGoform.setLayout(new GroupLayout());
-			jSeanceGoform.add(getJScrollPane0(), new Constraints(new Leading(32, 111, 10, 10), new Leading(32, 82, 10, 10)));
-			jSeanceGoform.setBackground(red);
-			
-		return jSeanceGoform;
+	
+	        jSeanceGoform = new JPanel();
+	        jSeanceGoform.setLayout(new GroupLayout());
+	        jSeanceGoform.add(getJScrollPane0(), new Constraints(new Leading(50, 400, 15, 15), new Leading(100, 465, 15, 15)));
+	        jSeanceGoform.setBackground(red);
+	        
+	return jSeanceGoform;
 	}
 
 	private JTabbedPane getjTabbOnglets() {
