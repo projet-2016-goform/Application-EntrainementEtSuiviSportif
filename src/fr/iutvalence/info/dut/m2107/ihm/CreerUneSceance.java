@@ -28,11 +28,14 @@ import org.dyno.visual.swing.layouts.Constraints;
 import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 
-import fr.iutvalence.info.dut.m2107.Sexe;
+
 
 //VS4E -- DO NOT REMOVE THIS LINE!
 public class CreerUneSceance extends JFrame {
-
+	
+	/**
+	 * Eléments d'affichage pour l'IHM
+	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel jTitre;
 	private JLabel jNomSceance;
@@ -48,13 +51,25 @@ public class CreerUneSceance extends JFrame {
 	private JSpinner jSpinnerRep2;
 	private JTextField jTextField3;
 	private JSpinner jSpinnerRep3;
+	/**
+	 * Récupération de l'iamge pour le logo
+	 */
 	private ImageIcon img = new ImageIcon("img/icon.png");
+	/**
+	 * Définition du look and feel
+	 */
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
 	
+	/**
+	 * Création d'une séance
+	 */
 	public CreerUneSceance() {
 		initComponents();
 	}
 
+	/**
+	 * Initialisation des composants
+	 */
 	private void initComponents() {
 		setLayout(new BorderLayout());
 		setContentPane(new JLabel(new ImageIcon("img/bg_seance.jpg")));
@@ -117,13 +132,6 @@ public class CreerUneSceance extends JFrame {
 				        		
 				      	}
 
-				      
-				        	  
-
-					  
-				      
-		      
-				      
 				} 
 				catch (Exception ex) 
 				{
@@ -132,89 +140,113 @@ public class CreerUneSceance extends JFrame {
 			}});
 	}
 
+	/**
+	 * Choix du nombre de répétitions de l'exercice 3.
+	 * @return liste déroulante
+	 */
 	private JSpinner getJSpinnerRep3() {
-		if (jSpinnerRep3 == null) {
 			jSpinnerRep3 = new JSpinner();
-		}
 		return jSpinnerRep3;
 	}
 
+	/**
+	 * Choix du nom de l'exercice 3.
+	 * @return textfield3
+	 */
 	private JTextField getJTextField3() {
-		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
 			jTextField3.setText("exo3");
-		}
 		return jTextField3;
 	}
 
+	/**
+	 * Choix du nombre de répétitions de l'exercice 2.
+	 * @return liste déroulante
+	 */
 	private JSpinner getJSpinnerRep2() {
-		if (jSpinnerRep2 == null) {
 			jSpinnerRep2 = new JSpinner();
-		}
 		return jSpinnerRep2;
 	}
 
+	/**
+	 * Choix du nom de l'exercice 2.
+	 * @return textfield2
+	 */
 	private JTextField getJTextField2() {
-		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			jTextField2.setText("exo2");
-		}
 		return jTextField2;
 	}
-
+	
+	/**
+	 * Choix du nombre de répétitions de l'exercice 1.
+	 * @return liste déroulante
+	 */
 	private JSpinner getJSpinnerRep1() {
-		if (jSpinnerRep1 == null) {
 			jSpinnerRep1 = new JSpinner();
-		}
 		return jSpinnerRep1;
 	}
 
+	/**
+	 * Choix du nom de l'exercice 1.
+	 * @return textfield1
+	 */
 	private JTextField getJTextField1() {
-		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
 			jTextField1.setText("exo1");
-		}
 		return jTextField1;
 	}
-
+	
+	/**
+	 * Label du nombre de répétitions.
+	 * @return jNbRep
+	 */
 	private JLabel getJNbRep() {
-		if (jNbRep == null) {
 			jNbRep = new JLabel();
 			jNbRep.setText("Nombre de répétition");
 			jNbRep.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 			jNbRep.setForeground(Color.WHITE);
-		}
 		return jNbRep;
 	}
 
+	/**
+	 * Label du nom de l'exercice.
+	 * @return jNbRep
+	 */
 	private JLabel getJNomExo() {
-		if (jNomExo == null) {
 			jNomExo = new JLabel();
 			jNomExo.setText("Nom de l'exercice");
 			jNomExo.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 			jNomExo.setForeground(Color.WHITE);
-		}
 		return jNomExo;
 	}
 
+	/**
+	 * Bouton terminer.
+	 * @return bTerminer
+	 */
 	private JButton getJButton0() {
-		if (bTerminer == null) {
 			bTerminer = new JButton();
 			bTerminer.setText("Terminer");
-		}
 		return bTerminer;
 	}
 
+	/**
+	 * choix du nombre d'exercices souhaités.
+	 * @return jComboBox0
+	 */
 	private JComboBox getJComboBox0() {
-		if (jComboBox0 == null) {
 			jComboBox0 = new JComboBox();
 			jComboBox0.setModel(new DefaultComboBoxModel(new Object[] { "0", "1", "2", "3"}));
 			jComboBox0.setDoubleBuffered(false);
 			jComboBox0.setBorder(null);
-		}
 		return jComboBox0;
 	}
 
+	/**
+	 * Label du nombre d'exercice.
+	 * @return jNbRep
+	 */
 	private JLabel getJNbExo() {
 		if (jNbExo == null) {
 			jNbExo = new JLabel();
@@ -225,32 +257,41 @@ public class CreerUneSceance extends JFrame {
 		return jNbExo;
 	}
 
+	/**
+	 * Saisi du nom de l'exercice.
+	 * @return jTextFieldNomSceance
+	 */
 	private JTextField getJTextFieldNomSceance() {
-		if (jTextFieldNomSceance == null) {
 			jTextFieldNomSceance = new JTextField();
 			jTextFieldNomSceance.setText("nomSeance");
-		}
 		return jTextFieldNomSceance;
 	}
 
+	/**
+	 * Label du nom de la séance.
+	 * @return jNbRep
+	 */
 	private JLabel getJLabel1() {
-		if (jNomSceance == null) {
 			jNomSceance = new JLabel();
 			jNomSceance.setText("Nom de la scéance :");
 			jNomSceance.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 			jNomSceance.setForeground(Color.WHITE);
-		}
 		return jNomSceance;
 	}
 
+	/**
+	 * Titre.
+	 * @return jTitre
+	 */
 	private JLabel getJLabel0() {
-		if (jTitre == null) {
 			jTitre = new JLabel();
 			jTitre.setText("<html><h2 style=\"color: white;\">Créez votre scéance d'enfer</h2></html>");
-		}
 		return jTitre;
 	}
 
+	/**
+	 * Look and feel.
+	 */
 	private static void installLnF() {
 		try {
 			String lnfClassname = PREFERRED_LOOK_AND_FEEL;
@@ -265,9 +306,6 @@ public class CreerUneSceance extends JFrame {
 
 	/**
 	 * Main entry of the class.
-	 * Note: This class is only created so that you can easily preview the result at runtime.
-	 * It is not expected to be managed by the designer.
-	 * You can modify it as you like.
 	 */
 	public static void main(String[] args) {
 		installLnF();

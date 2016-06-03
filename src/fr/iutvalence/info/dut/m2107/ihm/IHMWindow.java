@@ -2,30 +2,21 @@ package fr.iutvalence.info.dut.m2107.ihm;
 import fr.iutvalence.info.dut.m2107.bdd.*;
 
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.GridBagLayout;
-import java.awt.Image;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.awt.event.*;
 import java.awt.image.BufferedImage;
 
 import javax.swing.*;
 import javax.imageio.ImageIO;
-import javax.naming.spi.DirStateFactory.Result;
-import javax.swing.Action;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -38,8 +29,6 @@ import javax.swing.JTabbedPane;
 import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
-import javax.swing.event.ListDataEvent;
-import javax.swing.event.ListDataListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
@@ -55,6 +44,9 @@ import java.util.logging.Logger;
 
 public class IHMWindow extends JFrame implements ActionListener {
 
+	/**
+	 * Elements de l'IHM.
+	 */
 	private static final long serialVersionUID = 1L;
 	private JTabbedPane jTabbOnglets;
 	private JPanel jAccueil;
@@ -73,7 +65,6 @@ public class IHMWindow extends JFrame implements ActionListener {
 	public static JList jListUser;
 	private JScrollPane jScrollPane1;
 	private JButton bQuitter;
-	private JButton bLien;
 	private JButton bCreerSeance;
 	private JTextField jTextField0;
 	private JTextField jTextField1;
@@ -97,58 +88,82 @@ public class IHMWindow extends JFrame implements ActionListener {
 	private BufferedImage bg_reglages;
 	private BufferedImage bg_seance;
 	private BufferedImage bg_profil;
+	/**
+	 * Récupération du look and feel.
+	 */
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
+	/**
+	 * Récupération de l'icon.
+	 */
 	private ImageIcon img = new ImageIcon("img/icon.png");
+	/**
+	 * Couleur rouge.
+	 */
 	Color red = Color.decode("#E84C3D");
+	/**
+	 * Couleur bleu.
+	 */
 	Color blue = Color.decode("#2D3E50");
 	
+	/**
+	 * Création de la fenetre.
+	 */
 	public IHMWindow() {
 		initComponents();
 	}
 
+	/**
+	 * Initialisation des composants.
+	 */
 	private void initComponents() {
 		setLayout(new GroupLayout());
 		add(getjTabbOnglets(), new Constraints(new Bilateral(0, 0, 0), new Bilateral(0, 0, 0)));
 		setIconImage(img.getImage());
 		setSize(500, 700);
 	
-	bCreerSeance.addActionListener(new ActionListener() {
+		bCreerSeance.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent e) {
 			CreerUneSceance.main(null);
 			
 		}
-	});
+		});
 	
 	
-	jListUser.addListSelectionListener( new ListSelectionListener() {
+		jListUser.addListSelectionListener( new ListSelectionListener() {
 		public void valueChanged(ListSelectionEvent e) {
-			
-			//add(IHMSceance.getPanelAffichage(), jList1.getSelectedValue());
-			//add(IHMSceance.getLabelAffichage().setText((String)jList1.getSelectedValue()));
 
 		}
-	});	
+		});	
 	
 	
 	}
 	
+	/**
+	 * Label de présentation des séances de l'application.
+	 * @return jLabel2
+	 */
 	private JLabel getJLabelSeanceG() {
 		jLabel2 = new JLabel();
 		jLabel2.setText("Choisissez parmi les séances que nous vous proposons !");
 		jLabel2.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		jLabel2.setForeground(Color.WHITE);
-	
-	return jLabel2;
+		return jLabel2;
     }
-	
+	/**
+	 * Label de présentation des séances des autres utilisateurs.
+	 * @return jLabel2
+	 */
 	private JLabel getJLabelSeance() {
 		jLabel3 = new JLabel();
 		jLabel3.setText("Choisissez parmi les séance de la communauté !");
 		jLabel3.setFont(new Font("Sans Serif", Font.PLAIN, 12));
 		jLabel3.setForeground(Color.WHITE);
-	
-	return jLabel0;
+		return jLabel0;
 	}
+	/**
+	 * Label de modifications des réglages de l'application.
+	 * @return jLabel1
+	 */
 	private JLabel getJLabel1() {
 			jLabel1 = new JLabel();
 			jLabel1.setText("Réglages application:");
@@ -158,6 +173,10 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jLabel1;
 	}
 
+	/**
+	 * Label de modifications des réglages du profil.
+	 * @return jLabel0
+	 */
 	private JLabel getJLabel0() {
 			jLabel0 = new JLabel();
 			jLabel0.setText("Réglage profil :");
@@ -167,26 +186,33 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jLabel0;
 	}
 
+	/**
+	 * Bouton de validation de toutes les modifications des réglages.
+	 * @return bValider
+	 */
 	private JButton getJButton7() {
-
 			bValider = new JButton();
 			bValider.setText("Tout valider");
 		
 		return bValider;
 	}
 
+	/**
+	 * Bouton d'application des modifications d'un champ réglages.
+	 * @return bValider
+	 */
 	private JButton getJButton5() {
-		if (jButton5 == null) {
 			jButton5 = new JButton();
 			jButton5.setText("Appliquer");
-			
-		}
 		return jButton5;
 	}
 
+	/**
+	 * Affichage et récupération des données du poids.
+	 * @return jTextField5
+	 */
 	@SuppressWarnings("unused")
 	private JTextField getJTextField5() {
-		if (jTextField5 == null) {
 			jTextField5 = new JTextField();
 			
 			try 
@@ -218,20 +244,24 @@ public class IHMWindow extends JFrame implements ActionListener {
 			      ex.printStackTrace();
 			} 
 			jTextField5.setAutoscrolls(true);
-		}
 		return jTextField5;
 	}
 
+	/**
+	 * Bouton d'application des réglages.
+	 * @return
+	 */
 	private JButton getJButton4() {
-		if (jButton4 == null) {
 			jButton4 = new JButton();
 			jButton4.setText("Appliquer");
-		}
 		return jButton4;
 	}
 
+	/**
+	 * Affichage et récupération des données du mot de passe.
+	 * @return jTextField3
+	 */
 	private JTextField getJTextField3() {
-		if (jTextField3 == null) {
 			jTextField3 = new JTextField();
 			try 
 			{
@@ -261,12 +291,14 @@ public class IHMWindow extends JFrame implements ActionListener {
 			      ex.printStackTrace();
 			} 
 			jTextField3.setAutoscrolls(true);
-		}
 		return jTextField3;
 	}
 
+	/**
+	 * Affichage et récupération des données de la taille.
+	 * @return jTextField4
+	 */
 	private JTextField getJTextField4() {
-		if (jTextField4 == null) {
 			jTextField4 = new JTextField();
 			try 
 			{
@@ -296,34 +328,41 @@ public class IHMWindow extends JFrame implements ActionListener {
 			      ex.printStackTrace();
 			} 
 			jTextField4.setAutoscrolls(true);
-		}
 		return jTextField4;
 	}
 
+	/**
+	 * Bouton d'application des modifications.
+	 * @return jButton3
+	 */
 	private JButton getJButton3() {
-		if (jButton3 == null) {
 			jButton3 = new JButton();
 			jButton3.setText("Appliquer");
-		}
 		return jButton3;
 	}
-
+	/**
+	 * Bouton d'application des modifications.
+	 * @return jButton0
+	 */
 	private JButton getJButton0() {
-		if (jButton0 == null) {
 			jButton0 = new JButton();
 			jButton0.setText("Appliquer");
-		}
 		return jButton0;
 	}
-
+	/**
+	 * Bouton d'application des modifications.
+	 * @return jButton2
+	 */
 	private JButton getJButton2() {
-		if (jButton2 == null) {
 			jButton2 = new JButton();
 			jButton2.setText("Appliquer");
-		}
 		return jButton2;
 	}
 
+	/**
+	 * Bouton d'application des modifications.
+	 * @return jButton1
+	 */
 	private JButton getJButton1() {
 		if (jButton1 == null) {
 			jButton1 = new JButton();
@@ -360,8 +399,11 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jButton1;
 	}
 
+	/**
+	 * Affichage et récupération des données du mail.
+	 * @return jTextField2
+	 */
 	private JTextField getJTextField2() {
-		if (jTextField2 == null) {
 			jTextField2 = new JTextField();
 			try 
 			{
@@ -391,10 +433,13 @@ public class IHMWindow extends JFrame implements ActionListener {
 			      ex.printStackTrace();
 			} 
 			jTextField2.setAutoscrolls(true);
-		}
 		return jTextField2;
 	}
 
+	/**
+	 * Affichage et récupération des données du prenom.
+	 * @return jTextField1
+	 */
 	private JTextField getJTextField1() {
 		if (jTextField1 == null) {
 			jTextField1 = new JTextField();
@@ -430,8 +475,11 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jTextField1;
 	}
 
+	/**
+	 * Affichage et récupération des données du nom.
+	 * @return jTextField0
+	 */
 	private JTextField getJTextField0() {
-		if (jTextField0 == null) {
 			jTextField0 = new JTextField();
 			try 
 			{
@@ -462,28 +510,34 @@ public class IHMWindow extends JFrame implements ActionListener {
 			} 
 			
 			jTextField0.setAutoscrolls(true);
-		}
 		return jTextField0;
 	}
+	
+	/**
+	 * Bouton quitter
+	 * @return bQuitter
+	 */
 	private JButton getbQuitter() {
-		if (bQuitter == null) {
 			bQuitter = new JButton();
 			bQuitter.setText("Quitter");
-		}
 		return bQuitter;
 	}
 	
 	
-
+	/**
+	 * Barre de scroll de la liste des seance des utilisateurs.
+	 * @return jScrollPane1
+	 */
 	private JScrollPane getJScrollPane1() {
-		if (jScrollPane1 == null) {
 			jScrollPane1 = new JScrollPane();
 			jScrollPane1.setViewportView(getJListUser());
-		}
 		return jScrollPane1;
 	}
 	
-	
+	/**
+	 * Récupération du nom de la séance des exercices de l'application après un double click.
+	 * @param e
+	 */
 	public static void nomSeanceG(MouseEvent e){
     	if(e.getClickCount() == 2){
     		 String item = (String) jListGoform.getModel().getElementAt(jListGoform.locationToIndex(e.getPoint()));
@@ -513,6 +567,10 @@ public class IHMWindow extends JFrame implements ActionListener {
         }
     }
 	
+	/**
+	 * Barre de scroll de la liste des seance prédéfinis.
+	 * @return jScrollPane1
+	 */
 	public static void nomSeance(MouseEvent e){
     	if(e.getClickCount() == 2){
     		 String item = (String) jListUser.getModel().getElementAt(jListUser.locationToIndex(e.getPoint()));
@@ -544,7 +602,10 @@ public class IHMWindow extends JFrame implements ActionListener {
     }
 	
 	
-	
+	/**
+	 * Liste des séances des utilisateurs.
+	 * @return jListUser
+	 */
 	public static JList getJListUser() {
 		jListUser = new JList();
 		jListUser.addMouseListener(new MouseAdapter() {
@@ -613,10 +674,10 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jListUser;
 	}
 	
-	
-	
-	
-
+	/**
+	 * Barre de scroll de la liste des seances prédéfinis.
+	 * @return jScrollPane0
+	 */
 	private JScrollPane getJScrollPane0() {
 		if (jScrollPane0 == null) {
 			jScrollPane0 = new JScrollPane();
@@ -625,6 +686,10 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jScrollPane0;
 	}
 
+	/**
+	 * Liste des séances des séances prédéfinis.
+	 * @return jListUser
+	 */
 	@SuppressWarnings({ "rawtypes", "unchecked" })
 	private JList getJListGoform() {
 		
@@ -696,24 +761,31 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jListGoform;
 	}
 	
+	/**
+	 * Sous onglets des séances.
+	 * @return jTabbSeance
+	 */
 	private JTabbedPane getJTabbSeance() {
-		
 			jTabbSeance = new JTabbedPane();
 			jTabbSeance.addTab("Seances crées par GoForm", getJSeanceGoform());
 			jTabbSeance.addTab("Seances crées par les utilisateurs", getJSeanceUser());
-
-		
 		return jTabbSeance;
 	}
 	
+	/**
+	 * Bouton de la création de séance.
+	 * @return bCreerSeance
+	 */
 	private JButton getbCreerSeance() {
-		if (bCreerSeance == null) {
 			bCreerSeance = new JButton();
 			bCreerSeance.setText("Créer une séance");
-		}
 		return bCreerSeance;
 	}
  
+	/**
+	 * Séances utilisateurs.
+	 * @return jSeanceUser
+	 */
     private JPanel getJSeanceUser() {
 
         try {
@@ -741,9 +813,13 @@ public class IHMWindow extends JFrame implements ActionListener {
         jSeanceUser.add(getbCreerSeance(), new Constraints(new Leading(200, 10, 10), new Trailing(20, 12, 12)));
         jSeanceUser.add(getJLabelSeanceG(), new Constraints(new Leading(75, 400, 12, 12), new Leading(25, 50, 12, 12)));
 
-	return jSeanceUser;
+        return jSeanceUser;
 	}
 	
+    /**
+	 * Séances prédéfinis.
+	 * @return jSeanceGoForm
+	 */
 	private JPanel getJSeanceGoform() {
 			try {
 	        	InputStream is = new FileInputStream("img/bg_seanceList.jpg");
@@ -767,13 +843,15 @@ public class IHMWindow extends JFrame implements ActionListener {
 	        jSeanceGoForm.setLayout(new GroupLayout());
 	        jSeanceGoForm.add(getJScrollPane0(), new Constraints(new Leading(50, 400, 15, 15), new Leading(100, 440, 15, 15)));
 	        jSeanceGoForm.add(getJLabelSeanceG(), new Constraints(new Leading(75, 400, 12, 12), new Leading(25, 50, 12, 12)));
-	        
-	        
-	return jSeanceGoForm;
+
+	        return jSeanceGoForm;
 	}
 
+	/**
+	 * Onglets de l'application.
+	 * @return jTabbOnglets
+	 */ 
 	private JTabbedPane getjTabbOnglets() {
-		
 			jTabbOnglets = new JTabbedPane();
 			jTabbOnglets.addTab("Accueil", getjAccueil());
 			jTabbOnglets.addTab("Profil", getjProfil());
@@ -786,9 +864,11 @@ public class IHMWindow extends JFrame implements ActionListener {
 	}
 	
 
-
+	/**
+	 * Affichage de l'accueil.
+	 * @return jAccueil
+	 */
 	private JPanel getjAccueil() {
-		
 		try {
         	InputStream is= new FileInputStream("img/bg_accueil.jpg");
             bg = ImageIO.read(is);
@@ -809,9 +889,6 @@ public class IHMWindow extends JFrame implements ActionListener {
             }
         };
 		
-		
-
-
 		 String fichier ="conseils";	
 				try{
 					InputStream ips = new FileInputStream(fichier); 
@@ -834,12 +911,14 @@ public class IHMWindow extends JFrame implements ActionListener {
 		JLabel infos = new JLabel("<html><p style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><u>Informations</u> : <br></p></html>");
 		jAccueil.add(infos);
 		jAccueil.add(getbQuitter(), new Constraints(new Leading(412, 10, 10), new Trailing(12, 12, 12)));
-		
-	
-	return jAccueil;
-}
 
+		return jAccueil;
+	}
 
+	/**
+	 * Affichage des réglages.
+	 * @return jReglages
+	 */
 	private JPanel getjReglages() {
 		try {
         	InputStream is= new FileInputStream("img/bg_reglages.jpg");
@@ -878,50 +957,82 @@ public class IHMWindow extends JFrame implements ActionListener {
 			jReglages.add(getJLabel0(), new Constraints(new Leading(39, 12, 12), new Leading(15, 12, 12)));
 			jReglages.add(getJLabel1(), new Constraints(new Leading(39, 12, 12), new Leading(404, 10, 10)));
 			jReglages.setBackground(red);
-			
-			
-			
-			
 		
 		return jReglages;
 	}
 
+	/**
+	 * Affichage du suivi.
+	 * @return jSuivi
+	 */
 	private JPanel getjSuivi() {
 		
-			jSuivi = new JPanel();
-			jSuivi.getLayout();
-			jSuivi.setBackground(red);
-			
-			Connection connexion;
 			try {
-				
-				connexion = DriverManager.getConnection("jdbc:postgresql://gigondas:5432/ambrym","ambrym","ambrym");
-				java.sql.Statement instruction = connexion.createStatement();
-				ResultSet resultatcnx = instruction.executeQuery("Select * FROM medecin");	
-				System.out.println("test");
-		      	while (resultatcnx.next()) {
-		        		JLabel id = new JLabel("<html><ul style=\"width: 340px; background-color: white; padding: 15px; margin-top: 10px;\"><li>"+resultatcnx.getString("n_med")+"</li>"+resultatcnx.getString("identite_med")+"</li></ul></html>");
+	        	InputStream is= new FileInputStream("img/bg_profil.jpg");
+	            bg_profil = ImageIO.read(is);
+	        } catch (IOException ex) {
+	            Logger.getLogger(TabBackground.class.getName()).log(Level.SEVERE, null, ex);
+	        }
+	
+	        JPanel jSuivi = new JPanel() {
+	            @Override
+	            protected void paintComponent(Graphics g) {
+	                super.paintComponent(g);
+	                g.drawImage(bg_profil, 0, 0, getWidth(), getHeight(), this);
+	            }
+	
+	            @Override
+	            public Dimension getPreferredSize() {
+	                return new Dimension(400, 300);
+	            }
+	        };
+			jSuivi.getLayout();
+			JLabel text = new JLabel("<html><p style=\"width: 350px; color: black; background-color: white; padding: 15px; margin-top: 10px; \">Vos séances réalisée :</p></html>");
+    		jSuivi.add(text);
+			try 
+			{
+	        	Class.forName("org.postgresql.Driver");
+			      System.out.println("Driver O.K.");
 
-						jSuivi.add(id);
-		        		
-		      	}
-		    	}
-		    	catch (SQLException ex) { System.err.println("Erreur Localisation BD");}   
+			      String url = "jdbc:postgresql://gigondas:5432/battonh";
+			      String user = "battonh";
+			      String passwd = "battonh";
+			      Connection connexion = DriverManager.getConnection(url, user, passwd);
+			      Statement instruction = connexion.createStatement();
+
+			      ResultSet resultatcnx = instruction.executeQuery("Select seance_real FROM suivi");	
+			      	while (resultatcnx.next()) {
+			      		
+			        		JLabel nom = new JLabel("<html><li style=\"color : white;\">"+resultatcnx.getString("seance_real")+"</li></html>");
+			        		jSuivi.add(nom);
+			        		
+			      	}
+			      
+			} 
+			catch (Exception ex) 
+			{
+			      ex.printStackTrace();
+			} 
 
 		
 		return jSuivi;
 	}
 	
+	/**
+	 * Affichage des entrainements.
+	 * @return jEntrainement
+	 */
 	private JPanel getjEntrainement() {
-		
 			jEntrainement = new JPanel();
 			jEntrainement.setLayout(new GroupLayout());
 			jEntrainement.add(getJTabbSeance(), new Constraints(new Leading(0, 500, 12, 12), new Leading(0, 670, 12, 12)));
-			
 		return jEntrainement;
 	}
 	
-
+	/**
+	 * Affichage du profil.
+	 * @return jProfil
+	 */
 	private JPanel getjProfil() {
 		
 			try {
@@ -988,6 +1099,10 @@ public class IHMWindow extends JFrame implements ActionListener {
 		return jProfil;
 	}
 	
+	/**
+	 * Affichage du à propos.
+	 * @return jApropos
+	 */
 	private JPanel getjApropos() {
 		
 		try {
@@ -1000,6 +1115,7 @@ public class IHMWindow extends JFrame implements ActionListener {
         JPanel jApropos = new JPanel() {
             @Override
             protected void paintComponent(Graphics g) {
+            	
                 super.paintComponent(g);
                 g.drawImage(bg_propos, 0, 0, getWidth(), getHeight(), this);
             }
@@ -1009,22 +1125,14 @@ public class IHMWindow extends JFrame implements ActionListener {
                 return new Dimension(400, 300);
             }
         };
-			
-			
-
-        jApropos.add(getJButton8(), new Constraints(new Leading(200, 10, 10), new Trailing(20, 12, 12)));
+		
+        
 		return jApropos;
 	}
 
-	private JButton getJButton8() {
-
-			bLien = new JButton();
-			bLien.setText("Code GitHub");
-		
-		return bLien;
-	}
-	
-
+	/**
+	 * Look and feel
+	 */
 	private static void installLnF() {
 		try {
 			String lnfClassname = PREFERRED_LOOK_AND_FEEL;
@@ -1040,9 +1148,6 @@ public class IHMWindow extends JFrame implements ActionListener {
 	
 	/**
 	 * Main entry of the class.
-	 * Note: This class is only created so that you can easily preview the result at runtime.
-	 * It is not expected to be managed by the designer.
-	 * You can modify it as you like.
 	 */
 	public static void main(String[] args) {
 		installLnF();
@@ -1066,7 +1171,6 @@ public class IHMWindow extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 		
 	}
 

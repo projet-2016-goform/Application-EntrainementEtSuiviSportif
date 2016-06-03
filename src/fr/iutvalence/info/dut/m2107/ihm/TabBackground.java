@@ -20,8 +20,14 @@ import javax.swing.UnsupportedLookAndFeelException;
 
 public class TabBackground {
 
+	/**
+	 * Initialisation d'un fond.
+	 */
     private BufferedImage bg;
 
+    /**
+     * Mise en place d'un fond.
+     */
     public TabBackground() {
         try {
             bg = ImageIO.read(new URL("http://2.bp.blogspot.com/-wWANHD-Dr00/TtSmeY57ZXI/AAAAAAAABB8/t-fpXmQZ0-Y/s1600/Vector_by_Karpiu23.png"));

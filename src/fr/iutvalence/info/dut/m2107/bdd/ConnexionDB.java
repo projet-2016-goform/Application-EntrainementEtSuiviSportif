@@ -4,13 +4,30 @@ import java.sql.*;
 
 public class ConnexionDB {
  
+ /**
+  * Pilote
+  */
  public static final String xPilote = "org.postgresql.Driver";
+ /**
+  * URL de la BDD
+  */
  public static final String xURL = "jdbc:postgresql://gigondas:5432/battonh";
+ /**
+  * Nom d'utilisater de la BDDD
+  */
  public static final String xUser = "battonh";
+ /**
+  * Mot de passe de la BDD
+  */
  public static final String xPassword = "battonh";
+ /**
+  * Connexion
+  */
  public static Connection con = null;
  
-
+ /**
+  * Connexion à la BDD
+  */
  public ConnexionDB() { 
 	 
    try {

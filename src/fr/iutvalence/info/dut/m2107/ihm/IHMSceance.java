@@ -43,24 +43,39 @@ import org.dyno.visual.swing.layouts.GroupLayout;
 import org.dyno.visual.swing.layouts.Leading;
 import org.dyno.visual.swing.layouts.Trailing;
 
-//VS4E -- DO NOT REMOVE THIS LINE!
 public class IHMSceance extends JFrame {
 
+	/**
+	 * Elements de l'IHM.
+	 */
 	private static final long serialVersionUID = 1L;
 	private JLabel jLabel0;
-	//private static JPanel jPanelAffichage;
 	private static JButton jButton0;
 	private JPanel jP;
 	private JScrollPane jScrollPane1;
 	private static JButton jButton1;
 	static JPanel jPanel0;
+	/**
+	 * Récupération de l'icon.
+	 */
 	private ImageIcon img = new ImageIcon("img/icon.png");
+	/**
+	 * Définition de la couleur bleu.
+	 */
 	Color blue = Color.decode("#2D3E50");
+	/**
+	 * Définition du look and feel.
+	 */
 	private static final String PREFERRED_LOOK_AND_FEEL = "com.sun.java.swing.plaf.nimbus.NimbusLookAndFeel";
+	/**
+	 * Affiche de la séance.
+	 */
 	public IHMSceance() {
 		initComponents();
 	}
-
+	/**
+	 * initialisation des composents.
+	 */
 	private void initComponents() {
 		setLayout(new BorderLayout());
 		setContentPane(new JLabel(new ImageIcon("img/bg_encours.jpg")));
@@ -75,39 +90,45 @@ public class IHMSceance extends JFrame {
 		
 	}
 
+	/**
+	 * Panel du chronomètre
+	 * @return jPanel0
+	 */
 	private JPanel getJPanel0() {
-		if (jPanel0 == null) {
 			jPanel0 = new JPanel();
 			jPanel0.setBorder(BorderFactory.createTitledBorder(null, "Chronomètre", TitledBorder.LEADING, TitledBorder.DEFAULT_POSITION, new Font("SansSerif",
 					Font.BOLD, 12), new Color(255, 255, 255)));
 			jPanel0.setLayout(new GroupLayout());
 			jPanel0.setBackground(blue);
-		}
 		return jPanel0;
 	}
 
-	
-
+	/**
+	 * Bouton d'abandon.
+	 * @return jButton1
+	 */
 	private JButton getJButton1() {
-		if (jButton1 == null) {
 			jButton1 = new JButton();
 			jButton1.setText("Abandonner la séance");
-		}
 		return jButton1;
 	}
 
+	/**
+	 * Barre de scrool.
+	 * @return jScrollPane1
+	 */
 	private JScrollPane getJScrollPane1() {
-		if (jScrollPane1 == null) {
 			jScrollPane1 = new JScrollPane();
 			jScrollPane1.setViewportView(getJTextArea1());
-		}
 		return jScrollPane1;
 	}
 
 
-
+	/**
+	 * Zone d'affichage des exercices à réaliser.
+	 * @return jP
+	 */
 	private JPanel getJTextArea1() {
-		if (jP == null) {
 			jP = new JPanel();
 			jP.setBackground(new Color(214, 217, 223));
 			jP.setAutoscrolls(false);
@@ -157,18 +178,27 @@ public class IHMSceance extends JFrame {
 			{
 			      ex.printStackTrace();
 			} 
-		}
 		return jP;
 	}
 
+	/**
+	 * Bouton de validation de la séance.
+	 * @return jButton0
+	 */
 	private JButton getJButton0() {
-		
 			jButton0 = new JButton();
 			jButton0.setText("Valider la séance");
-		
 		return jButton0;
 	}
+	/**
+	 * Nom de la séance.
+	 */
 	static String nom = null;
+	
+	/**
+	 * Affichage du nom de la séance.
+	 * @return jLabel0
+	 */
 	private JLabel getJLabel0() {
 		
 			jLabel0 = new JLabel();
@@ -199,6 +229,9 @@ public class IHMSceance extends JFrame {
 		return jLabel0;
 	}
 
+	/**
+	 * Look and feel.
+	 */
 	private static void installLnF() {
 		try {
 			String lnfClassname = PREFERRED_LOOK_AND_FEEL;
@@ -211,6 +244,10 @@ public class IHMSceance extends JFrame {
 		}
 	}
 
+	/**
+	 * Main. 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		installLnF();
 		SwingUtilities.invokeLater(new Runnable() {
