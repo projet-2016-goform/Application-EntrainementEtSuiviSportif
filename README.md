@@ -1,22 +1,22 @@
-Application java pour l'entretient physique et le suivi sportif.
+Application java pour l'entretien physique et le suivi sportif.
 
-Application réalisée par : 
+Application rÃ©alisÃ©e par : 
 
 Abderrahmane HASSAINE
 Maxime AMBRY
-Cédric PEYRONNET
+CÃ©dric PEYRONNET
 Hugo Batton
-Nicodème DAZY
+NicodÃ¨me DAZY
 
-Application réalisée dans le cadre scolaire à l'iut de Valence - 2016.
+Application rÃ©alisÃ©e dans le cadre scolaire Ã  l'iut de Valence - 2016.
 
-Projet encadré par : 
+Projet encadrÃ© par : 
 
 M.Jean
 M.Occello
 M.Rotteleur
 
-Avec comme comité de pilotage  : 
+Avec comme comitÃ© de pilotage  : 
 
-M.Gélibert
+M.GÃ©libert
 M.Rotteleur
